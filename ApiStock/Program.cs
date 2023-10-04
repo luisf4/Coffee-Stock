@@ -10,6 +10,6 @@ app.MapGet("/stock/{symbol}", (string symbol) => {
 
 app.MapGet("/stock/{symbol}/sharts/{date}", (string symbol, string date) => {
     StockServices stock = new StockServices();
-    return stock.GetStockShart("AAPL","10/10/2022");
+    return stock.GetStockShart("AAPL",date);
 });
 app.Run();
