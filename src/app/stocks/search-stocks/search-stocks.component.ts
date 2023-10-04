@@ -6,5 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./search-stocks.component.css']
 })
 export class SearchStocksComponent {
+  searchTerm: string = '';
 
+  search(): void {
+    // Implement your search logic here
+    console.log('Search term:', this.searchTerm);
+    // You can perform search operations here, such as making API requests or filtering data.
+  }
 }

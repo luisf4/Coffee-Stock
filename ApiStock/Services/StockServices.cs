@@ -1,17 +1,29 @@
 using System;
 using System.Net.Http;
+using System.Security.Cryptography;
 using System.Threading.Tasks;
 
 public class StockServices
 {
-    private const string API_TOKEN = "Wr9Uwoumm9VihRtG_JOl7p6vXEpM90fM";
+    // Load the api keys from file 
+    private string API_TOKEN_Finnhub = CredentialsLoader.LoadApiKeyFinnhub();
+    private string API_TOKEN_Polygon = CredentialsLoader.LoadApiKeyPolygon();
 
-    public async Task<string> GetStockBySymbol(string symbol)
+
+    // Polygon API USE
+    //
+    //
+    //
+    public async Task<string> GetStockInfo(string symbol)
     {
         using HttpClient client = new();
 
-        // Set the request URL
-        var res = await client.GetAsync($"https://api.polygon.io/v2/aggs/ticker/{symbol}/range/1/day/2023-01-09/2023-01-09?apiKey={API_TOKEN}");
+        // Set the url 
+        string url = $"https://api.polygon.io/v3/reference/tickers/{symbol}?apiKey={API_TOKEN_Polygon}";
+        Console.WriteLine();
+
+        // Makes a request 
+        var res = await client.GetAsync(url);
         if (res.IsSuccessStatusCode)
         {
             var content = await res.Content.ReadAsStringAsync();
@@ -32,11 +44,11 @@ public class StockServices
         // Gets date 
         var dateToday = DateTime.Now.ToString("yyyy-MM-dd");
 
-        // Parse the given date 
+        // Parse the given date ** dont need it for now 
         // string formattedDate = DateTime.TryParseExact(date, "yyyyMMdd", null, System.Globalization.DateTimeStyles.None, out DateTime dateTime) ? dateTime.ToString("yyyy/MM/dd") : "Invalid date format";
 
         // Set the url 
-        string url = $"https://api.polygon.io/v2/aggs/ticker/{symbol}/range/1/day/{date}/{dateToday}?adjusted=true&sort=asc&limit=120&apiKey={API_TOKEN}";
+        string url = $"https://api.polygon.io/v2/aggs/ticker/{symbol}/range/1/day/{date}/{dateToday}?adjusted=true&sort=asc&limit=10&apiKey={API_TOKEN_Polygon}";
         
         // Makes a request 
         var res = await client.GetAsync(url);
@@ -53,4 +65,9 @@ public class StockServices
             return $"Error: {res.StatusCode}";
         }
     }
+
+    // Finnhub API USE 
+    //
+    //
+    //
 }

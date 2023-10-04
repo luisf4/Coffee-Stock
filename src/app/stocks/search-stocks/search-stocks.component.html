@@ -1,1 +1,7 @@
-<p>search-stocks works!</p>
+<div class="col-12 inputFild">
+    <input [(ngModel)]="searchTerm" type="text" class="form-control" placeholder="Add new task">
+    <button (click)="search()" type="button" class="btn btn-primary btn-block buttonAdd">
+        <span class="btn-text">Add </span>
+        <i class="fas fa-plus"></i>
+    </button>
+</div>
