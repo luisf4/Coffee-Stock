@@ -53,7 +53,20 @@ app.MapPost("/auth/login", async (HttpContext context) =>
 {
     try
     {
+        using (var reader = new StreamReader(context.Request.Body))
+        {
+            var requestBody = await reader.ReadToEndAsync();
 
+            // Deserialize the JSON data into your model using System.Text.Json
+            var registrationData = JsonSerializer.Deserialize<UserDto>(requestBody);
+
+            // Serialize data back to JSON if needed
+            var responseData = JsonSerializer.Serialize(AuthService.Login(registrationData!));
+
+            context.Response.StatusCode = StatusCodes.Status200OK;
+            context.Response.ContentType = "application/json";
+            await context.Response.WriteAsync(responseData);
+        }
     }
     catch (Exception ex)
     {

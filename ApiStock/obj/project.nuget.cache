@@ -1,10 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "nwC3JowqNzJhueHdUICDuG4B6Wp8NmzlE46SXD8hSkHH89EYplJxjjFHf+whPtzJ2UKebyPZsa3Z2+OATqQOAA==",
+  "dgSpecHash": "XGd/k+aPXcmI/bg93MBNUFKsh2qNpjYMXGa2k6UV79VYI744DHrH3m2YWCuzlQCp8S4bqUKP7b1XxQQoiEhoUg==",
   "success": true,
   "projectFilePath": "C:\\Users\\luis\\Desktop\\coffeestock\\ApiStock\\ApiStock.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\luis\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512"
+    "C:\\Users\\luis\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
+    "C:\\Users\\luis\\.nuget\\packages\\microsoft.identitymodel.abstractions\\7.0.2\\microsoft.identitymodel.abstractions.7.0.2.nupkg.sha512",
+    "C:\\Users\\luis\\.nuget\\packages\\microsoft.identitymodel.jsonwebtokens\\7.0.2\\microsoft.identitymodel.jsonwebtokens.7.0.2.nupkg.sha512",
+    "C:\\Users\\luis\\.nuget\\packages\\microsoft.identitymodel.logging\\7.0.2\\microsoft.identitymodel.logging.7.0.2.nupkg.sha512",
+    "C:\\Users\\luis\\.nuget\\packages\\microsoft.identitymodel.tokens\\7.0.2\\microsoft.identitymodel.tokens.7.0.2.nupkg.sha512",
+    "C:\\Users\\luis\\.nuget\\packages\\system.identitymodel.tokens.jwt\\7.0.2\\system.identitymodel.tokens.jwt.7.0.2.nupkg.sha512"
   ],
   "logs": []
 }
