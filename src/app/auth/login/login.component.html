@@ -1,1 +1,26 @@
-<p>login works!</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>
+    Webleb
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="/src/app/auth/login/login.component.css" />
+</head>
+<body style="display: flex; justify-content:center ; align-items: center;height: 100vh;overflow: hidden;">
+    <div class="container">
+      <form name="form1" class="box" method="post">
+        <h4>Login</h4>
+        <h5>Sign in to your account.</h5>
+        <input type="text" name="email" placeholder="Email" autocomplete="off" />
+        <input type="password" name="password" placeholder="Passsword" id="pwd" autocomplete="off" />
+        <a href="#" class="forgetpass">Forget Password?</a>
+        <input type="submit" value="Sign in" class="btn1" />
+	</form>
+    <div class="singup">
+	    <h5>Dont have an account ? <a routerLink="/register">Sing-Up here!</a></h5>
+    </div>
+    </div>
+</body>
+</html>
