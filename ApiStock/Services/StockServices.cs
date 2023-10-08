@@ -19,7 +19,7 @@ public class StockServices
         using HttpClient client = new();
 
         // Set the url 
-        string url = $"https://api.polygon.io/v3/reference/tickers/{symbol}?apiKey={API_TOKEN_Polygon}";
+        string url = $"https://api.polygon.io/v3/reference/tickers/{symbol.ToUpper()}?apiKey={API_TOKEN_Polygon}";
         Console.WriteLine();
 
         // Makes a request 
@@ -52,7 +52,7 @@ public class StockServices
         
         // Makes a request 
         var res = await client.GetAsync(url);
-        Console.WriteLine(url);
+
         if (res.IsSuccessStatusCode)
         {
             // Read and returns a Json

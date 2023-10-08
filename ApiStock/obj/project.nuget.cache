@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "NQw8iP8T3JqZICeP1/JVgxHi+IO6M1JgWR7RSN1YdfIsR9YNTt0dUOyaMcrlpAaVjXoDbSQqRlnj/62Eso6sJQ==",
+  "dgSpecHash": "nwC3JowqNzJhueHdUICDuG4B6Wp8NmzlE46SXD8hSkHH89EYplJxjjFHf+whPtzJ2UKebyPZsa3Z2+OATqQOAA==",
   "success": true,
   "projectFilePath": "C:\\Users\\luis\\Desktop\\coffeestock\\ApiStock\\ApiStock.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\luis\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512"
+  ],
   "logs": []
 }

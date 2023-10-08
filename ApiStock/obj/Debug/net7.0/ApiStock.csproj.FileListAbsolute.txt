@@ -23,3 +23,6 @@ C:\Users\luis\Desktop\coffeestock\ApiStock\obj\Debug\net7.0\refint\ApiStock.dll
 C:\Users\luis\Desktop\coffeestock\ApiStock\obj\Debug\net7.0\ApiStock.pdb
 C:\Users\luis\Desktop\coffeestock\ApiStock\obj\Debug\net7.0\ApiStock.genruntimeconfig.cache
 C:\Users\luis\Desktop\coffeestock\ApiStock\obj\Debug\net7.0\ref\ApiStock.dll
+C:\Users\luis\Desktop\coffeestock\ApiStock\obj\Debug\net7.0\ApiStock.csproj.AssemblyReference.cache
+C:\Users\luis\Desktop\coffeestock\ApiStock\bin\Debug\net7.0\BCrypt.Net-Next.dll
+C:\Users\luis\Desktop\coffeestock\ApiStock\obj\Debug\net7.0\ApiStock.csproj.CopyComplete

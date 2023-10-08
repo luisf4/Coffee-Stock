@@ -57,7 +57,7 @@ public class CredentialsLoader
         }
         catch (IOException ex)
         {
-            Console.WriteLine($"Error reading credentials file: {ex.Message}");
+             Console.WriteLine($"Error reading credentials file: {ex.Message}");
             return null; // Handle the error as needed
         }
     }
