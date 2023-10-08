@@ -1,26 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <title>
-    Webleb
-  </title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="/src/app/auth/login/login.component.css" />
+    <meta charset="UTF-8" />
+    <title>
+        Webleb
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/src/app/auth/login/login.component.css">
 </head>
+
 <body style="display: flex; justify-content:center ; align-items: center;height: 100vh;overflow: hidden;">
     <div class="container">
-      <form name="form1" class="box" method="post">
-        <h4>Register</h4>
-        <h5>Create a new account.</h5>
-        <input type="text" name="email" placeholder="Email" autocomplete="off" />
-        <input type="password" name="password" placeholder="Passsword" id="pwd" autocomplete="off" />
-        <!-- <a href="#" class="forgetpass">Forget Password?</a> -->
-        <input type="submit" value="Register" class="btn1" />
-	</form>
-    <div class="singup">
-	    <h5>Already have an account ? <a routerLink="/login">Login here!</a></h5>
-    </div>
+        <form class="box">
+            <h4>Register</h4>
+            <h5>Create a new account.</h5>
+            <input [formControl]="username" type="text" placeholder="Username" autocomplete="off" />
+            <input [formControl]="password" type="password" placeholder="Password" id="pwd" autocomplete="off" />
+            <button (click)="Register()" class="btn1">Sign in</button>
+          </form>          
+        <div class="singup">
+            <h5>Already have an account ? <a routerLink="/login">Login here!</a></h5>
+        </div>
     </div>
 </body>
+
 </html>

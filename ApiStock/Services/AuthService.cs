@@ -52,16 +52,12 @@ public class AuthService
         var token = new JwtSecurityToken(
             claims: claims,
             expires: DateTime.Now.AddDays(30),
-            signingCredentials:  creds
+            signingCredentials: creds
         );
 
         var jwt = new JwtSecurityTokenHandler().WriteToken(token);
 
         return jwt;
     }
-
-    private static User BadRequest(string v)
-    {
-        throw new NotImplementedException();
-    }
+    
 }
