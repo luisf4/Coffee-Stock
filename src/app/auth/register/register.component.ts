@@ -13,9 +13,7 @@ export class RegisterComponent {
   username = new FormControl('');
   password = new FormControl('');
 
-  constructor(private auth: AuthService) {
-
-  }
+  constructor(private auth: AuthService) { }
 
   Register() {
     console.log("AAAAAAAAA")

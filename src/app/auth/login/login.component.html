@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <title>
@@ -8,19 +9,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="/src/app/auth/login/login.component.css" />
 </head>
+
 <body style="display: flex; justify-content:center ; align-items: center;height: 100vh;overflow: hidden;">
-    <div class="container">
-      <form name="form1" class="box" method="post">
-        <h4>Login</h4>
-        <h5>Sign in to your account.</h5>
-        <input type="text" name="username" placeholder="Username" autocomplete="off" />
-        <input type="password" name="password" placeholder="Password" id="pwd" autocomplete="off" />
-        <a href="#" class="forgetpass">Forget Password?</a>
-        <button class="btn1">Login</button>
-	</form>
+  <div class="container">
+    <form name="form1" class="box" method="post">
+      <h4>Login</h4>
+      <h5>Sign in to your account.</h5>
+      <input [formControl]="username" type="text" placeholder="Username" autocomplete="off" />
+      <input [formControl]="password" type="password" placeholder="Password" id="pwd" autocomplete="off" />
+      <button (click)="Login()" class="btn1">Sign in</button>
+    </form>
     <div class="singup">
-	    <h5>Dont have an account ? <a routerLink="/register">Sing-Up here!</a></h5>
+      <h5>Dont have an account ? <a routerLink="/register">Sing-Up here!</a></h5>
     </div>
-    </div>
+  </div>
 </body>
+
 </html>
