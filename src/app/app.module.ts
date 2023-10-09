@@ -9,6 +9,8 @@ import { StocksPageComponent } from './stocks/stocks-page/stocks-page.component'
 import { SearchStocksComponent } from './stocks/search-stocks/search-stocks.component';
 import { AuthService } from './auth/services/authServices';
 import { HttpClientModule } from '@angular/common/http';
+import { HomeComponent } from './stocks/home/home.component';
+import { NavbarComponent } from './stocks/navbar/navbar.component';
 
 
 @NgModule({
@@ -18,6 +20,8 @@ import { HttpClientModule } from '@angular/common/http';
     RegisterComponent,
     StocksPageComponent,
     SearchStocksComponent,
+    HomeComponent,
+    NavbarComponent,
 
   ],
   imports: [

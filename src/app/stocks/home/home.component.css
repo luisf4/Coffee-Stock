@@ -1,0 +1,18 @@
+/* Definindo variáveis de cores e tamanhos de fonte */
+::ng-deep :root {
+    --background-color: #080F25;
+    --container-bg-color: #2c3338;
+    --container-border-color: #6C72FF;
+    --heading-color: #6C72FF;
+    --subheading-color: #dfdeee;
+    --text-color: #a1a4ad;
+    --input-bg-color: #3b4148;
+    --input-placeholder-color: #565f79;
+    --input-focus-border-color: #79a6fe;
+    --button-bg-color: #6C72FF;
+    --button-text-color: #dfdeee;
+    --font-size-h4: 20px;
+    --font-size-h5: 13px;
+    --font-size-input: 16px;
+    --font-size-singup: 15px;
+  }
