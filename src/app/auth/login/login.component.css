@@ -1,118 +1,118 @@
 /* Definindo variáveis de cores e tamanhos de fonte */
 ::ng-deep :root {
-    --background-color: #080F25;
-    --container-bg-color: #2c3338;
-    --container-border-color: #6C72FF;
-    --heading-color: #6C72FF;
-    --subheading-color: #dfdeee;
-    --text-color: #a1a4ad;
-    --input-bg-color: #3b4148;
-    --input-placeholder-color: #565f79;
-    --input-focus-border-color: #79a6fe;
-    --button-bg-color: #6C72FF;
-    --button-text-color: #dfdeee;
-    --font-size-h4: 20px;
-    --font-size-h5: 13px;
-    --font-size-input: 16px;
-    --font-size-singup: 15px;
-  }
-  
-  /* Aplicando as variáveis de cores e tamanhos de fonte */
-  @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400");
-  
-  body,
-  html {
-    font-family: "Source Sans Pro", sans-serif;
-    background: var(--background-color);
-    padding: 0;
-    margin: 0;
-  }
-  
-  .container {
-    text-align: center;
-    background: var(--container-bg-color);
-    border-radius: 9px;
-    border-top: 10px solid var(--container-border-color);
-    border-bottom: 10px solid var(--container-border-color);
-    width: 400px;
-    height: 550px;
-  }
-  
-  .box h4 {
-    font-family: "Source Sans Pro", sans-serif;
-    color: var(--heading-color);
-    font-size: var(--font-size-h4);
-    margin-top: 94px;
-  }
-  
-  .box h4 span {
-    color: var(--subheading-color);
-    font-weight: lighter;
-  }
-  
-  .box h5 {
-    font-family: "Source Sans Pro", sans-serif;
-    font-size: var(--font-size-h5);
-    color: var(--text-color);
-    letter-spacing: 1.5px;
-    margin-bottom: 70px;
-  }
-  
-  .box input[type="text"],
-  .box input[type="password"] {
-    display: block;
-    margin: 20px auto;
-    background-color: var(--input-bg-color);
-    border: 0;
-    border-radius: 5px;
-    padding: 14px 10px;
-    width: 320px;
-    outline: 0;
-    color: var(--text-color);
-    font-size: var(--font-size-input);
-    transition: all 0.2s ease-out;
-  }
-  
-  ::webkit-input-placeholder {
-    color: var(--input-placeholder-color);
-  }
-  
-  .box input[type="text"]:focus,
-  .box input[type="password"]:focus {
-    border: 1px solid var(--input-focus-border-color);
-  }
-  
-  a {
-    color: var(--heading-color);
-    text-decoration: none;
-  }
-  
-  .btn1 {
-    border: 0;
-    background: var(--button-bg-color);
-    color: var(--button-text-color);
-    border-radius: 7px;
-    width: 340px;
-    height: 49px;
-    font-size: var(--font-size-input);
-    transition: 0.3s;
-    cursor: pointer;
-    margin-top: 20px;
-  }
-  
-  .btn1:hover {
-    background: var(--button-bg-color);
-  }
-  
-  .forgetpass {
-    position: relative;
-    float: right;
-    right: 28px;
-  }
-  
-  .singup h5 {
-    font-family: "Source Sans Pro", sans-serif;
-    font-size: var(--font-size-singup);
-    margin: 20px 20px;
-    color: var(--text-color);
-  }
+  --background-color: #080F25;
+  --container-bg-color: #2c3338;
+  --container-border-color: #6C72FF;
+  --heading-color: #6C72FF;
+  --subheading-color: #dfdeee;
+  --text-color: #a1a4ad;
+  --input-bg-color: #3b4148;
+  --input-placeholder-color: #565f79;
+  --input-focus-border-color: #79a6fe;
+  --button-bg-color: #6C72FF;
+  --button-text-color: #dfdeee;
+  --font-size-h4: 20px;
+  --font-size-h5: 13px;
+  --font-size-input: 16px;
+  --font-size-singup: 15px;
+}
+
+/* Aplicando as variáveis de cores e tamanhos de fonte */
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400");
+
+body,
+html {
+  font-family: "Source Sans Pro", sans-serif;
+  background: var(--background-color);
+  padding: 0;
+  margin: 0;
+}
+
+.container {
+  text-align: center;
+  background: var(--container-bg-color);
+  border-radius: 9px;
+  border-top: 10px solid var(--container-border-color);
+  border-bottom: 10px solid var(--container-border-color);
+  width: 400px;
+  height: 550px;
+}
+
+.box h4 {
+  font-family: "Source Sans Pro", sans-serif;
+  color: var(--heading-color);
+  font-size: var(--font-size-h4);
+  margin-top: 94px;
+}
+
+.box h4 span {
+  color: var(--subheading-color);
+  font-weight: lighter;
+}
+
+.box h5 {
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: var(--font-size-h5);
+  color: var(--text-color);
+  letter-spacing: 1.5px;
+  margin-bottom: 70px;
+}
+
+.box input[type="text"],
+.box input[type="password"] {
+  display: block;
+  margin: 20px auto;
+  background-color: var(--input-bg-color);
+  border: 0;
+  border-radius: 5px;
+  padding: 14px 10px;
+  width: 320px;
+  outline: 0;
+  color: var(--text-color);
+  font-size: var(--font-size-input);
+  transition: all 0.2s ease-out;
+}
+
+::webkit-input-placeholder {
+  color: var(--input-placeholder-color);
+}
+
+.box input[type="text"]:focus,
+.box input[type="password"]:focus {
+  border: 1px solid var(--input-focus-border-color);
+}
+
+a {
+  color: var(--heading-color);
+  text-decoration: none;
+}
+
+.btn1 {
+  border: 0;
+  background: var(--button-bg-color);
+  color: var(--button-text-color);
+  border-radius: 7px;
+  width: 340px;
+  height: 49px;
+  font-size: var(--font-size-input);
+  transition: 0.3s;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.btn1:hover {
+  background: var(--button-bg-color);
+}
+
+.forgetpass {
+  position: relative;
+  float: right;
+  right: 28px;
+}
+
+.singup h5 {
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: var(--font-size-singup);
+  margin: 20px 20px;
+  color: var(--text-color);
+}

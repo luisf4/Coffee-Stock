@@ -2,7 +2,18 @@ using System.Text.Json;
 using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
+var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: MyAllowSpecificOrigins,
+                      policy =>
+                      {
+                          policy.WithOrigins("*",
+                                              "*").AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin();
+                      });
+});
 var app = builder.Build();
+app.UseCors(MyAllowSpecificOrigins);
 
 
 // Get stock info
