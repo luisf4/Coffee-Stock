@@ -16,3 +16,7 @@
     --font-size-input: 16px;
     --font-size-singup: 15px;
   }
+
+*{
+  background-color: #080F25;
+}

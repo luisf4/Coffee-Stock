@@ -2,15 +2,15 @@
     --primary: #6C72FF;
     --background: #6C72FF;
     --background-secondary: #080F25;
-    --background-secondary-dark: #080F25;
-    --background-secondary-light: #080F25;
+    --background-secondary-dark: #2C3338;
+    --background-secondary-light: #2C3338;
     --text-primary: #929292;
     /* Colors */
     --black: 0, 0%, 0%;
     --white: #fff;
     --quite-gray: 0, 0%, 50%;
     --grooble: 10, 28%, 93%;
-    /* Sizes */
+    /* Sizes */ 
     --heading-large: 5.6rem;
     --heading-medium: 3.6rem;
     --heading-small: 2.4rem;
@@ -21,8 +21,6 @@
     /* Fonts */
     --font-main: "Poppins";
 }
-
-
 
 
 /* ==============

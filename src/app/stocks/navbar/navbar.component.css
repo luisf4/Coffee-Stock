@@ -16,7 +16,7 @@ Areal Alien ❥ 雷克斯
     Global Styles
    =============== */
 
-*, *::before, *::after {
+   *, *::before, *::after {
     box-sizing: inherit;
 }
 .nav-main {
@@ -24,7 +24,7 @@ Areal Alien ❥ 雷克斯
     width: 100%;
     color: var(--text-primary);
     font-family: var(--font-main);
-    background-color: var(--background);
+    background-color: var(--background-secondary);
     -webkit-font-smoothing: antialiased;
     scroll-behavior: smooth;
     box-sizing: border-box;
@@ -156,13 +156,13 @@ Areal Alien ❥ 雷克斯
     width: 100%;
     position: relative;
     color: var(--quite-gray);
-    border-radius: .25em;
+    border-radius: 12px;
     text-decoration: none;
     transition: all .2s cubic-bezier(var(--transition-main), 1);
 }
 .navbar-item-inner:hover {
     color: var(--white);
-    background: var(--background-secondary-light);
+    background: var(--background-secondary-dark);
     box-shadow: 0 17px 30px -10px hsla(var(--black), .25);
 }
 .navbar-item-inner-icon-wrapper {
@@ -228,4 +228,3 @@ Areal Alien ❥ 雷克斯
 /* ===============
     5. @keyframes
    =============== */
-

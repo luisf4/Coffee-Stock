@@ -11,6 +11,9 @@ import { AuthService } from './auth/services/authServices';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './stocks/home/home.component';
 import { NavbarComponent } from './stocks/navbar/navbar.component';
+import { ChartsComponent } from './stocks/charts/charts.component';
+import { NgApexchartsModule } from 'ng-apexcharts';
+import { NavbarUpComponent } from './stocks/navbar-up/navbar-up.component';
 
 
 @NgModule({
@@ -22,6 +25,8 @@ import { NavbarComponent } from './stocks/navbar/navbar.component';
     SearchStocksComponent,
     HomeComponent,
     NavbarComponent,
+    ChartsComponent,
+    NavbarUpComponent,
 
   ],
   imports: [
@@ -29,7 +34,8 @@ import { NavbarComponent } from './stocks/navbar/navbar.component';
     AppRoutingModule,
     FormsModule, // Add FormsModule here
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgApexchartsModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

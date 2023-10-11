@@ -1,0 +1,31 @@
+<!-- <head>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+</head>
+
+<body> -->
+<nav>
+    <a href="#" class="logo">TR</a>
+    <div class="bx bx-menu" id="menu-icon"></div>
+    <ul class="nav-list">
+        <li><a href="">Home</a></li>
+        <li><a href="">About</a></li>
+        <li><a href="">Services</a></li>
+        <li><a href="">Blog</a></li>
+        <li><a href="">Contact</a></li>
+    </ul>
+    <a href="#" class="btn">Book Now</a>
+</nav>
+
+
+
+<script>
+    let menu = document.querySelector('#menu-icon');
+    let navList = document.querySelector('.nav-list');
+
+    menu.onclick = () => {
+        menu.classList.toggle('bx-x');
+        navList.classList.toggle('open');
+    }
+</script>
