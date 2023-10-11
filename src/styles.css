@@ -1,13 +1,13 @@
 :root {
-    --primary: 237, 94%, 81%;
-    --background: 266, 16%, 92%;
-    --background-secondary: 256, 12%, 12%;
-    --background-secondary-dark: 256, 10%, 10%;
-    --background-secondary-light: 257, 11%, 16%;
-    --text-primary: 0, 0%, 0%;
+    --primary: #6C72FF;
+    --background: #6C72FF;
+    --background-secondary: #080F25;
+    --background-secondary-dark: #080F25;
+    --background-secondary-light: #080F25;
+    --text-primary: #929292;
     /* Colors */
     --black: 0, 0%, 0%;
-    --white: 0, 0%, 100%;
+    --white: #fff;
     --quite-gray: 0, 0%, 50%;
     --grooble: 10, 28%, 93%;
     /* Sizes */
