@@ -1,27 +1,30 @@
-# CoffeeStock
+# Coffee Stock - Análise de Ações ☕📈
+![image](https://github.com/luisf4/Coffee-Stock/assets/97737113/13116013-094b-4646-b30d-d78f1dae4825)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.4.
 
-## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Bem-vindo ao repositório do Coffee Stock, um site dedicado à análise de ações e investimentos no mercado financeiro. Aqui, você encontrará todas as informações necessárias para entender e utilizar nossa plataforma.
 
-## Code scaffolding
+## Sobre o Coffee Stock
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+O Coffee Stock é uma plataforma online que oferece análises detalhadas de ações, informações em tempo real e ferramentas avançadas para ajudar investidores a tomar decisões informadas no mercado de ações. Nossa missão é tornar o investimento em ações mais acessível e compreensível para todos, desde iniciantes até investidores experientes.
 
-## Build
+## Funcionalidades Principais
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- **Análise de Ações:** Oferecemos análises completas de ações de diferentes setores e mercados, incluindo gráficos de preços, indicadores técnicos e análises fundamentais.
 
-## Running unit tests
+- **Notícias e Atualizações:** Mantenha-se atualizado com as últimas notícias financeiras e atualizações do mercado que podem impactar seus investimentos.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- **Portfólio Pessoal:** Crie e gerencie seu portfólio de investimentos, acompanhe o desempenho e receba insights personalizados.
 
-## Running end-to-end tests
+- **Ferramentas Avançadas:** Utilize nossas ferramentas avançadas, como simuladores de investimentos, análise de risco e calculadoras financeiras.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Contato
 
-## Further help
+Para dúvidas, sugestões ou relatar problemas, sinta-se à vontade para entrar em contato conosco:
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- Email: luismarcelino.dev@gmail.com
+- [LinkedIn](https://www.linkedin.com/in/luisf4)
+
+Obrigado por escolher o Coffee Stock para suas análises de ações e investimentos! ☕📈
+
