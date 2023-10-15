@@ -22,7 +22,9 @@
     --font-main: "Poppins";
 }
 
-
+* {
+    font-family: 'Poppins', sans-serif;
+}
 /* ==============
     @media rules
    ============== */

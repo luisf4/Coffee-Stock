@@ -26,7 +26,7 @@ nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 30px 15%;
+    padding: 15px 15%;
     background: transparent;
     transition: all 0.50s ease;
 }
@@ -45,14 +45,14 @@ nav {
 .nav-list a {
     margin: 0 5px;
     padding: 5px 10px;
-    color: #FFF;
-    font-size: 17px;
+    color: #d8d8d8;
+    font-size: 14px;
     font-weight: 500;
     transition: all 0.50s ease;
 }
 
 .nav-list a:hover {
-    color: #6C72FF;
+    color: #ffffff;
 }
 
 .btn {

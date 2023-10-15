@@ -250,19 +250,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\luis\\.nuget\\packages\\": {}
+    "/home/luis/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\luis\\Desktop\\coffeestock\\ApiStock\\ApiStock.csproj",
+      "projectUniqueName": "/home/luis/Coffee-Stock/ApiStock/ApiStock.csproj",
       "projectName": "ApiStock",
-      "projectPath": "C:\\Users\\luis\\Desktop\\coffeestock\\ApiStock\\ApiStock.csproj",
-      "packagesPath": "C:\\Users\\luis\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\luis\\Desktop\\coffeestock\\ApiStock\\obj\\",
+      "projectPath": "/home/luis/Coffee-Stock/ApiStock/ApiStock.csproj",
+      "packagesPath": "/home/luis/.nuget/packages/",
+      "outputPath": "/home/luis/Coffee-Stock/ApiStock/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\luis\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "/home/luis/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net7.0"
@@ -314,7 +314,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/var/lib/snapd/snap/dotnet-sdk/224/sdk/7.0.402/RuntimeIdentifierGraph.json"
       }
     }
   }
