@@ -1,29 +1,21 @@
 :root {
-    --primary: #6C72FF;
-    --background: #6C72FF;
-    --background-secondary: #080F25;
-    --background-secondary-dark: #2C3338;
-    --background-secondary-light: #2C3338;
-    --text-primary: #929292;
-    /* Colors */
-    --black: 0, 0%, 0%;
-    --white: #fff;
-    --quite-gray: 0, 0%, 50%;
-    --grooble: 10, 28%, 93%;
-    /* Sizes */ 
-    --heading-large: 5.6rem;
-    --heading-medium: 3.6rem;
-    --heading-small: 2.4rem;
-    --paragraph: 1.11rem;
-    --navbar-buttons: 2.4rem;
-    /* misc */
-    --transition-main: .175, .685, .32;
-    /* Fonts */
-    --font-main: "Poppins";
+    --background: #16171D;
+    --background-ligth: #21242D;
+    --main-color: #F5C249;
+    --text: #fff;
+    --small-text: #e0e0e0;
 }
 
 * {
     font-family: 'Poppins', sans-serif;
+}
+body { 
+    background-color: var(--background);
+}
+a {
+    text-decoration: none;
+    color: inherit;
+    font-weight: 500;
 }
 /* ==============
     @media rules
@@ -92,3 +84,4 @@
 }
 
 @media only screen and (max-width: 496px) {}
+
