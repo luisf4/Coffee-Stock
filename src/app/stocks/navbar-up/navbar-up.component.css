@@ -36,7 +36,7 @@
 .btn {
     display: inline-block;
     padding: 10px 24px;
-    color: #FFF;
+    color: var(--text-black);
     background: var(--main-color);
     border-radius: 12px;
     font-size: 15px;
