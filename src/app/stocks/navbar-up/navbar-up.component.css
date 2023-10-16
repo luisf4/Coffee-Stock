@@ -13,6 +13,11 @@
     padding: 3vh 15%;
 }
 
+.navbar-items {
+    display: flex;
+    justify-content: flex-start;
+    width: 40%;
+}
 .navbar-buttons {
     display: flex;
     align-items: center;
@@ -23,11 +28,6 @@
     text-decoration: none;
     color: inherit;
     font-weight: 600;
-}
-.navbar-items {
-    display: flex;
-    justify-content: flex-start;
-    width: 40%;
 }
 
 .navbar-item { 

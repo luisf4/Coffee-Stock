@@ -3,7 +3,8 @@
     --background-ligth: #21242D;
     --main-color: #F5C249;
     --text: #fff;
-    --small-text: #e0e0e0;
+    --text-darker: #e0e0e0;
+    --text-black: #101114;
 }
 
 * {

@@ -2,8 +2,11 @@
   color: white;
 }
 
+.body { 
+  padding: 0 15%;
+}
 .main {
-  margin-top: 82px;
+  padding: 8vh 0;
   width: 100%;
   top: 0;
   right: 0;
@@ -11,7 +14,6 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10vh 15%;
   background: var(--background);
   transition: all 0.50s ease;
 }
@@ -23,24 +25,28 @@
   font-weight: bold;
 }
 .big-text-p {
+  padding: 1vh 0;
   font-weight: 500;
+  color: var(--text-darker);
+  opacity: 80%;
 }
 
 .btn {
   display: inline-block;
   padding: 12px 30px;
-  color: #FFF;
+  color: var(--text-black);
   background: var(--main-color);
   border-radius: 12px;
   font-size: 15px;
   border: 2px solid transparent;
   transition: all 0.40s ease;
+  font-weight: 600;
 }
 
 .btn-secundary{
   display: inline-block;
   padding: 12px 30px;
-  color: #FFF;
+  color: var(--white);
   background: var(--background-ligth);
   border-radius: 12px;
   font-size: 15px;
@@ -53,4 +59,33 @@
 .down-page {
   display: flex;
   flex-direction: row;
+}
+
+.list-items {
+  padding: 15vh 0;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.list-item { 
+  border: 2px solid #fff;
+  border-radius: 20px;
+  width: 20vw;
+  height: 30vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+.list-item p {
+  width: 15vw;
+  text-align: center;
+}
+.list-item svg { 
+  height: 5vh;
+}
+.list-item h3 {
+  font-weight: bold;
 }
