@@ -43,7 +43,7 @@ export class ChartsComponent {
     }
     console.log('a')
     console.log(dates.toString())
-    console.log('a')
+    console.log('a')  
 
     this.series = [
       {
@@ -63,7 +63,8 @@ export class ChartsComponent {
       toolbar: {
         autoSelected: "zoom"
       },
-      background: "#000"
+     background: "#21242D",
+     
     };
     this.dataLabels = {
       enabled: false

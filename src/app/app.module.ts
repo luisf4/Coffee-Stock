@@ -14,6 +14,8 @@ import { NavbarComponent } from './stocks/navbar/navbar.component';
 import { ChartsComponent } from './stocks/charts/charts.component';
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { NavbarUpComponent } from './stocks/navbar-up/navbar-up.component';
+import { FooterComponent } from './stocks/footer/footer.component';
+
 
 
 @NgModule({
@@ -27,6 +29,7 @@ import { NavbarUpComponent } from './stocks/navbar-up/navbar-up.component';
     NavbarComponent,
     ChartsComponent,
     NavbarUpComponent,
+    FooterComponent,
 
   ],
   imports: [
