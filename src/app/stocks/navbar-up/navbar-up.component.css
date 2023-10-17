@@ -54,3 +54,15 @@
     border: 2px solid transparent;
     transition: all 0.40s ease;
   }
+  .white-text {
+    color: var(--white);
+    font-size: 40px;
+    font-weight: bolder;
+  }
+  
+  .yellow-text {
+    color: var(--main-color);
+    font-size: 40px;
+    font-weight: 700;
+  }
+  
