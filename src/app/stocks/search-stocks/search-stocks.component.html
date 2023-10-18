@@ -9,9 +9,24 @@
       </div>
     </div>
     <div class="image">
-      <img src="assets/stock.png" alt="">
+      <img src="assets/data-server.png" alt="">
+    </div>
+  </div>
+<div class="market-cap">
+  <div class="market-cap-up">
+    <div class="market-cap-text">
+      <h1>Search for stocks</h1>
+      <p>Text text</p>
+    </div>
+    <div class="market-cap-search">
+      <form name="form1" class="box" method="post">
+        <input [formControl]="stock" type="text" placeholder="Enter your username" autocomplete="off" />
+
+        <button (click)="Search()" class="btn1">Sign in</button>
+      </form>
     </div>
   </div>
 
+</div>
 </div>
 <app-footer></app-footer>
