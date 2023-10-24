@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/luis/Coffee-Stock/ApiStock/ApiStock.csproj": {}
+    "/home/luis/CoffeeStock/ApiStock/ApiStock.csproj": {}
   },
   "projects": {
-    "/home/luis/Coffee-Stock/ApiStock/ApiStock.csproj": {
+    "/home/luis/CoffeeStock/ApiStock/ApiStock.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/luis/Coffee-Stock/ApiStock/ApiStock.csproj",
+        "projectUniqueName": "/home/luis/CoffeeStock/ApiStock/ApiStock.csproj",
         "projectName": "ApiStock",
-        "projectPath": "/home/luis/Coffee-Stock/ApiStock/ApiStock.csproj",
+        "projectPath": "/home/luis/CoffeeStock/ApiStock/ApiStock.csproj",
         "packagesPath": "/home/luis/.nuget/packages/",
-        "outputPath": "/home/luis/Coffee-Stock/ApiStock/obj/",
+        "outputPath": "/home/luis/CoffeeStock/ApiStock/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/luis/.nuget/NuGet/NuGet.Config"
@@ -42,6 +42,10 @@
               "target": "Package",
               "version": "[4.0.3, )"
             },
+            "Microsoft.Data.SqlClient": {
+              "target": "Package",
+              "version": "[5.2.0-preview3.23201.1, )"
+            },
             "System.IdentityModel.Tokens.Jwt": {
               "target": "Package",
               "version": "[7.0.2, )"
@@ -66,7 +70,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/var/lib/snapd/snap/dotnet-sdk/224/sdk/7.0.402/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/var/lib/snapd/snap/dotnet-sdk/226/sdk/7.0.403/RuntimeIdentifierGraph.json"
         }
       }
     }
