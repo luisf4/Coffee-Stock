@@ -20,7 +20,6 @@ public class StockServices
 
         // Set the url 
         string url = $"https://api.polygon.io/v3/reference/tickers/{symbol.ToUpper()}?apiKey={API_TOKEN_Polygon}";
-        Console.WriteLine();
 
         // Makes a request 
         var res = await client.GetAsync(url);
