@@ -71,13 +71,16 @@ public class AuthSql : Database
         }
     }
 
-    public string CheckJwt(string jwt) { 
-        SqlCommand db = new SqlCommand();
-        db.Connection = connection;
-        db.CommandText = "select * from users where jwt = @jwt";
-        db.Parameters.AddWithValue("@username", jwt);
-        return "ok";
-    }
+    // Do this later :)
+    // public string CheckJwt(string jwt) { 
+
+    //     SqlCommand db = new SqlCommand();
+    //     db.Connection = connection;
+    //     db.CommandText = "select * from users where jwt = @jwt";
+    //     db.Parameters.AddWithValue("@username", jwt);
+        
+    //     return "ok";
+    // }
 
 
 }

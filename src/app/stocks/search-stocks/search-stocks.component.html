@@ -4,29 +4,49 @@
   <div class="main">
     <div class="main-text">
       <div class="big-text">
-        <h1 class="big-text-h1">Desvendando oportunidades no mercado de ações</h1>
-        <p class="big-text-p">Sua fonte confiável para análise inteligente de ações e insights de investimento.</p>
+        <h1 class="big-text-h1">Explorando o Potencial do Mercado de Ações</h1>
+        <p class="big-text-p">Sua Janela para Análise Estratégica de Ações e Orientações de Investimento.</p>
       </div>
     </div>
     <div class="image">
-      <img src="assets/data-server.png" alt="">
+      <img src="assets/serch.png" alt="">
     </div>
   </div>
-<div class="market-cap">
-  <div class="market-cap-up">
-    <div class="market-cap-text">
-      <h1>Search for stocks</h1>
-      <p>Text text</p>
+  <div class="market-cap">
+    <div class="market-cap-up">
+      <div class="market-cap-text">
+        <h1>Ações</h1>
+      </div>
+      <div class="market-cap-search">
+        <form name="form1" class="box" method="post">
+          <input [formControl]="stock" type="text" placeholder="Procure por ações" autocomplete="off" />
+        </form>
+      </div>
     </div>
-    <div class="market-cap-search">
-      <form name="form1" class="box" method="post">
-        <input [formControl]="stock" type="text" placeholder="Enter your username" autocomplete="off" />
-
-        <button (click)="Search()" class="btn1">Sign in</button>
-      </form>
+    <div class="market-cap-items">
+      <table class="table custom-table">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Market Cap</th>
+                <th>Preço</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>treco</td>
+                <td>20$</td>
+                <td>0.49$</td>
+            </tr>
+            <tr>
+                <td>treco</td>
+                <td>20$</td>
+                <td>0.49$</td>
+            </tr>
+        </tbody>
+    </table>
+      
     </div>
   </div>
-
-</div>
 </div>
 <app-footer></app-footer>
