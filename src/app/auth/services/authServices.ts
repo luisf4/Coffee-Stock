@@ -17,6 +17,7 @@ export class AuthService { // Renamed to AuthService (singular form)
 
   loginUser(username: string, password: string): Observable<any> { 
     const credentials = { Username: username, Password: password};
-    return this.http.post<any>(this.url+"login", credentials)
+    const res= this.http.post<any>(this.url+"login", credentials);
+    return res;
   }
 }

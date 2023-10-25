@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 public class StockServices
 {
     // Load the api keys from file 
-    private string API_TOKEN_Finnhub = CredentialsLoader.LoadApiKeyFinnhub();
-    private string API_TOKEN_Polygon = CredentialsLoader.LoadApiKeyPolygon();
+    private string API_TOKEN_Finnhub = CredentialsLoader.LoadApiKeyFinnhub()!;
+    private string API_TOKEN_Polygon = CredentialsLoader.LoadApiKeyPolygon()!;
 
 
     // Polygon API USE

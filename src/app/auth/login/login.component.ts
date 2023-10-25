@@ -11,15 +11,18 @@ export class LoginComponent {
   username = new FormControl('');
   password = new FormControl('');
 
-  constructor(private auth: AuthService) {  }
 
-  Login() {  
+  constructor(private auth: AuthService) { }
+
+  Login() {
     const usernameValue = this.username.value;
     const passwordValue = this.password.value;
     this.auth.loginUser(usernameValue!, passwordValue!)
       .subscribe(response => {
-        // Handle the response here
-        console.log(response);
+        // Log the response
+        console.log(response),
+          // Storing the JWT in LocalStorage
+          localStorage.setItem('jwtToken', response);
       });
 
   }

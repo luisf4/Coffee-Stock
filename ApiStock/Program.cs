@@ -3,16 +3,19 @@ using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
+// CORS config
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy(name: MyAllowSpecificOrigins,
-                      policy =>
-                      {
-                          policy.WithOrigins("*",
-                                              "*").AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin();
-                      });
+    options.AddPolicy(name: MyAllowSpecificOrigins, policy =>
+    {
+        policy.WithOrigins("*", "*").AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin();
+    });
 });
+
+// App stuff
 var app = builder.Build();
+// Use CORS
 app.UseCors(MyAllowSpecificOrigins);
 
 
@@ -24,7 +27,7 @@ app.MapGet("/stock/{symbol}", (string symbol) =>
 });
 
 
-// Gets stock sharts
+// Gets stock shartsMyProperty
 app.MapGet("/stock/{symbol}/sharts/{date}", (string symbol, string date) =>
 {
     StockServices stock = new StockServices();
@@ -88,4 +91,5 @@ app.MapPost("/auth/login", async (HttpContext context) =>
     }
 });
 
+// Run
 app.Run();

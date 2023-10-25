@@ -8,7 +8,7 @@ GO
 
 -- Users table
 CREATE TABLE users (
-    user_id INT PRIMARY KEY,
+    user_id INT PRIMARY KEY IDENTITY,
     username VARCHAR(50) NOT NULL,
     passwordHash VARCHAR(100) NOT NULL,
     jwt VARCHAR(100) NOT NULL

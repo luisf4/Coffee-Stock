@@ -3,7 +3,7 @@ using System.IO;
 
 public class CredentialsLoader
 {
-    public static string LoadApiKeyPolygon()
+    public static string? LoadApiKeyPolygon()
     {
         string filePath = "credentials.txt"; // Path to your credentials file
         
@@ -32,7 +32,7 @@ public class CredentialsLoader
             return null; // Handle the error as needed
         }
     }
-        public static string LoadApiKeyFinnhub()
+        public static string? LoadApiKeyFinnhub()
     {
         string filePath = "credentials.txt"; // Path to your credentials file
         

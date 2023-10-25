@@ -9,55 +9,56 @@ using System.IdentityModel.Tokens.Jwt;
 public class AuthService
 {
 
-    public static User user = new User();
-    public static User Register(UserDto request)
+    public static string Register(UserDto request)
     {
+        AuthSql db = new AuthSql();
+        JwtServices jwt = new JwtServices();
+
+        // Hash the password
         string passwordHash = BCrypt.Net.BCrypt.HashPassword(request.Password);
 
-        user.Username = request.Username;
-        user.PasswordHash = passwordHash;
+        // Creates a Jwt
+        string token = jwt.CreateToken(request);
 
-        // Store user date in the db in the future 
-        return user;
+        User user = new User
+        {
+            Username = request.Username,
+            PasswordHash = passwordHash,
+            Jwt = token
+        };
+
+        // Store user
+        var res = db.SignUp(user);
+        
+        // See if the user was created 
+        if (res == "ok")
+        {
+            return token;
+        }
+        else
+        {
+            return res;
+        }
     }
 
     public static string Login(UserDto request)
     {
-        if (user.Username != request.Username)
+        AuthSql db = new AuthSql();
+        JwtServices jwt = new JwtServices();
+        string res = db.SignIn(request);
+        string token = jwt.CreateToken(request);
+
+        Console.WriteLine(res);
+
+        // See if the user was logged 
+        if (res == "ok")
         {
-            return "User not found";
+            return token;
         }
-
-        if (!BCrypt.Net.BCrypt.Verify(request.Password, user.PasswordHash))
+        else
         {
-            return "Wrong Password";
+            return res;
         }
-
-        string token = CreateToken(user);
-
-        // return token;
-        return token;
     }
 
-    public static string CreateToken(User user) { 
-        List<Claim> claims = new List<Claim> {
-            new Claim(ClaimTypes.Name, user.Username)
-        };
-
-        // Change it later >:
-        byte[] superupeerSecretKey = Encoding.UTF8.GetBytes("Banana, bananaaaaaaaaaaa Banana, bananaaaaaaaaaaa Banana, bananaaaaaaaaaaa Banana, bananaaaaaaaaaaa Banana, bananaaaaaaaaaaa Banana, bananaaaaaaaaaaa");
-        var key = new SymmetricSecurityKey(superupeerSecretKey);
-        var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
-
-        var token = new JwtSecurityToken(
-            claims: claims,
-            expires: DateTime.Now.AddDays(30),
-            signingCredentials: creds
-        );
-
-        var jwt = new JwtSecurityTokenHandler().WriteToken(token);
-
-        return jwt;
-    }
-    
 }

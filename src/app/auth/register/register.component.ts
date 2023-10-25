@@ -16,14 +16,17 @@ export class RegisterComponent {
   constructor(private auth: AuthService) { }
 
   Register() {
-    console.log("AAAAAAAAA")
-    
+    // Get input values
     const usernameValue = this.username.value;
     const passwordValue = this.password.value;
+
+    // Make the request 
     this.auth.createUser(usernameValue!, passwordValue!)
       .subscribe(response => {
-        // Handle the response here
-        console.log(response);
+        // Log the response
+        console.log(response),
+          // Storing the JWT in LocalStorage
+          localStorage.setItem('jwtToken', response);
       });
 
   }
