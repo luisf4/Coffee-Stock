@@ -32,38 +32,47 @@ public class JwtServices
     }
 
 
-    public string VerifyToken(string jwt, string secretKey)
+public string VerifyToken(string jwt)
+{
+    try
     {
-        try
+        var tokenHandler = new JwtSecurityTokenHandler();
+        var validationParameters = new TokenValidationParameters
         {
-            var tokenHandler = new JwtSecurityTokenHandler();
-            var validationParameters = new TokenValidationParameters
+            ValidateIssuer = false, // Set this to true if you want to validate the issuer
+            ValidateAudience = false, // Set this to true if you want to validate the audience
+            IssuerSigningKey = new SymmetricSecurityKey(Convert.FromBase64String(secretKey)), // Use your secret key here
+        };
+
+        SecurityToken validatedToken;
+        ClaimsPrincipal claimsPrincipal = tokenHandler.ValidateToken(jwt, validationParameters, out validatedToken);
+
+        // Check if the token has expired
+        if (validatedToken is JwtSecurityToken jwtSecurityToken)
+        {
+            if (jwtSecurityToken.ValidTo < DateTime.UtcNow)
             {
-                ValidateIssuer = false, // Set this to true if you want to validate the issuer
-                ValidateAudience = false, // Set this to true if you want to validate the audience
-                IssuerSigningKey = new SymmetricSecurityKey(Convert.FromBase64String(secretKey)), // Use your secret key here
-            };
-
-
-            SecurityToken validatedToken;
-            ClaimsPrincipal claimsPrincipal = tokenHandler.ValidateToken(jwt, validationParameters, out validatedToken);
-
-            // At this point, the token is valid, and you can access its claims
-            // Example: claimsPrincipal.Claims.FirstOrDefault(c => c.Type == "sub")?.Value;
-            // USE THIS TO VERIFY IF THE USER CAN CHANGE HIS PORTFOLIO AND STOCKS IN THE PORTFOLIO
-            // IF CLAINS.NAME = USER NAME .....
-
-
-            // Token is valid
-            return "ok";
+                return "Token has expired";
+            }
         }
-        catch (SecurityTokenException)
-        {
-            return "Token is invalid";
-        }
-        catch (Exception ex)
-        {
-            return "An error occurred: " + ex.Message;
-        }
+
+        // At this point, the token is valid, and you can access its claims
+        // Example: claimsPrincipal.Claims.FirstOrDefault(c => c.Type == "sub")?.Value;
+
+        // USE THIS TO VERIFY IF THE USER CAN CHANGE HIS PORTFOLIO AND STOCKS IN THE PORTFOLIO
+        // IF CLAIMS.NAME = USER NAME .....
+
+        // Token is valid
+        return "ok";
     }
+    catch (SecurityTokenException)
+    {
+        return "Token is invalid";
+    }
+    catch (Exception ex)
+    {
+        return "An error occurred: " + ex.Message;
+    }
+}
+
 }

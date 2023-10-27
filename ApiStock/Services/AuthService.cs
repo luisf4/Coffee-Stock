@@ -66,9 +66,9 @@ public class AuthService
     {
         JwtServices check = new JwtServices();
  
-        // var res = check.VerifyToken(jwt);
+        var res = check.VerifyToken(jwt);
 
-        return "res";
+        return res;
     }
 
 }

@@ -10,14 +10,23 @@ export class AuthService { // Renamed to AuthService (singular form)
 
   constructor(private http: HttpClient) { }
 
+  // Create user
   createUser(username: string, password: string): Observable<any> { // Renamed to camelCase
     const credentials = { Username: username, Password: password }; // Adjusted object structure
     return this.http.post<any>(this.url+"register", credentials);
   }
 
+  // Login user
   loginUser(username: string, password: string): Observable<any> { 
     const credentials = { Username: username, Password: password};
-    const res= this.http.post<any>(this.url+"login", credentials);
+    const res = this.http.post<any>(this.url+"login", credentials);
+    return res;
+  }
+
+  // Verify if the token is valid 
+  verifyToken(token: string): Observable<any> { 
+    const credentials = { jwt: token };
+    const res = this.http.post<any>(this.url+"jwt",credentials);
     return res;
   }
 }
