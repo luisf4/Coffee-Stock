@@ -5,6 +5,7 @@ using System.IdentityModel.Tokens;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using System.IdentityModel.Tokens.Jwt;
+using System.Net.WebSockets;
 
 public class AuthService
 {
@@ -29,7 +30,7 @@ public class AuthService
 
         // Store user
         var res = db.SignUp(user);
-        
+
         // See if the user was created 
         if (res == "ok")
         {
@@ -59,6 +60,15 @@ public class AuthService
         {
             return res;
         }
+    }
+
+    public static string VerifyJWT(string jwt)
+    {
+        JwtServices check = new JwtServices();
+ 
+        // var res = check.VerifyToken(jwt);
+
+        return "res";
     }
 
 }

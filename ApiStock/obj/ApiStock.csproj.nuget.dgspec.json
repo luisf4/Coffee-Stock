@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/luis/CoffeeStock/ApiStock/ApiStock.csproj": {}
+    "/home/luis/coffeeStock/ApiStock/ApiStock.csproj": {}
   },
   "projects": {
-    "/home/luis/CoffeeStock/ApiStock/ApiStock.csproj": {
+    "/home/luis/coffeeStock/ApiStock/ApiStock.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/luis/CoffeeStock/ApiStock/ApiStock.csproj",
+        "projectUniqueName": "/home/luis/coffeeStock/ApiStock/ApiStock.csproj",
         "projectName": "ApiStock",
-        "projectPath": "/home/luis/CoffeeStock/ApiStock/ApiStock.csproj",
+        "projectPath": "/home/luis/coffeeStock/ApiStock/ApiStock.csproj",
         "packagesPath": "/home/luis/.nuget/packages/",
-        "outputPath": "/home/luis/CoffeeStock/ApiStock/obj/",
+        "outputPath": "/home/luis/coffeeStock/ApiStock/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/luis/.nuget/NuGet/NuGet.Config"

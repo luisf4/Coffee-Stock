@@ -22,6 +22,9 @@
           <input [formControl]="stock" type="text" placeholder="Procure por ações" autocomplete="off" />
         </form>
       </div>
+      <div *ngFor="let result of searchResults">
+        {{ result['1. symbol'] }} - {{ result['2. name'] }}
+      </div>      
     </div>
     <div class="market-cap-items">
       <table class="table custom-table">
