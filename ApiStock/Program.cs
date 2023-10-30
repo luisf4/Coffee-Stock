@@ -92,5 +92,33 @@ app.MapPost("/auth/login", async (HttpContext context) =>
 });
 
 
+// Verify the token 
+app.MapPost("/auth/jwt", async (HttpContext context) =>
+{
+    try
+    {
+        using (var reader = new StreamReader(context.Request.Body))
+        {
+            var requestBody = await reader.ReadToEndAsync();
+            var registrationData = JsonSerializer.Deserialize<JwtData>(requestBody);
+            var responseData = JsonSerializer.Serialize(AuthService.VerifyJWT(registrationData!));
+            Console.WriteLine(responseData);
+            Console.WriteLine(registrationData);
+
+            context.Response.StatusCode = StatusCodes.Status200OK;
+            context.Response.ContentType = "application/json";
+            await context.Response.WriteAsync(responseData);
+        }
+    }
+    catch (Exception ex)
+    {
+        // Handle exceptions if needed
+        context.Response.StatusCode = StatusCodes.Status500InternalServerError;
+        await context.Response.WriteAsync("Internal server error: " + ex.Message);
+    }
+}
+);
+
+
 // Run
 app.Run();

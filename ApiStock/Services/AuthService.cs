@@ -62,11 +62,11 @@ public class AuthService
         }
     }
 
-    public static string VerifyJWT(string jwt)
+    public static string VerifyJWT(JwtData jwt)
     {
         JwtServices check = new JwtServices();
  
-        var res = check.VerifyToken(jwt);
+        var res = check.VerifyToken(jwt.jwtToken);
 
         return res;
     }

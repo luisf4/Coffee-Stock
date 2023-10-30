@@ -25,7 +25,7 @@ export class AuthService { // Renamed to AuthService (singular form)
 
   // Verify if the token is valid 
   verifyToken(token: string): Observable<any> { 
-    const credentials = { jwt: token };
+    const credentials = { jwtToken: token };
     const res = this.http.post<any>(this.url+"jwt",credentials);
     return res;
   }
