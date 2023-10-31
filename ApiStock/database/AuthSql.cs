@@ -63,7 +63,7 @@ public class AuthSql : Database
         if (reader.Read())
         {
             // Retrieve the password hash from the database
-            string dbPasswordHash = reader["passwordHash"].ToString();
+            string dbPasswordHash = reader["passwordHash"].ToString()!;
             Console.WriteLine(dbPasswordHash);
             // Verify the user's password using BCrypt's Verify method
             if (BCrypt.Net.BCrypt.Verify(user.Password, dbPasswordHash))

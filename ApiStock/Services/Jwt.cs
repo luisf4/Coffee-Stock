@@ -32,6 +32,7 @@ public class JwtServices
     }
 
 
+  
 public string VerifyToken(string jwt)
 {
     try
@@ -39,11 +40,13 @@ public string VerifyToken(string jwt)
         var tokenHandler = new JwtSecurityTokenHandler();
         var validationParameters = new TokenValidationParameters
         {
-            ValidateIssuer = false, // Set this to true if you want to validate the issuer
-            ValidateAudience = false, // Set this to true if you want to validate the audience
-            IssuerSigningKey = new SymmetricSecurityKey(Convert.FromBase64String(secretKey)), // Use your secret key here
+            // Specify your validation rules
+            ValidateIssuer = false, // Set to true if you want to validate the issuer
+            ValidateAudience = false, // Set to true if you want to validate the audience
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey)), // Use your secret key here
         };
 
+        // Try to validate the token
         SecurityToken validatedToken;
         ClaimsPrincipal claimsPrincipal = tokenHandler.ValidateToken(jwt, validationParameters, out validatedToken);
 
@@ -57,10 +60,7 @@ public string VerifyToken(string jwt)
         }
 
         // At this point, the token is valid, and you can access its claims
-        // Example: claimsPrincipal.Claims.FirstOrDefault(c => c.Type == "sub")?.Value;
-
-        // USE THIS TO VERIFY IF THE USER CAN CHANGE HIS PORTFOLIO AND STOCKS IN THE PORTFOLIO
-        // IF CLAIMS.NAME = USER NAME .....
+        // Example: string username = claimsPrincipal.FindFirst(ClaimTypes.Name)?.Value;
 
         // Token is valid
         return "ok";
@@ -74,5 +74,4 @@ public string VerifyToken(string jwt)
         return "An error occurred: " + ex.Message;
     }
 }
-
 }
