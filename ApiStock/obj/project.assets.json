@@ -1828,11 +1828,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/luis/coffeeStock/ApiStock/ApiStock.csproj",
+      "projectUniqueName": "/home/luis/CoffeeStock/ApiStock/ApiStock.csproj",
       "projectName": "ApiStock",
-      "projectPath": "/home/luis/coffeeStock/ApiStock/ApiStock.csproj",
+      "projectPath": "/home/luis/CoffeeStock/ApiStock/ApiStock.csproj",
       "packagesPath": "/home/luis/.nuget/packages/",
-      "outputPath": "/home/luis/coffeeStock/ApiStock/obj/",
+      "outputPath": "/home/luis/CoffeeStock/ApiStock/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/luis/.nuget/NuGet/NuGet.Config"

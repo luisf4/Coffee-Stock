@@ -7,32 +7,42 @@ public class AuthSql : Database
 
     public string SignUp(User user)
     {
-        SqlCommand db = new SqlCommand();
-        db.Connection = connection;
-
-        // Check if the username already exists in the database
-        db.CommandText = "SELECT COUNT(*) FROM users WHERE username = @user";
-        db.Parameters.AddWithValue("@user", user.Username);
-
-        int existingUserCount = (int)db.ExecuteScalar();
-
-        if (existingUserCount > 0)
+        try
         {
-            // A user with the same username already exists, so return an error
-            return "Error: Username already exists.";
-            
-        }
-        else
-        {
-            // The username is unique, proceed with the insertion
-            db.CommandText = "INSERT INTO users VALUES (@user, @pass,@jwt)";
-            db.Parameters.Clear();
+
+
+            SqlCommand db = new SqlCommand();
+            db.Connection = connection;
+
+            // Check if the username already exists in the database
+            db.CommandText = "SELECT COUNT(*) FROM users WHERE username = @user";
             db.Parameters.AddWithValue("@user", user.Username);
-            db.Parameters.AddWithValue("@pass", user.PasswordHash);
-            db.Parameters.AddWithValue("@jwt", user.Jwt);
 
-            db.ExecuteNonQuery();
-            return "ok";
+            int existingUserCount = (int)db.ExecuteScalar();
+
+            if (existingUserCount > 0)
+            {
+                // A user with the same username already exists, so return an error
+                return "Error: Username already exists.";
+
+            }
+            else
+            {
+                // The username is unique, proceed with the insertion
+                db.CommandText = "INSERT INTO users VALUES (@user, @pass, @jwt)";
+                db.Parameters.Clear();
+                db.Parameters.AddWithValue("@user", user.Username);
+                db.Parameters.AddWithValue("@pass", user.PasswordHash);
+                db.Parameters.AddWithValue("@jwt", user.Jwt);
+
+                db.ExecuteNonQuery();
+                return "ok";
+            }
+        }
+        catch (Exception ex)
+        {
+            // Log or handle the exception
+            return "Error: " + ex.Message;
         }
     }
 
@@ -78,7 +88,7 @@ public class AuthSql : Database
     //     db.Connection = connection;
     //     db.CommandText = "select * from users where jwt = @jwt";
     //     db.Parameters.AddWithValue("@username", jwt);
-        
+
     //     return "ok";
     // }
 
