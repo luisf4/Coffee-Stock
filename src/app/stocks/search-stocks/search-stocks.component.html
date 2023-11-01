@@ -22,33 +22,31 @@
           <input [formControl]="stock" type="text" placeholder="Procure por ações" autocomplete="off" />
         </form>
       </div>
-      <div *ngFor="let result of searchResults">
-        {{ result['1. symbol'] }} - {{ result['2. name'] }}
-      </div>      
     </div>
     <div class="market-cap-items">
-      <table class="table custom-table">
+      <table class="table custom-table table-borderless">
         <thead>
-            <tr>
-                <th>Nome</th>
-                <th>Market Cap</th>
-                <th>Preço</th>
-            </tr>
+          <tr>
+            <th>Logo</th>
+            <th>Simbolo</th>
+            <th>Setor</th>
+            <th>Preço</th>
+          </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>treco</td>
-                <td>20$</td>
-                <td>0.49$</td>
-            </tr>
-            <tr>
-                <td>treco</td>
-                <td>20$</td>
-                <td>0.49$</td>
-            </tr>
+          <tr *ngFor="let stock of searchResults">
+            <td>
+              <a [routerLink]="['/stock', stock.stock]">
+                <img src="{{ stock.logo }}" alt="" srcset="" style="border-radius: 12px;">
+              </a>
+            </td>
+            <td>{{ stock.stock }} </td>
+            <td>{{ stock.sector }} </td>
+            <td>R$ {{ stock.close }}</td>
+          </tr>
         </tbody>
-    </table>
-      
+      </table>
+
     </div>
   </div>
 </div>

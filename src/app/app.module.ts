@@ -15,8 +15,7 @@ import { ChartsComponent } from './stocks/charts/charts.component';
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { NavbarUpComponent } from './stocks/navbar-up/navbar-up.component';
 import { FooterComponent } from './stocks/footer/footer.component';
-
-
+import { StockService } from './stocks/stocks-page/stock.service';
 
 @NgModule({
   declarations: [
@@ -40,7 +39,7 @@ import { FooterComponent } from './stocks/footer/footer.component';
     ReactiveFormsModule,
     NgApexchartsModule
   ],
-  providers: [AuthService],
+  providers: [AuthService,StockService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

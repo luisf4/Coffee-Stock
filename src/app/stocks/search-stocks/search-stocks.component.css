@@ -113,3 +113,51 @@
 .custom-table {
   text-align: center;/* Change the background color as desired */
 }
+
+table { 
+  background-color: var(--background);
+  color: white;
+  color: white;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+thead {
+  background-color: var(--background);
+  color: white;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+tr {
+  background-color: var(--background);
+  color: white;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+th {
+  background-color: var(--background);
+  color: white;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+tbody {
+  background-color: var(--background);
+  color: white;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+td {
+  background-color: var(--background);
+  color: white;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+td img { 
+  width: 4vw;
+  min-width: 40px;
+}

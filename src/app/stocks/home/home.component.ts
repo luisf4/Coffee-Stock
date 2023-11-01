@@ -10,8 +10,7 @@ import { Route, Router } from '@angular/router';
 export class HomeComponent implements OnInit {
 
   
-  constructor(private auth: AuthService, private router: Router) {
-  }
+  constructor(private auth: AuthService, private router: Router) {}
   
   // On acessing the page verify if the token is valid
   ngOnInit(): void {
@@ -25,10 +24,12 @@ export class HomeComponent implements OnInit {
           this.router.navigate(['/login']);
         } else { 
           console.log(Response)
+          this.router.navigate(['/login']);
         }
       });
     }catch(e){
       console.error(e);
+      this.router.navigate(['/login']);
     }
 
 
