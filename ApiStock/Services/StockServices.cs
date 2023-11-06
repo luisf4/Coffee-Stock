@@ -23,6 +23,8 @@ public class StockServices
 
         // Makes a request 
         var res = await client.GetAsync(url);
+
+        
         if (res.IsSuccessStatusCode)
         {
             var content = await res.Content.ReadAsStringAsync();
