@@ -7,7 +7,7 @@ import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { StocksPageComponent } from './stocks/stocks-page/stocks-page.component';
 import { SearchStocksComponent } from './stocks/search-stocks/search-stocks.component';
-import { AuthService } from './services/auth.service';
+import { AuthService } from './auth/services/auth.service';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './stocks/home/home.component';
 import { NavbarComponent } from './stocks/navbar/navbar.component';

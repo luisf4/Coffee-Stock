@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { AuthService } from '../../services/auth.service';
+import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -24,7 +24,7 @@ export class LoginComponent {
         console.log(response),
           // Storing the JWT in LocalStorage
           localStorage.setItem('jwtToken', response);
-          this.router.navigate(['/login']);
+          this.router.navigate(['/']);
       });
 
   }
