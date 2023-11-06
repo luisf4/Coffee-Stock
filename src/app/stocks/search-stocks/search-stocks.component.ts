@@ -14,13 +14,17 @@ export class SearchStocksComponent {
   constructor(private searchService: SearchService) { }
 
   ngOnInit() {
+    this.searchService.searchStock('aa')
+    .subscribe((data: any) => {
+      this.searchResults = data['stocks'];
+      console.log(this.searchResults)
+    });
     this.stock.valueChanges.pipe(
-      debounceTime(100), // Wait for user to stop typing
+      debounceTime(300), // Wait for user to stop typing
       distinctUntilChanged(), // Ignore if the same value is typed
       switchMap(keyword => this.searchService.searchStock(keyword!))
     ).subscribe((data: any) => {
       this.searchResults = data['stocks'];
-      console.log(this.searchResults)
     });
   }
 }
