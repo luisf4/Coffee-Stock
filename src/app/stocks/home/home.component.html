@@ -36,5 +36,39 @@
     </div>
   </div>
 
+  <div class="market-cap">
+    <div class="market-cap-up">
+      <div class="market-cap-text">
+        <h1>Market Thend</h1>
+      </div>
+      <div class="market-cap-search">
+      </div>
+    </div>
+    <div class="market-cap-items">
+      <table class="table custom-table table-borderless">
+        <thead>
+          <tr>
+            <th>Logo</th>
+            <th>Simbolo</th>
+            <th>Setor</th>
+            <th>Preço</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let stock of searchResults">
+            <td>
+              <a [routerLink]="['/stock', stock.stock]">
+                <img src="{{ stock.logo }}" alt="" srcset="" style="border-radius: 12px;">
+              </a>
+            </td>
+            <td>{{ stock.stock }} </td>
+            <td>{{ stock.sector }} </td>
+            <td>R$ {{ stock.close }}</td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
 </div>
 <app-footer></app-footer>

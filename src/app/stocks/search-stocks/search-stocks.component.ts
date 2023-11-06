@@ -10,7 +10,6 @@ import { SearchService } from './search.service';
 export class SearchStocksComponent {
   stock = new FormControl('');
   searchResults: any[] = [];
-
   constructor(private searchService: SearchService) { }
 
   ngOnInit() {

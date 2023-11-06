@@ -45,12 +45,6 @@
             <td>R$ {{ stock.close }}</td>
           </tr>
         </tbody>
-        <div *ngFor="let project of projects | paginate : {
-          itemsPerPage: 20,
-          currentPage: currentPage,
-          totalItems: pageCount,
-          id:'search' }"
-          class="projects-cards">
       </table>
 
     </div>

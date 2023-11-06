@@ -85,3 +85,81 @@
 .list-item h3 {
   font-weight: bold;
 }
+
+
+.market-cap-text h1 {
+  font-weight: bold;
+ }
+ /* Style for input fields and buttons */
+.box input[type="text"],
+.box input[type="password"] {
+width: 20vw;
+padding: 17px;
+/* margin: 0 0 25px 0; */
+border: none;
+border-radius: 20px;
+background-color: var(--background-ligth); /* Input background color */
+color: white;
+}
+.market-cap-up { 
+display: flex;
+align-items: center;
+text-align: center;
+justify-content: space-between;
+
+}
+.market-cap-items { 
+padding-top: 50px;
+background-color: var(--background);
+}
+.custom-table {
+text-align: center;/* Change the background color as desired */
+}
+
+table { 
+background-color: var(--background);
+color: white;
+color: white;
+justify-content: center;
+align-items: center;
+text-align: center;
+}
+thead {
+background-color: var(--background);
+color: white;
+justify-content: center;
+align-items: center;
+text-align: center;
+}
+tr {
+background-color: var(--background);
+color: white;
+justify-content: center;
+align-items: center;
+text-align: center;
+}
+th {
+background-color: var(--background);
+color: white;
+justify-content: center;
+align-items: center;
+text-align: center;
+}
+tbody {
+background-color: var(--background);
+color: white;
+justify-content: center;
+align-items: center;
+text-align: center;
+}
+td {
+background-color: var(--background);
+color: white;
+justify-content: center;
+align-items: center;
+text-align: center;
+}
+td img { 
+width: 4vw;
+min-width: 40px;
+}
