@@ -23,16 +23,16 @@ app.UseCors(MyAllowSpecificOrigins);
 app.MapGet("/stock/{symbol}", (string symbol) =>
 {
     StockServices stock = new StockServices();
-    return stock.GetStockInfo(symbol);
+    return stock.GetStockInfo(symbol,"5d");
 });
 
 
 // Gets stock shartsMyProperty
-app.MapGet("/stock/{symbol}/sharts/{date}", (string symbol, string date) =>
-{
-    StockServices stock = new StockServices();
-    return stock.GetStockShart(symbol, date);
-});
+// app.MapGet("/stock/{symbol}/sharts/{date}", (string symbol, string date) =>
+// {
+//     StockServices stock = new StockServices();
+//     return stock.GetStockShart(symbol, date);
+// });
 
 
 // Register

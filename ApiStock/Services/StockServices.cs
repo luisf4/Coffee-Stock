@@ -7,6 +7,7 @@ public class StockServices
 {
     // Load the api keys from file 
     private string API_TOKEN_Finnhub = CredentialsLoader.LoadApiKeyFinnhub()!;
+    private string API_TOKEN_Brapi = CredentialsLoader.LoadApiKeyBrapi()!;
     private string API_TOKEN_Polygon = CredentialsLoader.LoadApiKeyPolygon()!;
 
 
@@ -14,12 +15,12 @@ public class StockServices
     //
     //
     //
-    public async Task<string> GetStockInfo(string symbol)
+    public async Task<string> GetStockInfo(string symbol,string range)
     {
         using HttpClient client = new();
 
         // Set the url 
-        string url = $"https://api.polygon.io/v3/reference/tickers/{symbol.ToUpper()}?apiKey={API_TOKEN_Polygon}";
+        string url = $"https://brapi.dev/api/quote/{symbol}?range={range}&interval=1d&fundamental=true&dividends=false&token={API_TOKEN_Brapi}";
 
         // Makes a request 
         var res = await client.GetAsync(url);
@@ -37,38 +38,5 @@ public class StockServices
         }
     }
 
-    public async Task<String> GetStockShart(string symbol, string date)
-    {   
-        // Creates HttpClient
-        using HttpClient client = new();
 
-        // Gets date 
-        var dateToday = DateTime.Now.ToString("yyyy-MM-dd");
-
-        // Parse the given date ** dont need it for now 
-        // string formattedDate = DateTime.TryParseExact(date, "yyyyMMdd", null, System.Globalization.DateTimeStyles.None, out DateTime dateTime) ? dateTime.ToString("yyyy/MM/dd") : "Invalid date format";
-
-        // Set the url 
-        string url = $"https://api.polygon.io/v2/aggs/ticker/{symbol}/range/1/day/{date}/{dateToday}?adjusted=true&sort=asc&limit=10&apiKey={API_TOKEN_Polygon}";
-        
-        // Makes a request 
-        var res = await client.GetAsync(url);
-
-        if (res.IsSuccessStatusCode)
-        {
-            // Read and returns a Json
-            var content = await res.Content.ReadAsStringAsync();
-            return content;
-        }
-        else
-        {
-            Console.WriteLine("Cant handle GetStockSharts");
-            return $"Error: {res.StatusCode}";
-        }
-    }
-
-    // Finnhub API USE 
-    //
-    //
-    //
 }
