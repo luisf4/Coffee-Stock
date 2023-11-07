@@ -16,16 +16,15 @@ export class StocksPageComponent implements OnInit {
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
       this.symbol = params.get("symbol")!; // Store the symbol in the class property
-      this.getStockDetails(); // Call the function to fetch stock details
+      var stock = this.getStockDetails(); // Call the function to fetch stock details
+      console.log(stock);
+      
     });
   }
 
   getStockDetails() {
     if (this.symbol) {
-      this.stock.GetStock(this.symbol).subscribe(response => {
-        // Handle the response, e.g., update component properties
-        console.log(response);
-      });
+      this.stock.GetStock(this.symbol).subscribe();
     }
   }
 }

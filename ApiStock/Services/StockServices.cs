@@ -1,8 +1,10 @@
 using System;
 using System.Net.Http;
+using System.Net.Mime;
 using System.Security.Cryptography;
 using System.Text.Json;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 public class StockServices
 {
@@ -16,7 +18,7 @@ public class StockServices
     //
     //
     //
-    public async Task<Root> GetStockInfo(string symbol,string range)
+    public async Task<string> GetStockInfo(string symbol,string range)
     {
         using HttpClient client = new();
 
@@ -27,20 +29,19 @@ public class StockServices
         var res = await client.GetAsync(url);
         var content = await res.Content.ReadAsStringAsync();
 
-        var stock = JsonSerializer.Deserialize<Root>(content);
-        // Console.WriteLine(stock!.Results.ToString());
+        dynamic data = JsonConvert.DeserializeObject(content)!;
+        dynamic json = JsonConvert.SerializeObject(data.results[0])!;
         
-        return stock; // Return JSON content as a string
 
-
-        // if (res.IsSuccessStatusCode)
-        // {
-        // }
-        // else
-        // {
-        //     // Handle error response here
-        //     return "Error"; // You can also return an error message or throw an exception
-        // }
+        if (res.IsSuccessStatusCode)
+        {
+            return content; // Return JSON content as a string
+        }
+        else
+        {
+            // Handle error response here
+            return "Error"; // You can also return an error message or throw an exception
+        }
     }
 
 
