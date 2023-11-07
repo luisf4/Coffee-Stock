@@ -12,6 +12,6 @@ export class StockService {
 
   GetStock(symbol: string): Observable<any> {
     const data = { symbol: symbol };
-    return this.http.post<any>(this.url+symbol,data);
+    return this.http.get<any>(this.url+symbol);
   }
 }

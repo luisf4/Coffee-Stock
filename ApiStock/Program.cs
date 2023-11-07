@@ -27,14 +27,6 @@ app.MapGet("/stock/{symbol}", (string symbol) =>
 });
 
 
-// Gets stock shartsMyProperty
-// app.MapGet("/stock/{symbol}/sharts/{date}", (string symbol, string date) =>
-// {
-//     StockServices stock = new StockServices();
-//     return stock.GetStockShart(symbol, date);
-// });
-
-
 // Register
 app.MapPost("/auth/register", async (HttpContext context) =>
 {

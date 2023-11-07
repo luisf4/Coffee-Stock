@@ -28,7 +28,7 @@ export class RegisterComponent {
         console.log(response),
           // Storing the JWT in LocalStorage
           localStorage.setItem('jwtToken', response);
-          this.router.navigate(['/login']);
+          this.router.navigate(['/']);
       });
 
   }

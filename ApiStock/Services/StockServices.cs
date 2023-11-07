@@ -1,6 +1,7 @@
 using System;
 using System.Net.Http;
 using System.Security.Cryptography;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 public class StockServices
@@ -15,7 +16,7 @@ public class StockServices
     //
     //
     //
-    public async Task<string> GetStockInfo(string symbol,string range)
+    public async Task<Root> GetStockInfo(string symbol,string range)
     {
         using HttpClient client = new();
 
@@ -24,18 +25,22 @@ public class StockServices
 
         // Makes a request 
         var res = await client.GetAsync(url);
+        var content = await res.Content.ReadAsStringAsync();
 
+        var stock = JsonSerializer.Deserialize<Root>(content);
+        // Console.WriteLine(stock!.Results.ToString());
         
-        if (res.IsSuccessStatusCode)
-        {
-            var content = await res.Content.ReadAsStringAsync();
-            return content; // Return JSON content as a string
-        }
-        else
-        {
-            // Handle error response here
-            return "Error"; // You can also return an error message or throw an exception
-        }
+        return stock; // Return JSON content as a string
+
+
+        // if (res.IsSuccessStatusCode)
+        // {
+        // }
+        // else
+        // {
+        //     // Handle error response here
+        //     return "Error"; // You can also return an error message or throw an exception
+        // }
     }
 
 

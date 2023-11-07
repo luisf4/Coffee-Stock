@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/home/luis/CoffeeStock/ApiStock/ApiStock.csproj": {}
+    "C:\\Users\\luis\\Desktop\\CoffeeStock\\ApiStock\\ApiStock.csproj": {}
   },
   "projects": {
-    "/home/luis/CoffeeStock/ApiStock/ApiStock.csproj": {
+    "C:\\Users\\luis\\Desktop\\CoffeeStock\\ApiStock\\ApiStock.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/luis/CoffeeStock/ApiStock/ApiStock.csproj",
+        "projectUniqueName": "C:\\Users\\luis\\Desktop\\CoffeeStock\\ApiStock\\ApiStock.csproj",
         "projectName": "ApiStock",
-        "projectPath": "/home/luis/CoffeeStock/ApiStock/ApiStock.csproj",
-        "packagesPath": "/home/luis/.nuget/packages/",
-        "outputPath": "/home/luis/CoffeeStock/ApiStock/obj/",
+        "projectPath": "C:\\Users\\luis\\Desktop\\CoffeeStock\\ApiStock\\ApiStock.csproj",
+        "packagesPath": "C:\\Users\\luis\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\luis\\Desktop\\CoffeeStock\\ApiStock\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/home/luis/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\luis\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
@@ -70,7 +70,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/var/lib/snapd/snap/dotnet-sdk/226/sdk/7.0.403/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.403\\RuntimeIdentifierGraph.json"
         }
       }
     }
