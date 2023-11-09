@@ -28,10 +28,15 @@ public class StockServices
         // Makes a request 
         var res = await client.GetAsync(url);
         var content = await res.Content.ReadAsStringAsync();
+        // Console.WriteLine(content);
 
-        dynamic data = JsonConvert.DeserializeObject(content)!;
-        dynamic json = JsonConvert.SerializeObject(data.results[0])!;
-        
+        // dynamic data = JsonConvert.DeserializeObject(content)!;
+        // dynamic json = JsonConvert.DeserializeObject(data.results[0])!;
+
+        // convert to stuff
+        // ChartData chart = JsonConvert.DeserializeObject<ChartData>(json);
+        Root stock = JsonConvert.DeserializeObject<Root>(content);
+        Console.WriteLine(stock.Results);
 
         if (res.IsSuccessStatusCode)
         {

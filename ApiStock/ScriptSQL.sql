@@ -23,7 +23,7 @@ CREATE TABLE stocks (
     name VARCHAR(50) NOT NULL,
     price FLOAT NOT NULL, 
     logo VARCHAR(255) NOT NULL,
-    requestedAt DATE,
+    requestedAt DATE  ,
 );
 GO
 
