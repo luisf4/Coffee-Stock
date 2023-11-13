@@ -11,57 +11,65 @@ public class StockServices
 
 
 
-    public async Task<string> GetStockInfo(string symbol, string range)
+    public async Task<StockData> GetStockInfo(string symbol, string range)
     {
         var stockSql = new StockSql();
         var check = stockSql.CheckTimeData(symbol);
-
-        if(check == "ok") {
-            return stockSql.ReadStock(symbol);
-        } else { 
-            
-        }
-        
-
+        Console.WriteLine(check);
         // Checks if the info is old if it is make a request and store the data 
-        using HttpClient client = new();
-
-        // Set the url 
-        string url = $"https://brapi.dev/api/quote/{symbol}?range={range}&interval=1d&fundamental=true&dividends=false&token={API_TOKEN_Brapi}";
-
-        // Makes a request 
-        var res = await client.GetAsync(url);
-        var content = await res.Content.ReadAsStringAsync();
-        string formattedDateTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-
-        // Deserialize JSON string to C# object
-        StockIn stockInfo = JsonConvert.DeserializeObject<StockIn>(content)!;
-
-        // Access information
-        foreach (var result in stockInfo.Results)
+        if (check == "ok")
         {
-            StockData stock = new StockData(result.Symbol, result.ShortName, result.RegularMarketPrice, result.Logourl, formattedDateTime, result.historicalDataPrice);
-            Console.WriteLine(stockSql.WriteStocks(stock));
-            // Console.WriteLine("Historical Data:");
-            // foreach (var historicalData in result.historicalDataPrice)
-            // {
-            //     Console.WriteLine($"Date: {historicalData.Date}, Close: {historicalData.Close}");
-            //     // Access other historical data properties as needed
-            // }
+            return stockSql.ReadStock(symbol);
         }
-
-
-
-
-        if (res.IsSuccessStatusCode)
+        else if (check == "old")
         {
-            return content; // Return JSON content as a string
+            using HttpClient client = new();
+
+            // Set the url 
+            string url = $"https://brapi.dev/api/quote/{symbol}?range={range}&interval=1d&fundamental=true&dividends=false&token={API_TOKEN_Brapi}";
+
+            // Makes a request 
+            var res = await client.GetAsync(url);
+            var content = await res.Content.ReadAsStringAsync();
+            string formattedDateTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+
+            // Deserialize JSON string to C# object
+            StockIn stockInfo = JsonConvert.DeserializeObject<StockIn>(content)!;
+
+            // Access information
+            foreach (var result in stockInfo.Results)
+            {
+                StockData stock = new StockData(result.Symbol, result.ShortName, result.RegularMarketPrice, result.Logourl, formattedDateTime, result.historicalDataPrice);
+                stockSql.UpdateStock(stock);
+            }
+            return null!;
         }
         else
         {
-            // Handle error response here
-            return "Error"; // You can also return an error message or throw an exception
+            using HttpClient client = new();
+
+            // Set the url 
+            string url = $"https://brapi.dev/api/quote/{symbol}?range={range}&interval=1d&fundamental=true&dividends=false&token={API_TOKEN_Brapi}";
+
+            // Makes a request 
+            var res = await client.GetAsync(url);
+            var content = await res.Content.ReadAsStringAsync();
+            string formattedDateTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+
+            // Deserialize JSON string to C# object
+            StockIn stockInfo = JsonConvert.DeserializeObject<StockIn>(content)!;
+
+            // Access information
+            foreach (var result in stockInfo.Results)
+            {
+                StockData stock = new StockData(result.Symbol, result.ShortName, result.RegularMarketPrice, result.Logourl, formattedDateTime, result.historicalDataPrice);
+                stockSql.WriteStock(stock);
+            }
+            return null!;
         }
+
+
+
     }
 
 

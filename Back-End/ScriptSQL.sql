@@ -26,21 +26,24 @@ CREATE TABLE stocks (
     requestedAt varchar(50)
 );
 GO
+	
 select * from stocks
 
 CREATE TABLE chartData (
     chart_id INT PRIMARY KEY IDENTITY,
-    chart_stock_id INT not null,
-    [date] DATE,
+    symbol VARCHAR(50),
+    [date] VARCHAR(50),
     [open] FLOAT,
     [high] FLOAT,
     [low] FLOAT,
     [close] FLOAT,
-    volume FLOAT,
+    volume INT,
     adjustedClose FLOAT,
-    FOREIGN KEY (chart_stock_id) REFERENCES stocks(stock_id),
-    requestedAt DATE  ,
-)
+    requestedAt VARCHAR(50),
+);
+GO
+
+select * from chartData
 
 -- Portfolios table
 CREATE TABLE portfolios (
@@ -49,7 +52,7 @@ CREATE TABLE portfolios (
     [name] VARCHAR(100) NOT NULL,
 );
 GO
-
+Select * from stocks where symbol = 'aapl34';
 -- PortfolioStocks table to establish relationships
 CREATE TABLE stocks_portfolio (
     portfolio_stock_id INT PRIMARY KEY IDENTITY,
