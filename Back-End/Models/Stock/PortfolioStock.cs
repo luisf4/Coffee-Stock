@@ -1,9 +1,9 @@
 public class PortfolioStock  {
-    public int portfolio_id { get; set; }
-    public string symbol { get; set; }
-    public string name { get; set; }
-    public int qnt { get; set; }
-    public float price { get; set; }
-    public string logo { get; set; }
-    public string date { get; set; }
+    public int Portfolio_id { get; set; }
+    public string Symbol { get; set; }
+    public string Name { get; set; }
+    public int Qnt { get; set; }
+    public float Price { get; set; }
+    public string Logo { get; set; }
+    public string Date { get; set; }
 }

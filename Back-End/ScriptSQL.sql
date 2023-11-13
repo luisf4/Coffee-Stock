@@ -13,7 +13,7 @@ CREATE TABLE users (
     user_id INT PRIMARY KEY IDENTITY,
     username VARCHAR(50) NOT NULL,
     passwordHash VARCHAR(100) NOT NULL,
-    jwt NVARCHAR(MAX) NOT NULL
+    jwt NVARCHAR(MAX) NOT NULL,
 );
 GO
 
@@ -23,9 +23,10 @@ CREATE TABLE stocks (
     name VARCHAR(50) NOT NULL,
     price FLOAT NOT NULL, 
     logo VARCHAR(255) NOT NULL,
-    requestedAt DATE  ,
+    requestedAt varchar(50)
 );
 GO
+select * from stocks
 
 CREATE TABLE chartData (
     chart_id INT PRIMARY KEY IDENTITY,
@@ -37,7 +38,8 @@ CREATE TABLE chartData (
     [close] FLOAT,
     volume FLOAT,
     adjustedClose FLOAT,
-    FOREIGN KEY (chart_stock_id) REFERENCES stocks(stock_id)
+    FOREIGN KEY (chart_stock_id) REFERENCES stocks(stock_id),
+    requestedAt DATE  ,
 )
 
 -- Portfolios table

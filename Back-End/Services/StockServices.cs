@@ -1,10 +1,6 @@
-using System;
-using System.Net.Http;
-using System.Net.Mime;
-using System.Security.Cryptography;
 using System.Text.Json;
-using System.Threading.Tasks;
 using Newtonsoft.Json;
+
 
 public class StockServices
 {
@@ -14,9 +10,20 @@ public class StockServices
     private string API_TOKEN_Polygon = CredentialsLoader.LoadApiKeyPolygon()!;
 
 
-  
-    public async Task<string> GetStockInfo(string symbol,string range)
+
+    public async Task<string> GetStockInfo(string symbol, string range)
     {
+        var stockSql = new StockSql();
+        var check = stockSql.CheckTimeData(symbol);
+
+        if(check == "ok") {
+            return stockSql.ReadStock(symbol);
+        } else { 
+            
+        }
+        
+
+        // Checks if the info is old if it is make a request and store the data 
         using HttpClient client = new();
 
         // Set the url 
@@ -25,15 +32,26 @@ public class StockServices
         // Makes a request 
         var res = await client.GetAsync(url);
         var content = await res.Content.ReadAsStringAsync();
-        // Console.WriteLine(content);
+        string formattedDateTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
 
-        // dynamic data = JsonConvert.DeserializeObject(content)!;
-        // dynamic json = JsonConvert.DeserializeObject(data.results[0])!;
+        // Deserialize JSON string to C# object
+        StockIn stockInfo = JsonConvert.DeserializeObject<StockIn>(content)!;
 
-        // convert to stuff
-        // ChartData chart = JsonConvert.DeserializeObject<ChartData>(json);
-        // var stock = JsonConvert.DeserializeObject<Root>(content);
-        // Console.WriteLine(stock.Results);
+        // Access information
+        foreach (var result in stockInfo.Results)
+        {
+            StockData stock = new StockData(result.Symbol, result.ShortName, result.RegularMarketPrice, result.Logourl, formattedDateTime, result.historicalDataPrice);
+            Console.WriteLine(stockSql.WriteStocks(stock));
+            // Console.WriteLine("Historical Data:");
+            // foreach (var historicalData in result.historicalDataPrice)
+            // {
+            //     Console.WriteLine($"Date: {historicalData.Date}, Close: {historicalData.Close}");
+            //     // Access other historical data properties as needed
+            // }
+        }
+
+
+
 
         if (res.IsSuccessStatusCode)
         {

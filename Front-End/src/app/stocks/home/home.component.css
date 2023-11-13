@@ -15,6 +15,7 @@
 }
 .image img{ 
   max-height: 50vh;
+  /* padding-right: 50px; */
 }
 .big-text-h1 {
   font-size: 45px;

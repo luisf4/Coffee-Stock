@@ -1,4 +1,4 @@
 public class Portfolio { 
-    public string name { get; set; }
-    public int user_id { get; set; }
+    public string Name { get; set; }
+    public int User_id { get; set; }
 }
