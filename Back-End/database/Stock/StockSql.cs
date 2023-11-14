@@ -4,6 +4,8 @@ using System.Reflection.Metadata;
 using Microsoft.Data.SqlClient;
 public class StockSql : Database
 {
+
+    // Checks if the stock data is old
     public string CheckTimeData(string symbol)
     {
         try
@@ -45,7 +47,6 @@ public class StockSql : Database
                     }
                 }
             }
-            return null;
         }
         catch (Exception ex)
         {
@@ -54,6 +55,7 @@ public class StockSql : Database
         }
     }
 
+    // Read stock data and charts 
     public StockData ReadStock(string symbol)
     {
         using (SqlCommand db = new SqlCommand())
@@ -68,58 +70,52 @@ public class StockSql : Database
             {
                 string _symbol = reader.GetString(1);
                 string _name = reader.GetString(2);
-                float _price = reader.GetFloat(3);
+                double _price = reader.GetDouble(3);
                 string _logo = reader.GetString(4);
                 string _requestedAt = reader.GetString(5);
+
                 reader.Close();
 
                 db.CommandText = "SELECT * FROM chartData WHERE symbol = @sym";
-                db.Parameters.AddWithValue("@sym", symbol);
+                db.Parameters.AddWithValue("@symbo", symbol);
 
                 SqlDataReader reader2 = db.ExecuteReader();
 
                 List<HistoricalData> list = new();
 
-                while (reader.Read())
+                while (reader2.Read())
                 {
                     HistoricalData chart = new HistoricalData
                     {
-                        Date = reader2.GetInt32(3),
-                        Open = reader2.GetFloat(4),
-                        High = reader2.GetFloat(5),
-                        Low = reader2.GetFloat(6),
-                        Close = reader2.GetFloat(7),
-                        Volume = reader2.GetInt32(8),
-                        AdjustedClose = reader2.GetInt32(9)
+                        // Date = 1,
+                        Date = reader2.GetInt32(2),
+                        Open = reader2.GetDouble(3),
+                        High = reader2.GetDouble(4),
+                        Low = reader2.GetDouble(5),
+                        Close = reader2.GetDouble(6),
+                        Volume = reader2.GetInt32(7),
+                        AdjustedClose = reader2.GetDouble(8)
                     };
                     list.Add(chart);
                 }
 
+                StockData task = new StockData(
+                    symbol: _symbol,
+                    name: _name,
+                    price: _price,
+                    logo: _logo,
+                    requestedAt: _requestedAt,
+                    historicalDataPrice: list
+                );
+                reader2.Close();
+                return task;
 
-                if (reader.Read())
-                {
-                    StockData task = new StockData(
-                        symbol: reader.GetString(1),
-                        name: reader.GetString(2),
-                        price: reader.GetInt32(3),
-                        logo: reader.GetString(4),
-                        requestedAt: reader.GetString(5),
-                        historicalDataPrice: list
-                    );
-                    reader2.Close();
-                    return task;
-                }
             }
-
-
-
-
-
-
-
         }
-        return null;
+        return null!;
     }
+
+    // Write stocks to the db
     public string WriteStock(StockData stock)
     {
         try
@@ -173,10 +169,10 @@ public class StockSql : Database
         {
             // Log or handle the exception
             return "Error: " + ex.Message;
-
         }
     }
 
+    // Update stocks data in the db
     public string UpdateStock(StockData stock)
     {
         try
@@ -224,7 +220,6 @@ public class StockSql : Database
                     }
                 }
             }
-
             return null!;
         }
         catch (Exception ex)

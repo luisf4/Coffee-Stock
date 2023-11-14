@@ -21,7 +21,7 @@ CREATE TABLE stocks (
     stock_id INT PRIMARY KEY IDENTITY,
     symbol VARCHAR(50) NOT NULL, 
     name VARCHAR(50) NOT NULL,
-    price FLOAT NOT NULL, 
+    price FlOAT NOT NULL, 
     logo VARCHAR(255) NOT NULL,
     requestedAt varchar(50)
 );
@@ -32,7 +32,7 @@ select * from stocks
 CREATE TABLE chartData (
     chart_id INT PRIMARY KEY IDENTITY,
     symbol VARCHAR(50),
-    [date] int(50),
+    [date] int,
     [open] FLOAT,
     [high] FLOAT,
     [low] FLOAT,

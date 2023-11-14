@@ -10,7 +10,6 @@ public class StockServices
     private string API_TOKEN_Polygon = CredentialsLoader.LoadApiKeyPolygon()!;
 
 
-
     public async Task<StockData> GetStockInfo(string symbol, string range)
     {
         var stockSql = new StockSql();
@@ -42,6 +41,7 @@ public class StockServices
             {
                 StockData stock = new StockData(result.Symbol, result.ShortName, result.RegularMarketPrice, result.Logourl, formattedDateTime, result.historicalDataPrice);
                 stockSql.UpdateStock(stock);
+                return stock;
             }
             return null!;
         }
@@ -65,13 +65,9 @@ public class StockServices
             {
                 StockData stock = new StockData(result.Symbol, result.ShortName, result.RegularMarketPrice, result.Logourl, formattedDateTime, result.historicalDataPrice);
                 stockSql.WriteStock(stock);
+                return stock;
             }
             return null!;
         }
-
-
-
     }
-
-
 }
