@@ -63,6 +63,59 @@ public class StockSql : Database
             db.CommandText = "SELECT * FROM stocks WHERE symbol = @sym";
             db.Parameters.AddWithValue("@sym", symbol);
 
+            SqlDataReader reader = db.ExecuteReader();
+            if (reader.Read())
+            {
+                string _symbol = reader.GetString(1);
+                string _name = reader.GetString(2);
+                float _price = reader.GetFloat(3);
+                string _logo = reader.GetString(4);
+                string _requestedAt = reader.GetString(5);
+                reader.Close();
+
+                db.CommandText = "SELECT * FROM chartData WHERE symbol = @sym";
+                db.Parameters.AddWithValue("@sym", symbol);
+
+                SqlDataReader reader2 = db.ExecuteReader();
+
+                List<HistoricalData> list = new();
+
+                while (reader.Read())
+                {
+                    HistoricalData chart = new HistoricalData
+                    {
+                        Date = reader2.GetInt32(3),
+                        Open = reader2.GetFloat(4),
+                        High = reader2.GetFloat(5),
+                        Low = reader2.GetFloat(6),
+                        Close = reader2.GetFloat(7),
+                        Volume = reader2.GetInt32(8),
+                        AdjustedClose = reader2.GetInt32(9)
+                    };
+                    list.Add(chart);
+                }
+
+
+                if (reader.Read())
+                {
+                    StockData task = new StockData(
+                        symbol: reader.GetString(1),
+                        name: reader.GetString(2),
+                        price: reader.GetInt32(3),
+                        logo: reader.GetString(4),
+                        requestedAt: reader.GetString(5),
+                        historicalDataPrice: list
+                    );
+                    reader2.Close();
+                    return task;
+                }
+            }
+
+
+
+
+
+
 
         }
         return null;
@@ -94,8 +147,6 @@ public class StockSql : Database
 
                     db.ExecuteNonQuery();
                 }
-
-
                 // Perform operations with the ID, such as inserting into chartData
                 foreach (var historicalData in stock.HistoricalDataPrice)
                 {
@@ -122,7 +173,7 @@ public class StockSql : Database
         {
             // Log or handle the exception
             return "Error: " + ex.Message;
-     
+
         }
     }
 
@@ -133,26 +184,43 @@ public class StockSql : Database
             using (SqlCommand db = new SqlCommand())
             {
                 db.Connection = connection;
+                // Update the existing stock
+                db.CommandText = "UPDATE stocks SET symbol = @symbol, [name] = @name, price = @price, logo = @logo, requestedAt = @req WHERE symbol = @symbol";
+                db.Parameters.AddWithValue("@symbol", stock.Symbol);
+                db.Parameters.AddWithValue("@name", stock.Name);
+                db.Parameters.AddWithValue("@price", stock.Price);
+                db.Parameters.AddWithValue("@logo", stock.Logo);
+                db.Parameters.AddWithValue("@req", stock.RequestedAt);
 
-                db.CommandText = "SELECT * FROM stocks WHERE symbol = @sy";
-                db.Parameters.AddWithValue("@sy", stock.Symbol);
+                db.ExecuteNonQuery();
+
+                db.CommandText = "SELECT TOP 1 * FROM chartData ORDER BY chart_id DESC;";
 
                 using (SqlDataReader reader = db.ExecuteReader())
                 {
                     if (reader.Read())
                     {
-                        // Close the reader before executing another query
-                        reader.Close();
+                        int lastReq = int.Parse(reader.GetString(1));
 
-                        // Update the existing stock
-                        db.CommandText = "UPDATE stocks SET symbol = @symbol, [name] = @name, price = @price, logo = @logo, requestedAt = @req WHERE symbol = @symbol";
-                        db.Parameters.AddWithValue("@symbol", stock.Symbol);
-                        db.Parameters.AddWithValue("@name", stock.Name);
-                        db.Parameters.AddWithValue("@price", stock.Price);
-                        db.Parameters.AddWithValue("@logo", stock.Logo);
-                        db.Parameters.AddWithValue("@req", stock.RequestedAt);
-
-                        db.ExecuteNonQuery();
+                        foreach (var historicalData in stock.HistoricalDataPrice)
+                        {
+                            if (historicalData.Date > lastReq)
+                                using (SqlCommand insertCommand = new SqlCommand())
+                                {
+                                    insertCommand.Connection = connection;
+                                    insertCommand.CommandText = "INSERT INTO chartData (symbol, [date], [open], [high], [low], [close], volume, adjustedClose, requestedAt) VALUES (@symbol, @date, @open, @high, @low, @close, @volume, @adjustedClose, @requestedAt)";
+                                    insertCommand.Parameters.AddWithValue("@symbol", stock.Symbol);
+                                    insertCommand.Parameters.AddWithValue("@date", historicalData.Date);
+                                    insertCommand.Parameters.AddWithValue("@open", historicalData.Open);
+                                    insertCommand.Parameters.AddWithValue("@high", historicalData.High);
+                                    insertCommand.Parameters.AddWithValue("@low", historicalData.Low);
+                                    insertCommand.Parameters.AddWithValue("@close", historicalData.Close);
+                                    insertCommand.Parameters.AddWithValue("@volume", historicalData.Volume);
+                                    insertCommand.Parameters.AddWithValue("@adjustedClose", historicalData.AdjustedClose);
+                                    insertCommand.Parameters.AddWithValue("@requestedAt", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
+                                    insertCommand.ExecuteNonQuery();
+                                }
+                        }
                     }
                 }
             }

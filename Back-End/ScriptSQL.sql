@@ -32,7 +32,7 @@ select * from stocks
 CREATE TABLE chartData (
     chart_id INT PRIMARY KEY IDENTITY,
     symbol VARCHAR(50),
-    [date] VARCHAR(50),
+    [date] int(50),
     [open] FLOAT,
     [high] FLOAT,
     [low] FLOAT,
@@ -44,6 +44,7 @@ CREATE TABLE chartData (
 GO
 
 select * from chartData
+
 
 -- Portfolios table
 CREATE TABLE portfolios (
