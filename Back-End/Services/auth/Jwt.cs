@@ -30,8 +30,6 @@ public class JwtServices
         return jwt;
     }
 
-
-
     public string VerifyToken(string jwt)
     {
         try
@@ -57,7 +55,43 @@ public class JwtServices
                     return "Token has expired";
                 }
             }
+            return "ok";
+        }
+        catch (SecurityTokenException)
+        {
+            return "Token is invalid";
+        }
+        catch (Exception ex)
+        {
+            return "An error occurred: " + ex.Message;
+        }
+    }
 
+    public string GetUsername(string jwt)
+    {
+        try
+        {
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var validationParameters = new TokenValidationParameters
+            {
+                // Specify your validation rules
+                ValidateIssuer = false, // Set to true if you want to validate the issuer
+                ValidateAudience = false, // Set to true if you want to validate the audience
+                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey)), // Use your secret key here
+            };
+
+            // Try to validate the token
+            SecurityToken validatedToken;
+            ClaimsPrincipal claimsPrincipal = tokenHandler.ValidateToken(jwt, validationParameters, out validatedToken);
+
+            // Check if the token has expired
+            if (validatedToken is JwtSecurityToken jwtSecurityToken)
+            {
+                if (jwtSecurityToken.ValidTo < DateTime.UtcNow)
+                {
+                    return "Token has expired";
+                }
+            }
             // At this point, the token is valid, and you can access its claims
             string username = claimsPrincipal.FindFirst(ClaimTypes.Name)?.Value;
 

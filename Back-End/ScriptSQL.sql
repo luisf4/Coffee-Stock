@@ -53,8 +53,9 @@ CREATE TABLE portfolios (
     [name] VARCHAR(100) NOT NULL,
 );
 GO
+select * from portfolios
 
-s-- PortfolioStocks table to establish relationships
+-- PortfolioStocks table to establish relationships
 CREATE TABLE stocks_portfolio (
     portfolio_stock_id INT PRIMARY KEY IDENTITY,
     portfolio_id INT NOT NULL,

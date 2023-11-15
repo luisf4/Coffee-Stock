@@ -14,16 +14,14 @@ export class NavbarUpComponent implements OnInit {
 
   // On acessing the page verify if the token is valid
   ngOnInit(): void {
-    var token = localStorage.getItem("jwtToken");
-
     try {
+      var token = localStorage.getItem("jwtToken");
       this.auth.verifyToken(token!).subscribe(Response => {
         if (Response == "ok") {
-          console.log(Response);
+          console.log("Login OK");
         } else if (Response == "Token has expired") {
           this.router.navigate(['/login']);
         } else {
-          console.log(Response)
           this.router.navigate(['/login']);
         }
       });

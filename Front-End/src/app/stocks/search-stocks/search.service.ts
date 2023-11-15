@@ -11,7 +11,6 @@ export class SearchService {
 
   searchStock(symbol: string) {
     const url = `https://brapi.dev/api/quote/list?search=${symbol}&?token=${this.apiKey}`;
-    console.log(url)
     return this.http.get(url);
   }
 }

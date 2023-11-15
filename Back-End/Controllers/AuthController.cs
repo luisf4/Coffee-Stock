@@ -67,7 +67,30 @@ public class AuthController : ControllerBase
             {
                 var requestBody = await reader.ReadToEndAsync();
                 var registrationData = JsonSerializer.Deserialize<JwtData>(requestBody);
-                var responseData = AuthService.VerifyJWT(registrationData);
+                var responseData = JsonSerializer.Serialize(AuthService.VerifyJWT(registrationData!));
+
+                Response.StatusCode = StatusCodes.Status200OK;
+                Response.ContentType = "application/json";
+                return Content(responseData);
+            }
+        }
+        catch (Exception ex)
+        {
+            Response.StatusCode = StatusCodes.Status500InternalServerError;
+            return Content("Internal server error: " + ex.Message);
+        }
+    }
+
+    [HttpPost("User")]
+    public async Task<IActionResult> GetUsername()
+    {
+        try
+        {
+            using (var reader = new StreamReader(Request.Body))
+            {
+                var requestBody = await reader.ReadToEndAsync();
+                var registrationData = JsonSerializer.Deserialize<JwtData>(requestBody);
+                var responseData = JsonSerializer.Serialize(AuthService.VerifyJWT(registrationData!));
 
                 Response.StatusCode = StatusCodes.Status200OK;
                 Response.ContentType = "application/json";

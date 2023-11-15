@@ -62,11 +62,21 @@ public class AuthService
         }
     }
 
+    // Verify if the jwt is valid 
     public static string VerifyJWT(JwtData jwt)
     {
         JwtServices check = new JwtServices();
- 
         var res = check.VerifyToken(jwt.jwtToken);
+
+        return res;
+    }
+
+    // Get user username from the token
+    // Could re user the method above with (JwtData jwt, boolean getUser) but i dont know... it fells wrong
+    public static string GetUsername(JwtData jwt)
+    {
+        JwtServices check = new JwtServices();
+        var res = check.GetUsername(jwt.jwtToken);
 
         return res;
     }

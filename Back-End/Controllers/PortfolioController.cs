@@ -19,29 +19,51 @@ public class PortfolioController : ControllerBase
         {
             var requestBody = await reader.ReadToEndAsync();
             var registrationData = JsonSerializer.Deserialize<JwtData>(requestBody);
-            var responseData = AuthService.VerifyJWT(registrationData!);
-
-            _portfolioServices.Create(portfolio, responseData);
+            var username = AuthService.GetUsername(registrationData!);
+            _portfolioServices.Create(portfolio, username);
 
             return Ok("ok");
         }
     }
 
-    [HttpGet("{portfolio}")]
-    public async Task<IActionResult> ReadPortfolio(string portfolio)
+    [HttpGet("all")]
+    public async Task<IActionResult> ReadPortfolios()
     {
-        return Ok();
+        using (var reader = new StreamReader(Request.Body))
+        {
+            var requestBody = await reader.ReadToEndAsync();
+            var registrationData = JsonSerializer.Deserialize<JwtData>(requestBody);
+            var username = AuthService.GetUsername(registrationData!);
+            var portfolios = _portfolioServices.ReadAll(username);
+            var portfoliosJson = JsonSerializer.Serialize(portfolios);
+            Console.WriteLine(portfoliosJson);
+            return Content(portfoliosJson);
+        }
     }
 
-    [HttpPut("{portfolio}")]
-    public async Task<IActionResult> UpdatePortfolio(string portfolio)
+    [HttpPut("{portfolio}/{newName}")]
+    public async Task<IActionResult> UpdatePortfolio(int portfolio, string newName)
     {
-        return Ok();
+        using (var reader = new StreamReader(Request.Body))
+        {
+            var requestBody = await reader.ReadToEndAsync();
+            var registrationData = JsonSerializer.Deserialize<JwtData>(requestBody);
+            var username = AuthService.GetUsername(registrationData!);
+            _portfolioServices.Update(username, portfolio, newName);
+            return Ok();
+        }
     }
 
     [HttpDelete("{portfolio}")]
-    public async Task<IActionResult> DeletePortfolio(string portfolio)
+    public async Task<IActionResult> DeletePortfolio(int portfolio)
     {
-        return Ok();
+        using (var reader = new StreamReader(Request.Body))
+        {
+            var requestBody = await reader.ReadToEndAsync();
+            var registrationData = JsonSerializer.Deserialize<JwtData>(requestBody);
+            var username = AuthService.GetUsername(registrationData!);
+            _portfolioServices.Delete(username, portfolio);
+            return Ok();
+        }
     }
 }

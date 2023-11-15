@@ -17,7 +17,6 @@ export class HomeComponent {
     this.searchService.searchStock('mi')
       .subscribe((data: any) => {
         this.searchResults = data['stocks'];
-        console.log(this.searchResults)
       });
   }
 }

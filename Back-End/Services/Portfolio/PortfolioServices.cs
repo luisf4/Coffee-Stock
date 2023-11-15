@@ -10,9 +10,11 @@ public class PortfolioServices : IPortfolioServices
         db.CreatePortfolio(portfolio, user);
     }
 
-    public void Delete(string portfolio)
+    public List<Portfolio> ReadAll(string user)
     {
-        throw new NotImplementedException();
+        PortoflioSql db = new PortoflioSql();
+        var portfolios = db.ReadMultiplePortfolios(user);
+        return portfolios;
     }
 
     public Portfolio Read(string portfolio)
@@ -20,8 +22,15 @@ public class PortfolioServices : IPortfolioServices
         throw new NotImplementedException();
     }
 
-    public void Update(string portfolio)
+    public void Update(string user, int id, string newName)
     {
-        throw new NotImplementedException();
+        PortoflioSql db = new PortoflioSql();
+        db.Update(user, id, newName);
+    }
+
+    public void Delete(string user, int id)
+    {
+        PortoflioSql db = new PortoflioSql();
+        db.Delete(user, id);
     }
 }
