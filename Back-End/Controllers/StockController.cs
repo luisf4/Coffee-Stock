@@ -1,5 +1,3 @@
-// StockController.cs
-
 using Microsoft.AspNetCore.Mvc;
 
 [Route("[controller]")]
