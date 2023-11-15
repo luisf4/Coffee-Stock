@@ -1,3 +1,16 @@
 public class Portfolio { 
+    public int id { get; set; }
     public string Name { get; set; }
+
+    public List<PortfolioStock> stocks { get; set; }
+}
+
+public class PortfolioStock  {
+    public int Portfolio_id { get; set; }
+    public string Symbol { get; set; }
+    public string Name { get; set; }
+    public int Qnt { get; set; }
+    public double Price { get; set; }
+    public string Logo { get; set; }
+    public string Date { get; set; }
 }

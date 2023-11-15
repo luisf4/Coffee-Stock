@@ -49,12 +49,12 @@ select * from chartData
 -- Portfolios table
 CREATE TABLE portfolios (
     portfolio_id INT PRIMARY KEY IDENTITY,
-    user_id INT NOT NULL,
+    user_name varchar(255) NOT NULL,
     [name] VARCHAR(100) NOT NULL,
 );
 GO
-Select * from stocks where symbol = 'aapl34';
--- PortfolioStocks table to establish relationships
+
+s-- PortfolioStocks table to establish relationships
 CREATE TABLE stocks_portfolio (
     portfolio_stock_id INT PRIMARY KEY IDENTITY,
     portfolio_id INT NOT NULL,
@@ -63,11 +63,8 @@ CREATE TABLE stocks_portfolio (
     qtd int NOT NULL,
     price FLOAT NOT NULL,
     logo VARCHAR(255) NOT NULL,
-    [date] Date,
+    [date] VARCHAR(50),
     FOREIGN KEY (portfolio_id) REFERENCES portfolios(portfolio_id),
-  --  FOREIGN KEY (symbol) REFERENCES stocks(symbol),
-  --  FOREIGN KEY ([name]) REFERENCES stocks(name),
-  --  FOREIGN KEY (logo) REFERENCES stocks(logo)
 );
 GO
 

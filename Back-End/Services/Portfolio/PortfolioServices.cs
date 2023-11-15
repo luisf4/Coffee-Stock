@@ -1,12 +1,13 @@
+using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
 
 public class PortfolioServices : IPortfolioServices
 {
-    public Portfolio Create(string portfolio)
+    public void Create(string portfolio, string user)
     {
         PortoflioSql db = new PortoflioSql();
-        db.CreatePortfolio("a");
-        throw new NotImplementedException();
+        db.CreatePortfolio(portfolio, user);
     }
 
     public void Delete(string portfolio)

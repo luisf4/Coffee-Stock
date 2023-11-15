@@ -12,7 +12,7 @@ public class JwtServices
     public string CreateToken(UserDto user)
     {
         List<Claim> claims = new List<Claim> {
-            new Claim(ClaimTypes.Name, user.Username)
+            new Claim(ClaimTypes.Name, user.Username),
         };
 
         // Change it later >:
@@ -22,56 +22,62 @@ public class JwtServices
 
         var token = new JwtSecurityToken(
             claims: claims,
-            expires: DateTime.Now.AddDays(30),
+            expires: DateTime.Now.AddDays(7),
             signingCredentials: creds
         );
 
         var jwt = new JwtSecurityTokenHandler().WriteToken(token);
-
         return jwt;
     }
 
 
-  
-public string VerifyToken(string jwt)
-{
-    try
+
+    public string VerifyToken(string jwt)
     {
-        var tokenHandler = new JwtSecurityTokenHandler();
-        var validationParameters = new TokenValidationParameters
+        try
         {
-            // Specify your validation rules
-            ValidateIssuer = false, // Set to true if you want to validate the issuer
-            ValidateAudience = false, // Set to true if you want to validate the audience
-            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey)), // Use your secret key here
-        };
-
-        // Try to validate the token
-        SecurityToken validatedToken;
-        ClaimsPrincipal claimsPrincipal = tokenHandler.ValidateToken(jwt, validationParameters, out validatedToken);
-
-        // Check if the token has expired
-        if (validatedToken is JwtSecurityToken jwtSecurityToken)
-        {
-            if (jwtSecurityToken.ValidTo < DateTime.UtcNow)
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var validationParameters = new TokenValidationParameters
             {
-                return "Token has expired";
+                // Specify your validation rules
+                ValidateIssuer = false, // Set to true if you want to validate the issuer
+                ValidateAudience = false, // Set to true if you want to validate the audience
+                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey)), // Use your secret key here
+            };
+
+            // Try to validate the token
+            SecurityToken validatedToken;
+            ClaimsPrincipal claimsPrincipal = tokenHandler.ValidateToken(jwt, validationParameters, out validatedToken);
+
+            // Check if the token has expired
+            if (validatedToken is JwtSecurityToken jwtSecurityToken)
+            {
+                if (jwtSecurityToken.ValidTo < DateTime.UtcNow)
+                {
+                    return "Token has expired";
+                }
+            }
+
+            // At this point, the token is valid, and you can access its claims
+            string username = claimsPrincipal.FindFirst(ClaimTypes.Name)?.Value;
+
+            // Check if the username claim exists
+            if (!string.IsNullOrEmpty(username))
+            {
+                return username;
+            }
+            else
+            {
+                return "Username claim not found";
             }
         }
-
-        // At this point, the token is valid, and you can access its claims
-        // Example: string username = claimsPrincipal.FindFirst(ClaimTypes.Name)?.Value;
-
-        // Token is valid
-        return "ok";
+        catch (SecurityTokenException)
+        {
+            return "Token is invalid";
+        }
+        catch (Exception ex)
+        {
+            return "An error occurred: " + ex.Message;
+        }
     }
-    catch (SecurityTokenException)
-    {
-        return "Token is invalid";
-    }
-    catch (Exception ex)
-    {
-        return "An error occurred: " + ex.Message;
-    }
-}
 }
