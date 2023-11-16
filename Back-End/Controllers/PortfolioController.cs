@@ -19,7 +19,7 @@ public class PortfolioController : ControllerBase
         {
             var requestBody = await reader.ReadToEndAsync();
             var registrationData = JsonSerializer.Deserialize<JwtData>(requestBody);
-            var username = AuthService.GetUsername(registrationData!);
+            var username = AuthService.GetUsername(registrationData!.jwtToken);
             _portfolioServices.Create(portfolio, username);
 
             return Ok("ok");
@@ -33,7 +33,7 @@ public class PortfolioController : ControllerBase
         {
             var requestBody = await reader.ReadToEndAsync();
             var registrationData = JsonSerializer.Deserialize<JwtData>(requestBody);
-            var username = AuthService.GetUsername(registrationData!);
+            var username = AuthService.GetUsername(registrationData!.jwtToken);
             var portfolios = _portfolioServices.ReadAll(username);
             var portfoliosJson = JsonSerializer.Serialize(portfolios);
             Console.WriteLine(portfoliosJson);
@@ -48,7 +48,7 @@ public class PortfolioController : ControllerBase
         {
             var requestBody = await reader.ReadToEndAsync();
             var registrationData = JsonSerializer.Deserialize<JwtData>(requestBody);
-            var username = AuthService.GetUsername(registrationData!);
+            var username = AuthService.GetUsername(registrationData!.jwtToken);
             _portfolioServices.Update(username, portfolio, newName);
             return Ok();
         }
@@ -61,7 +61,7 @@ public class PortfolioController : ControllerBase
         {
             var requestBody = await reader.ReadToEndAsync();
             var registrationData = JsonSerializer.Deserialize<JwtData>(requestBody);
-            var username = AuthService.GetUsername(registrationData!);
+            var username = AuthService.GetUsername(registrationData!.jwtToken);
             _portfolioServices.Delete(username, portfolio);
             return Ok();
         }

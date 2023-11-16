@@ -73,10 +73,10 @@ public class AuthService
 
     // Get user username from the token
     // Could re user the method above with (JwtData jwt, boolean getUser) but i dont know... it fells wrong
-    public static string GetUsername(JwtData jwt)
+    public static string GetUsername(string jwt)
     {
         JwtServices check = new JwtServices();
-        var res = check.GetUsername(jwt.jwtToken);
+        var res = check.GetUsername(jwt);
 
         return res;
     }
