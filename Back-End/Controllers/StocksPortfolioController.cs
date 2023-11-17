@@ -38,29 +38,29 @@ public class StocksPortfolioController : ControllerBase
         }
     }
 
-    // [HttpPut("{portfolio}/{newName}")]
-    // public async Task<IActionResult> Update(int portfolio, string newName)
-    // {
-    //     using (var reader = new StreamReader(Request.Body))
-    //     {
-    //         var requestBody = await reader.ReadToEndAsync();
-    //         var registrationData = JsonSerializer.Deserialize<JwtData>(requestBody);
-    //         var username = AuthService.GetUsername(registrationData!);
-    //         _stocksPortfolioServices.Update(username, portfolio, newName);
-    //         return Ok();
-    //     }
-    // }
+    [HttpPut("{id}")]
+    public async Task<IActionResult> Update(int id)
+    {
+        using (var reader = new StreamReader(Request.Body))
+        {
+            var requestBody = await reader.ReadToEndAsync();
+            var registrationData = JsonSerializer.Deserialize<StocksPortfolio>(requestBody);
+            var stocksPortfolioInfo = JsonSerializer.Deserialize<StocksPortfolio>(requestBody);
+            _stocksPortfolioServices.Update(stocksPortfolioInfo!,id);
+            return Ok();
+        }
+    }
 
-    // [HttpDelete("{portfolio}")]
-    // public async Task<IActionResult> Delete(int portfolio)
-    // {
-    //     using (var reader = new StreamReader(Request.Body))
-    //     {
-    //         var requestBody = await reader.ReadToEndAsync();
-    //         var registrationData = JsonSerializer.Deserialize<JwtData>(requestBody);
-    //         var username = AuthService.GetUsername(registrationData!);
-    //         _stocksPortfolioServices.Delete(username, portfolio);
-    //         return Ok();
-    //     }
-    // }
+    [HttpDelete("{id}/{portfolio_id}")]
+    public async Task<IActionResult> Delete(int id, int portfolio_id)
+    {
+        using (var reader = new StreamReader(Request.Body))
+        {
+            var requestBody = await reader.ReadToEndAsync();
+            var registrationData = JsonSerializer.Deserialize<JwtData>(requestBody);
+            var username = AuthService.GetUsername(registrationData!.jwtToken);
+            _stocksPortfolioServices.Delete(username, id, portfolio_id);
+            return Ok();
+        }
+    }
 }

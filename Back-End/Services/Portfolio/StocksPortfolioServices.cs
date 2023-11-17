@@ -21,13 +21,15 @@ public class StocksPortfolioServices : IStocksPortfolioServices
         return res;
     }
 
-    public void Update(string user, int id, string stock, int qnt)
+    public void Update(StocksPortfolio stocks, int id)
     {
-        throw new NotImplementedException();
+        StocksPortfolioSql stocksPortfolioSql = new StocksPortfolioSql();
+        stocksPortfolioSql.Update(stocks, id);
     }
 
-    public void Delete(string user, int id, string stock)
+    public void Delete(string user, int id, int portfolio_id)
     {
-        throw new NotImplementedException();
+        StocksPortfolioSql stocksPortfolioSql = new StocksPortfolioSql();
+        stocksPortfolioSql.Delete(user, id, portfolio_id);
     }
 }

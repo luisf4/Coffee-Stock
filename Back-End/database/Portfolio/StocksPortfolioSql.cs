@@ -25,7 +25,7 @@ public class StocksPortfolioSql : Database
 
     public List<StocksPortfolioOut> Read(string user, int id)
     {
-                using (SqlCommand db = new SqlCommand())
+        using (SqlCommand db = new SqlCommand())
         {
             db.Connection = connection;
             db.CommandText = "SELECT * FROM stocks_portfolio WHERE portfolio_id = @id";
@@ -45,7 +45,7 @@ public class StocksPortfolioSql : Database
                     qnt: reader.GetInt32(4),
                     price: reader.GetDouble(5),
                     logo: reader.GetString(6),
-                    date: reader.GetString(7)                    
+                    date: reader.GetString(7)
                 );
                 portfolios.Add(portfolio);
             }
@@ -53,13 +53,43 @@ public class StocksPortfolioSql : Database
         }
     }
 
-    public void Update(string user, int id, string stock, int qnt, string date)
+    public void Update(StocksPortfolio stocks, int id)
     {
-        throw new NotImplementedException();
+        using (SqlCommand db = new SqlCommand())
+        {
+            db.Connection = connection;
+            db.CommandText = "IF EXISTS (SELECT 1 FROM portfolios WHERE portfolio_id = @idPortfolio AND user_name = @user) " +
+                             "BEGIN " +
+                             "    UPDATE stocks_portfolio " +
+                             "    SET qtd = @qtd, " + // Make sure 'qtd' matches the actual column name
+                             "        price = @price, " +
+                             "        [date] = @date " + // 'date' might be a reserved keyword, use square brackets around it
+                             "    WHERE portfolio_stock_id = @id " +
+                             "END";
+            db.Parameters.AddWithValue("@id", id);
+            db.Parameters.AddWithValue("@idPortfolio", stocks.portfolio_id);
+            db.Parameters.AddWithValue("@user", stocks.user);
+
+            db.Parameters.AddWithValue("@qtd", stocks.qnt);
+            db.Parameters.AddWithValue("@price", stocks.price);
+            db.Parameters.AddWithValue("@date", stocks.date); // Assuming stocks.date contains the date value
+            db.ExecuteNonQuery();
+        }
     }
 
-    public void Delete(string user, int id)
+    public void Delete(string user, int id, int portfolio_id)
     {
-        throw new NotImplementedException();
+                using (SqlCommand db = new SqlCommand())
+        {
+            db.Connection = connection;
+            db.CommandText = "IF EXISTS (SELECT 1 FROM portfolios WHERE portfolio_id = @idPortfolio AND user_name = @user) " +
+                             "BEGIN " +
+                             "DELETE FROM stocks_portfolio WHERE portfolio_stock_id = @id END";
+            db.Parameters.AddWithValue("@id", id);
+            db.Parameters.AddWithValue("@idPortfolio", portfolio_id);
+            db.Parameters.AddWithValue("@user", user);
+
+            db.ExecuteNonQuery();
+        }
     }
 }
