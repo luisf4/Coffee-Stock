@@ -1,2 +1,17 @@
 <app-navbar-up></app-navbar-up>
-{{stockDetails.name}}
+
+<div class="stock-main">
+    <div class="stock-details">
+        <div class="stock-name">
+            <img src="{{stockDetails.logo}}" alt="">
+            <h1>{{stockDetails.symbol}}</h1>
+        </div>
+        <div class="stock-price">
+            <h1>R$ {{stockDetails.price}}</h1>
+        </div>
+    </div>
+    <div class="stock-chart">
+       <app-charts></app-charts>
+    </div>
+    <div class="stock-about"></div>
+</div>

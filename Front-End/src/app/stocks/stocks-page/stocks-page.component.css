@@ -1,0 +1,39 @@
+.stock-main { 
+    padding: 3% 15%;
+}
+.stock-details { 
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: var(--background-ligth);
+    padding: 30px;
+    border-radius: 12px;
+}
+.stock-name {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+.stock-name h1 { 
+    padding: 0;
+    padding-left: 10px;
+    margin: 0;
+    font-weight: bold;
+}
+.stock-name img { 
+    border-radius: 12px;
+}
+.stock-price {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+.stock-price h1 { 
+    padding: 0;
+    margin: 0;
+    font-weight: bold;
+}
