@@ -24,7 +24,7 @@ public class StockSql : Database
                         // calculates the time is 1 <
                         var time = DateTime.Parse(reader.GetString(5));
                         var timeNow = DateTime.Now;
-                        var difference = Math.Abs((timeNow - time).Seconds);
+                        var difference = Math.Abs((timeNow - time).Minutes);
                         Console.WriteLine(difference);
                         // Close the reader before returning
                         reader.Close();
