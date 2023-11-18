@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, Input, OnChanges, SimpleChanges } from "@angular/core";
 import {
   ApexAxisChartSeries,
   ApexChart,
@@ -8,17 +8,20 @@ import {
   ApexMarkers,
   ApexYAxis,
   ApexXAxis,
-  ApexTooltip
+  ApexTooltip,
+  ApexGrid
 } from "ng-apexcharts";
-import { dataSeries } from "./data-series";
+import { ApexResponsive } from "ngx-apexcharts";
 
 @Component({
   selector: 'app-charts',
   templateUrl: './charts.component.html',
   styleUrls: ['./charts.component.css']
 })
-
-export class ChartsComponent {
+export class ChartsComponent implements OnChanges  {
+  @Input() item = [];
+  @Input() symbol2 = "";
+  
   public series!: ApexAxisChartSeries;
   public chart!: ApexChart;
   public dataLabels!: ApexDataLabels;
@@ -28,53 +31,67 @@ export class ChartsComponent {
   public yaxis!: ApexYAxis;
   public xaxis!: ApexXAxis;
   public tooltip!: ApexTooltip;
+  public grid!: ApexGrid;
+  public responsive!: ApexResponsive;
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes["item"] && changes["item"].currentValue) {
+      this.initChartData();
+    }
+  }
 
   constructor() {
     this.initChartData();
   }
 
   public initChartData(): void {
-    let ts2 = 1484418600000;
-    let dates = [];
-
-    for (let i = 0; i < 120; i++) {
-      ts2 = ts2 + 86400000;
-      dates.push([ts2, dataSeries[1][i].value]);
-    }
-    console.log('a')
-    console.log(dates.toString())
-    console.log('a')  
-
     this.series = [
       {
-        name: "AAPL",
-        data: dates
-      }
+        name: this.symbol2,
+        data: this.item,
+        color: "#F5C249"
+      },
     ];
     this.chart = {
       type: "area",
       stacked: false,
-      height: 350,
+      height: "350%",
+      width: "200%",
       zoom: {
         type: "x",
         enabled: false,
         autoScaleYaxis: true
       },
       toolbar: {
-        autoSelected: "zoom"
+        show: false
       },
-     background: "#21242D",
-     
+      background: "#21242D",
+      foreColor: "#FFF",
+    };
+    this.grid = {
+      borderColor: "#313542",
+      row: {
+        opacity: 0.01
+      },
+      column: {
+        // opacity:0.1
+      },
+      xaxis: {
+        lines: {
+          show: false
+        }
+      },
+      yaxis: {
+        lines: {
+          show: true
+        }
+      }
     };
     this.dataLabels = {
-      enabled: false
+      enabled: false,
     };
     this.markers = {
       size: 0
-    };
-    this.title = {
-      text: "Stock Price Movement",
-      align: "left"
     };
     this.fill = {
       type: "gradient",
@@ -87,25 +104,27 @@ export class ChartsComponent {
       }
     };
     this.yaxis = {
+      opposite: true,
+
       labels: {
-        formatter: function(val) {
-          return (val / 1000000).toFixed(0);
+        formatter: function (val) {
+          return "$" + val.toFixed(2); // Format the label to display the price with two decimal places
+        },
+        style: {
+          colors: ["#fff"]
         }
-      },
-      title: {
-        text: "Price"
       }
     };
     this.xaxis = {
-      type: "datetime"
+      type: "datetime",
     };
     this.tooltip = {
-      shared: false,
       y: {
-        formatter: function(val) {
-          return (val / 1000000).toFixed(0);
+        formatter: function (val) {
+          return "$" + val.toFixed(2); // Format the tooltip for y-axis
         }
-      }
+      },
+      theme: "dark"
     };
   }
 }

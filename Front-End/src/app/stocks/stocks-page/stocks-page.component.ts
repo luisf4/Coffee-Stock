@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { StockService } from './stock.service';
 
@@ -11,12 +11,16 @@ import { StockService } from './stock.service';
 export class StocksPageComponent implements OnInit {
   symbol?: string; // Define a class property to store the symbol
   stockDetails: any = {};  // Change 'stock' to 'stockDetails' for clarity
+  stockPrice: any = [];
+  stockSymbol: string = ''; // Define a class property to store the symbol
 
+  
   constructor(private route: ActivatedRoute, private stockService: StockService) {}
-
+  
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
       this.symbol = params.get("symbol")!; // Store the symbol in the class property
+      this.stockSymbol = this.symbol;
       this.getStockDetails(); // Call the function to fetch stock details
     });
   }
@@ -29,7 +33,14 @@ export class StocksPageComponent implements OnInit {
         if (data && data.name) {
           data.name = data.name.toUpperCase(); // Convert 'name' property to uppercase
         }
-        this.stockDetails = data; // Assign the modified data to 'stockDetails'
+        this.stockDetails = data;
+        this.stockPrice = this.stockDetails.historicalDataPrice.map((dataPoint: any) => {
+          return {
+            x: new Date(dataPoint.date * 1000).getTime(), // Convert Unix timestamp to milliseconds
+            y: dataPoint.close
+          };
+        });
+        console.log(this.stockPrice)
       });
     } else {
       this.stockDetails = null; // Reset stockDetails if symbol is not available
