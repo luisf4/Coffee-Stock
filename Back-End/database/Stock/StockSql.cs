@@ -25,19 +25,17 @@ public class StockSql : Database
                         var time = DateTime.Parse(reader.GetString(5));
                         var timeNow = DateTime.Now;
                         var difference = Math.Abs((timeNow - time).Minutes);
-                        Console.WriteLine(difference);
+                        Console.WriteLine("The stock "+symbol+" was updated "+ difference+ "mn ago!");
                         // Close the reader before returning
                         reader.Close();
 
                         // Update the stock if its old data (1h <)
                         if (difference > 30)
                         {
-                            Console.WriteLine("old");
                             return "old";
                         }
                         else
                         {
-                            Console.WriteLine("Ok");
                             return "ok";
                         }
                     }

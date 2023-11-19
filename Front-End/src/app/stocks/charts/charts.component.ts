@@ -53,7 +53,7 @@ export class ChartsComponent implements OnChanges  {
       },
     ];
     this.chart = {
-      type: "area",
+      type: "area", 
       stacked: false,
       height: "350%",
       width: "200%",

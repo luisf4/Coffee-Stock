@@ -6,6 +6,7 @@ import { HomeComponent } from './stocks/home/home.component';
 import { ChartsComponent } from './stocks/charts/charts.component';
 import { SearchStocksComponent } from './stocks/search-stocks/search-stocks.component';
 import { StocksPageComponent } from './stocks/stocks-page/stocks-page.component';
+import { PortfolioComponent } from './stocks/portfolio/portfolio.component';
 
 const routes: Routes = [
   {path: "", component: HomeComponent},
@@ -14,6 +15,7 @@ const routes: Routes = [
   {path: "charts", component: ChartsComponent},
   {path: "search", component: SearchStocksComponent},
   {path: "stock/:symbol", component: StocksPageComponent},
+  {path: "portfolio", component: PortfolioComponent},
 
 ];
 

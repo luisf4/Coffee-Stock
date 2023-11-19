@@ -7,7 +7,14 @@
     --text-black: #101114;
     --lines:#313542;
 }
-
+.center { 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
 * {
     font-family: 'Poppins', sans-serif;
     color: white;

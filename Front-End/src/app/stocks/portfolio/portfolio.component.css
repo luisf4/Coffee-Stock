@@ -1,0 +1,80 @@
+.main-portfolio {
+    padding: 0 15%;
+    padding-top: 100px;
+}
+
+.content-portfolio {
+    /* background-color: var(--background-ligth); */
+    padding: 50px;
+    border-radius: 12px;
+    background-color: var(--background-ligth);
+    padding: 50px;
+    border-radius: 12px;
+
+}
+
+.menu-portoflio {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+}
+
+.menu-portoflio h1 {
+    font-weight: bold;
+}
+
+.menu-portoflio a {
+    background-color: var(--main-color);
+    padding: 10px;
+    margin: 0;
+}
+
+.table {
+    padding-top: 30px;
+}
+
+.table h1 {
+    background-color: transparent;
+    color: white;
+    font-weight: bold;
+}
+
+.table p {
+    background-color: transparent;
+    color: white;
+    padding: 0 10px;
+}
+
+.table-title {
+    justify-content: space-between;
+}
+
+.table-item {
+    justify-content: space-between;
+    padding: 2px 0;
+}
+
+.table-item-btn {
+    background-color: transparent;
+}
+
+.custom-modal {
+    background-color: var(--background-light);
+    /* Apply your custom variable here */
+}
+.modal-title {
+    color: black;
+}
+.form-label {
+    color: black;
+}
+.table-item-edit-icon {
+    background-color: transparent;
+}
+.table-item-icon {
+    background-color: transparent;
+}
+.table-item-icon a {
+    padding: 0 10px;
+}

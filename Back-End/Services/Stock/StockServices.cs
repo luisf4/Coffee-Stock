@@ -13,7 +13,7 @@ public class StockServices
     {
         var stockSql = new StockSql();
         var check = stockSql.CheckTimeData(symbol);
-        Console.WriteLine(check);
+        Console.WriteLine("Data from "+symbol+" : "+check);
         
         // Checks if the info is old if it is make a request and store the data 
         if (check == "ok")

@@ -17,6 +17,7 @@ import { NavbarUpComponent } from './stocks/navbar-up/navbar-up.component';
 import { FooterComponent } from './stocks/footer/footer.component';
 import { StockService } from './stocks/stocks-page/stock.service';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { PortfolioComponent } from './stocks/portfolio/portfolio.component';
 
 
 
@@ -32,6 +33,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     ChartsComponent,
     NavbarUpComponent,
     FooterComponent,
+    PortfolioComponent,
 
   ],
   imports: [

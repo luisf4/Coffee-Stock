@@ -22,11 +22,11 @@ public class PortfolioController : ControllerBase
             var username = AuthService.GetUsername(registrationData!.jwtToken);
             _portfolioServices.Create(portfolio, username);
 
-            return Ok("ok");
+            return Ok();
         }
     }
 
-    [HttpGet("all")]
+    [HttpPost("get/all")]
     public async Task<IActionResult> ReadPortfolios()
     {
         using (var reader = new StreamReader(Request.Body))
@@ -54,16 +54,11 @@ public class PortfolioController : ControllerBase
         }
     }
 
-    [HttpDelete("{portfolio}")]
-    public async Task<IActionResult> DeletePortfolio(int portfolio)
+    [HttpDelete("{portfolio}/{jwtToken}")]
+    public async Task<IActionResult> DeletePortfolio(int portfolio, string jwtToken)
     {
-        using (var reader = new StreamReader(Request.Body))
-        {
-            var requestBody = await reader.ReadToEndAsync();
-            var registrationData = JsonSerializer.Deserialize<JwtData>(requestBody);
-            var username = AuthService.GetUsername(registrationData!.jwtToken);
-            _portfolioServices.Delete(username, portfolio);
-            return Ok();
-        }
+        var username = AuthService.GetUsername(jwtToken);
+        _portfolioServices.Delete(username, portfolio);
+        return Ok();
     }
 }
