@@ -65,4 +65,38 @@
     font-size: 40px;
     font-weight: 700;
   }
-  
+
+
+  /* Custom styles for dropdown menu */
+.dropdown-menu {
+  background-color: #21242D; /* Set your desired background color */
+  border: none; /* Remove the default border */
+  padding: 10px;
+}
+.dropdown-item {
+  color: #dddddd; /* Set the text color */
+}
+
+/* Optionally, you can change the hover and active states */
+.dropdown-item:hover,
+.dropdown-item:focus {
+  background-color: transparent; 
+  color: #ffffff;
+}
+.dropdown-item-red {
+  color: rgb(255, 70, 70);
+}
+
+.dropdown-item-red:hover,
+.dropdown-item-red:focus {
+  background-color: transparent; 
+  color: #ff0000;
+}
+.dropdown-toggle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.dropdown-toggle svg {
+  padding-right: 4px;
+}

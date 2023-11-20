@@ -90,7 +90,7 @@ public class AuthController : ControllerBase
             {
                 var requestBody = await reader.ReadToEndAsync();
                 var registrationData = JsonSerializer.Deserialize<JwtData>(requestBody);
-                var responseData = JsonSerializer.Serialize(AuthService.VerifyJWT(registrationData!));
+                var responseData = JsonSerializer.Serialize(AuthService.GetUsername(registrationData!.jwtToken));
 
                 Response.StatusCode = StatusCodes.Status200OK;
                 Response.ContentType = "application/json";

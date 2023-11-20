@@ -20,6 +20,11 @@ export class NavbarUpComponent implements OnInit {
   ngOnInit(): void {
     try {
       var token = localStorage.getItem("jwtToken");
+      this.auth.getUsername(token!).subscribe(
+        Response =>
+          this.userName = Response
+      )
+
       this.auth.verifyToken(token!)
         .pipe(
           finalize(() => { this.isLoading = false; }) // Set isLoading to false on completion
@@ -28,7 +33,6 @@ export class NavbarUpComponent implements OnInit {
           if (Response == "ok") {
             console.log("Login OK");
             this.isLoggedIn = true;
-            this.userName = 'Username'; // Replace with your logic to get the user's name
           } else if (Response == "Token has expired") {
             this.router.navigate(['/login']);
           } else {
@@ -39,5 +43,9 @@ export class NavbarUpComponent implements OnInit {
       console.error(e);
       this.router.navigate(['/login']);
     }
+  }
+
+  clearToken() {
+    localStorage.removeItem('jwtToken');
   }
 }

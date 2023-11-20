@@ -29,4 +29,11 @@ export class AuthService { // Renamed to AuthService (singular form)
     const res = this.http.post<any>(this.url+"jwt",credentials);
     return res;
   }
+
+  // Use the token to get the user name
+  getUsername(token: string): Observable<any> { 
+    const credentials = { jwtToken: token };
+    const res = this.http.post<any>(this.url+"user",credentials);
+    return res;
+  }
 }
