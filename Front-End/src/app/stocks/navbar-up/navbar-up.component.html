@@ -10,7 +10,31 @@
         <a href="about" class="navbar-item">Sobre</a>
     </div>
     <div class="navbar-buttons">
-        <a href="login" class="navbar-buttons-item">Login</a>
-        <a href="register" class="btn navbar-buttons-item">Sing up</a>
-    </div>
+        <ng-container *ngIf="isLoading; else loggedInState">
+          <!-- Show loading indicator while checking authentication -->
+          <span>Loading...</span>
+        </ng-container>
+        <ng-template #loggedInState>
+          <ng-container *ngIf="isLoggedIn">
+            <div class="dropdown">
+                <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Dropdown link
+                </a>
+              
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+              </div>
+            <!-- Other logged-in user actions/buttons -->
+          </ng-container>
+          <ng-container *ngIf="!isLoggedIn">
+            <a href="login" class="navbar-buttons-item">Login</a>
+            <a href="register" class="btn navbar-buttons-item">Sign up</a>
+          </ng-container>
+        </ng-template>
+      </div>
+      
+    
 </div>

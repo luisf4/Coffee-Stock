@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { finalize } from 'rxjs';
 import { AuthService } from 'src/app/auth/services/auth.service';
 
 @Component({
@@ -8,6 +9,9 @@ import { AuthService } from 'src/app/auth/services/auth.service';
   styleUrls: ['./navbar-up.component.css']
 })
 export class NavbarUpComponent implements OnInit {
+  isLoggedIn = false;
+  userName = '';
+  isLoading = true; // Add loading indicator
 
 
   constructor(private auth: AuthService, private router: Router) { }
@@ -16,15 +20,21 @@ export class NavbarUpComponent implements OnInit {
   ngOnInit(): void {
     try {
       var token = localStorage.getItem("jwtToken");
-      this.auth.verifyToken(token!).subscribe(Response => {
-        if (Response == "ok") {
-          console.log("Login OK");
-        } else if (Response == "Token has expired") {
-          this.router.navigate(['/login']);
-        } else {
-          this.router.navigate(['/login']);
-        }
-      });
+      this.auth.verifyToken(token!)
+        .pipe(
+          finalize(() => { this.isLoading = false; }) // Set isLoading to false on completion
+        )
+        .subscribe(Response => {
+          if (Response == "ok") {
+            console.log("Login OK");
+            this.isLoggedIn = true;
+            this.userName = 'Username'; // Replace with your logic to get the user's name
+          } else if (Response == "Token has expired") {
+            this.router.navigate(['/login']);
+          } else {
+            this.router.navigate(['/login']);
+          }
+        });
     } catch (e) {
       console.error(e);
       this.router.navigate(['/login']);

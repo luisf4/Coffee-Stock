@@ -53,7 +53,7 @@ CREATE TABLE portfolios (
     [name] VARCHAR(100) NOT NULL,
 );
 GO
-select * from portfolios
+select * from portfolios where user_name = '1'
 
 -- PortfolioStocks table to establish relationships
 CREATE TABLE stocks_portfolio (
