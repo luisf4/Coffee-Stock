@@ -69,3 +69,16 @@
 .form-label{
     color: black;
 }
+
+.custom-btn {
+    background-color: var(--main-color); /* Change background color */
+    border-color: var(--main-color); /* Change border color */
+    color: white; /* Change text color */
+  }
+  
+  .custom-btn:hover {
+    background-color: var(--main-color); /* Change background color on hover */
+    border-color: var(--main-color); /* Change border color */
+
+    /* color: black; */
+  }

@@ -1,10 +1,13 @@
 <div class="navbar">
-  <div class="navbar-logo">
-    <p><a href="/"><span class="white-text">Coffee</span><span class="yellow-text">Stock</span></a></p>
-  </div>
+
   <div class="navbar-items">
+    <div class="navbar-logo">
+      <a href="/">
+        <img src="assets/logo.svg" alt="">
+      </a>
+    </div>
     <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="navbar-item">Home</a>
-    <a routerLink="/search"  routerLinkActive="active" class="navbar-item">Ações</a>
+    <a routerLink="/search" routerLinkActive="active" class="navbar-item">Ações</a>
     <a routerLink="/portfolio" routerLinkActive="active" class="navbar-item">Portfolio</a>
     <a routerLink="/profile" routerLinkActive="active" class="navbar-item">Perfil</a>
     <a routerLink="/about" routerLinkActive="active" class="navbar-item">Sobre</a>
@@ -45,6 +48,4 @@
       </ng-container>
     </ng-template>
   </div>
-
-
 </div>
