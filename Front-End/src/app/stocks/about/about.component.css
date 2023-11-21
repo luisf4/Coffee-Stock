@@ -1,0 +1,30 @@
+.about-main {
+    padding-top: 25vh;
+
+}
+.about-content {
+    margin: 0 15%;
+    background-color: var(--background-ligth);
+    border-radius: 12px;
+    padding: 50px;
+}
+.about-header {
+    font-size: var(--font-extra-large);
+    font-weight: bold;
+    padding: 20px 0;
+}
+.about-title {
+    font-size: var(--large);
+    font-weight: bold;
+    padding-top: 25px;
+    padding-bottom: 10px;
+}
+.about-text {
+    font-size: var(--large);
+    font-weight: 400;
+    color: var(--text-darker);
+    /* padding: 20px 0; */
+}
+.about-item {
+    padding-bottom: 60px;
+}

@@ -19,6 +19,7 @@ import { StockService } from './stocks/stocks-page/stock.service';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { PortfolioComponent } from './stocks/portfolio/portfolio.component';
 import { PortfolioItemComponent } from './stocks/portfolio-item/portfolio-item.component';
+import { AboutComponent } from './stocks/about/about.component';
 
 
 
@@ -36,6 +37,7 @@ import { PortfolioItemComponent } from './stocks/portfolio-item/portfolio-item.c
     FooterComponent,
     PortfolioComponent,
     PortfolioItemComponent,
+    AboutComponent,
 
   ],
   imports: [

@@ -57,7 +57,6 @@
     justify-content: space-between;
     padding: 2px 0;
 }
-
 .table-item-btn {
     background-color: transparent;
 }
@@ -70,6 +69,13 @@
     color: black;
 }
 .form-label {
+    display: flex;
+    color: black;
+    justify-content: start;
+    align-items: start;
+    text-align: start;
+}
+.modal-header h1 {
     color: black;
 }
 .table-item-edit-icon {
