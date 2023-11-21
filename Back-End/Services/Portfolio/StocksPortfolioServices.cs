@@ -10,7 +10,7 @@ public class StocksPortfolioServices : IStocksPortfolioServices
         StockServices stockServices = new StockServices();
         StocksPortfolioSql stocksPortfolioSql = new StocksPortfolioSql();
         StockData res = await stockServices.GetStockInfo(stock.stock, "5d");
-        stocksPortfolioSql.Create(stock.user, stock.portfolio_id, stock.stock, stock.qnt, res);
+        stocksPortfolioSql.Create(stock, res);
     }
 
 

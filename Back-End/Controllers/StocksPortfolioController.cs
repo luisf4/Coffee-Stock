@@ -24,7 +24,7 @@ public class StocksPortfolioController : ControllerBase
         }
     }
 
-    [HttpGet("{id}")]
+    [HttpPost("{id}")]
     public async Task<IActionResult> Read(int id)
     {
         using (var reader = new StreamReader(Request.Body))
@@ -34,7 +34,7 @@ public class StocksPortfolioController : ControllerBase
             var username = AuthService.GetUsername(registrationData!.jwtToken);
             var portfolioStocks =  _stocksPortfolioServices.Read(username,id);
             var portfolioStocksJson = JsonSerializer.Serialize(portfolioStocks);
-            return Content(portfolioStocksJson);
+            return Ok(portfolioStocksJson);
         }
     }
 

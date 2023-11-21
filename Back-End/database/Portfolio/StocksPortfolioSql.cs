@@ -2,7 +2,7 @@ using Microsoft.Data.SqlClient;
 
 public class StocksPortfolioSql : Database
 {
-    public void Create(string user, int id, string stock, int qnt, StockData info)
+    public void Create(StocksPortfolio stock, StockData response)
     {
         using (SqlCommand db = new SqlCommand())
         {
@@ -11,14 +11,14 @@ public class StocksPortfolioSql : Database
                              "BEGIN " +
                              "    INSERT INTO stocks_portfolio VALUES (@id, @stock, @name, @qtd, @price, @logo, @date) " +
                              "END";
-            db.Parameters.AddWithValue("@id", id);
-            db.Parameters.AddWithValue("@user", user);
-            db.Parameters.AddWithValue("@stock", stock);
-            db.Parameters.AddWithValue("@name", info.Name);
-            db.Parameters.AddWithValue("@qtd", qnt);
-            db.Parameters.AddWithValue("@price", info.Price);
-            db.Parameters.AddWithValue("@logo", info.Logo);
-            db.Parameters.AddWithValue("@date", "date:"); // Assuming this should be replaced with an actual date value
+            db.Parameters.AddWithValue("@id", stock.portfolio_id);
+            db.Parameters.AddWithValue("@user", stock.user); 
+            db.Parameters.AddWithValue("@stock", stock.stock);
+            db.Parameters.AddWithValue("@name", response.Name);
+            db.Parameters.AddWithValue("@qtd", stock.qnt); 
+            db.Parameters.AddWithValue("@price", response.Price); 
+            db.Parameters.AddWithValue("@logo", response.Logo);
+            db.Parameters.AddWithValue("@date", stock.date); // Assuming this should be replaced with an actual date value
             db.ExecuteNonQuery();
         }
     }

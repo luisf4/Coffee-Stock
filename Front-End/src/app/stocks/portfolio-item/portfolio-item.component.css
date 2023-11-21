@@ -1,0 +1,145 @@
+.main-portfolio {
+    padding: 0 15%;
+    padding-top: 100px;
+}
+
+.content-portfolio {
+    /* background-color: var(--background-ligth); */
+    padding: 50px;
+    border-radius: 12px;
+    background-color: var(--background-ligth);
+    padding: 50px;
+    border-radius: 12px;
+    align-items: center;
+
+}
+
+.menu-portoflio {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+}
+
+.menu-portoflio h1 {
+    font-weight: bold;
+}
+
+.menu-portoflio a {
+    background-color: var(--main-color);
+    padding: 10px;
+    margin: 0;
+}
+
+.graphs {
+    display: flex;
+    justify-content: space-between;
+}
+
+.list-stocks {
+    display: flex;
+    flex-direction: column;
+}
+
+.item-stocks {
+    display: flex;
+    flex-direction: row;
+}
+
+.item-stocks h1 {
+    font-size: large;
+    padding: 0 10px;
+}
+
+.stock-name {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    /* text-align: center; */
+}
+
+.stock-name-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    padding: 10px;
+}
+.stock-name-text h1 {
+    font-size: var(--font-normal);
+    color: var(--text);
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.stock-name-text p {
+    font-size: var(--font-normal);
+    color: var(--text-darker);
+
+}
+
+
+
+table {
+    background-color: var(--background-light);
+    color: var(--text);
+}
+
+thead {
+    background-color: var(--background-light);
+    color: var(--text);
+}
+
+tr {
+    background-color: var(--background-light);
+    color: var(--text);
+}
+
+th {
+    background-color: var(--background-light);
+    color: var(--text);
+}
+
+tbody {
+    background-color: var(--background-light);
+    color: var(--text);
+}
+
+td {
+    background-color: var(--background-light);
+    color: var(--text);
+    
+}
+
+td img {
+    width: 3vw;
+    min-width: 60px;
+    border-radius: 12px;
+}
+.table td {
+    text-align: center; /* Centers the content horizontally */
+    vertical-align: middle; /* Centers the content vertically */
+}
+.table th {
+    text-align: center; /* Centers the content horizontally */
+    vertical-align: middle; /* Centers the content vertically */
+}
+.list-item {
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    text-align: start;
+}
+
+.custom-modal {
+    background-color: var(--background-light);
+    /* Apply your custom variable here */
+}
+.modal-title {
+    color: black;
+}
+
+
+.list-item {
+    width: 15vw;
+
+}

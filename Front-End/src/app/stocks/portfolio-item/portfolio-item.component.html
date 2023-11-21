@@ -1,0 +1,61 @@
+<app-navbar-up></app-navbar-up>
+
+<div class="main-portfolio">
+    <div class="content-portfolio">
+        <div class="menu-portoflio">
+            <h1>{{portfolio_name}}</h1>
+
+        </div>
+        <div class="graphs">
+            <h1>graph</h1>
+            <div class="list-stocks">
+                <table class="table table-dark table-borderless">
+                    <thead>
+                        <tr>
+                            <th class="list-item" scope="col">Nome</th>
+                            <th scope="col">Preço</th>
+                            <th scope="col">Qnt</th>
+                            <th scope="col">Data</th>
+                            <th scope="col">Editar</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let stock of stocks_list">
+                            <td scope="row">
+                                <div class="stock-name">
+                                    <a href="stock/{{stock.stock}}">
+                                        <img src="{{stock.logo}}" alt="">
+                                    </a>
+                                    <div class="stock-name-text">
+                                        <h1>{{stock.stock}}</h1>
+                                        <p>{{stock.name}}</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>R${{stock.price}}</td>
+                            <td>{{stock.qnt}}</td>
+                            <td>{{stock.date}}</td>
+                            <td>
+                                <a class="bnt table-item-edit-icon" data-bs-toggle="modal" data-bs-target="#updateModal" href="" >
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><style>svg{fill:#F5C249}</style><path d="M362.7 19.3L314.3 67.7 444.3 197.7l48.4-48.4c25-25 25-65.5 0-90.5L453.3 19.3c-25-25-65.5-25-90.5 0zm-71 71L58.6 323.5c-10.4 10.4-18 23.3-22.2 37.4L1 481.2C-1.5 489.7 .8 498.8 7 505s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L421.7 220.3 291.7 90.3z"/></svg>
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- <div class="stock-name">
+    <img src="{{stock.logo}}" alt="">
+    <div class="stock-name-text">
+        <h1>{{stock.stock}}</h1>
+        <p>{{stock.name}}</p>
+    </div>
+</div> -->
+
+
+

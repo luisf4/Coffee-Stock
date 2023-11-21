@@ -53,16 +53,26 @@ public class PortoflioSql : Database
         }
     }
 
-    public void Delete(string user, int id)
+public void Delete(string user, int id)
+{
+    using (SqlCommand db = new SqlCommand())
     {
-        using (SqlCommand db = new SqlCommand())
-        {
-            db.Connection = connection;
-            // Delete the portfolio for a specific user and ID
-            db.CommandText = "DELETE FROM portfolios WHERE portfolio_id = @id AND user_name = @user";
-            db.Parameters.AddWithValue("@id", id);
-            db.Parameters.AddWithValue("@user", user);
-            db.ExecuteNonQuery();
-        }
+        db.Connection = connection;
+
+        // Delete from stocks_portfolio
+        db.CommandText = "DELETE FROM stocks_portfolio WHERE portfolio_id = @id";
+        db.Parameters.AddWithValue("@id", id);
+        db.ExecuteNonQuery();
+
+        // Clear parameters before reusing the SqlCommand for a new query
+        db.Parameters.Clear();
+
+        // Delete from portfolios
+        db.CommandText = "DELETE FROM portfolios WHERE portfolio_id = @id AND user_name = @user";
+        db.Parameters.AddWithValue("@id", id);
+        db.Parameters.AddWithValue("@user", user);
+        db.ExecuteNonQuery();
     }
+}
+
 }

@@ -1,0 +1,353 @@
+[33mcommit a7d734bd2f8f47728a7dd87caef2a26a173d1cdc[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m)[m
+Author: luisf4 <luismarcelino.dev@gmail.com>
+Date:   Tue Nov 21 11:31:43 2023 -0300
+
+    feat: added stocksportfolio add
+
+[33mcommit 110a4ede0892e35a29a4f07d95a3e3352724b1e3[m
+Author: luisf4 <luismarcelino.dev@gmail.com>
+Date:   Mon Nov 20 11:31:13 2023 -0300
+
+    chore: added dropdown on user name and logoff option
+
+[33mcommit 30b30cdf353f29f9fe1aeba3a172c7cbb8370aad[m
+Author: luisf4 <luismarcelino.dev@gmail.com>
+Date:   Mon Nov 20 10:22:15 2023 -0300
+
+    feat: showing the name of the user in the navbar
+
+[33mcommit 1bd8c4f127b2c839b8a1ecef4e52a27b4dce6a37[m
+Author: luisf4 <luismarcelino.dev@gmail.com>
+Date:   Sun Nov 19 00:58:17 2023 -0300
+
+    feat: added portfolio crud
+
+[33mcommit 886fe97a74c608a1d7c43c465a291361d586fbc8[m
+Author: luisf4 <luismarcelino.dev@gmail.com>
+Date:   Sat Nov 18 13:56:30 2023 -0300
+
+    feat: added stock page
+
+[33mcommit ca715cbbce97918984975c12fc2755c49f80a5ed[m
+Author: luisf4 <luismarcelino.dev@gmail.com>
+Date:   Fri Nov 17 15:46:10 2023 -0300
+
+    chore: changed stocks page loyaut
+
+[33mcommit bb63fe20d14c03c5d0d89ba95e0ac06b48132c3e[m
+Author: luisf4 <luismarcelino.dev@gmail.com>
+Date:   Thu Nov 16 23:48:00 2023 -0300
+
+    chore: deleted the stock page loyout
+
+[33mcommit 82e7cec99da7a11eb8311aa6e1fd15ffd2c7dc54[m
+Author: luisf4 <luismarcelino.dev@gmail.com>
+Date:   Thu Nov 16 22:06:48 2023 -0300
+
+    chore: stocksPortfolio done
+
+[33mcommit 779f8cadae46563f32b9311573c067822d96d0c3[m
+Author: luisf4 <luismarcelino.dev@gmail.com>
+Date:   Thu Nov 16 22:03:12 2023 -0300
+
+    chore: created update and delete to stocksportfolio
+
+[33mcommit d05f57cfd1199a38a7c4db695121df908ec7e84f[m
+Author: luisf4 <luismarcelino.dev@gmail.com>
+Date:   Thu Nov 16 20:52:51 2023 -0300
+
+    chore: created create and read to stocksportfolio
+
+[33mcommit 00a297673f90f6b412da3b447c82669062099da8[m
+Author: luisf4 <luismarcelino.dev@gmail.com>
+Date:   Wed Nov 15 16:57:37 2023 -0300
+
+    chore: crud portfolio added
+
+[33mcommit 54123e4a0f63f72b5917f912061db15d1171f50a[m
+Author: luisf4 <luismarcelino.dev@gmail.com>
+Date:   Wed Nov 15 12:48:01 2023 -0300
+
+    feat: added create portfolio on back
+
+[33mcommit 37381150cad2357dbbde973ac2ba60b88751a8b8[m
+Author: luisf4 <luismarcelino.dev@gmail.com>
+Date:   Tue Nov 14 22:52:38 2023 -0300
+
+    chore: added contracts to portfolio controller, service, db
+
+[33mcommit d9364217481afef0e6b2d76ed88c8465af0e312e[m
+Author: luisf4 <luismarcelino.dev@gmail.com>
+Date:   Tue Nov 14 16:07:18 2023 -0300
+
+    chore: retriving data of the db
+
+[33mcommit 30ef53e47139e1bff7f6b239bdb33f8342c74507[m
+Author: luisf4 <luismarcelino.dev@gmail.com>
+Date:   Tue Nov 14 14:24:45 2023 -0300
+
+    chore: added read to StocksServices
+
+[33mcommit 5f2b3a4d454abfdd9aa8cd924187d0a777a54dca[m
+Author: luisf4 <luismarcelino.dev@gmail.com>
+Date:   Mon Nov 13 15:56:24 2023 -0300
+
+    chore: added auto insert wen the stock data is not in the db
+
+[33mcommit 11521c1b6027ea35ac33a93142efa5d54941386e[m
+Author: luisf4 <luismarcelino.dev@gmail.com>
+Date:   Mon Nov 13 02:31:01 2023 -0300
+
+    feat: stored data in db
+
+[33mcommit 558c67c1621daec0f647291f2b008c2bc9965794[m
+Author: luisf4 <luismarcelino.dev@gmail.com>
+Date:   Thu Nov 9 13:06:20 2023 -0300
+
+    feat: changed to controller
+
+[33mcommit 4a2e1f94ed58d40867c3a5b48b7af76c83868a58[m
+Author: luisf4 <luismarcelino.dev@gmail.com>
+Date:   Thu Nov 9 07:33:11 2023 -0300
+
+    it will be changed to controller no matter what
+
+[33mcommit ecb95620034ddf015e16dba2f550930af236452a[m
+Author: luisf4 <luismarcelino.dev@gmail.com>
+Date:   Tue Nov 7 18:11:59 2023 -0300
+
+    chore: added some class
+
+[33mcommit 6ef668018b5155cdd595edb13dcc11427f3be4b2[m
+Author: luisf4 <luismarcelino.dev@gmail.com>
+Date:   Tue Nov 7 06:39:55 2023 -0800
+
+    sql: changed sql
+
+[33mcommit 43dcbc8ef22ba7bef4c5a6f8ddd5dadff79a506c[m
+Author: luisf4 <luismarcelino.dev@gmail.com>
+Date:   Mon Nov 6 18:00:18 2023 -0300
+
+    chore: added stocks to home
+
+[33mcommit 599ad9389396b56be0abf6c8dc3135ee1f80c3ad[m
+Author: luisf4 <luismarcelino.dev@gmail.com>
+Date:   Mon Nov 6 17:39:49 2023 -0300
+
+    feat: added packge ngx pagination
+
+[33mcommit 1915d5a575dbb454a202aa1aa0fec21215974e37[m
+Author: luisf4 <luismarcelino.dev@gmail.com>
+Date:   Mon Nov 6 15:03:38 2023 -0300
+
+    style: changed footer
+
+[33mcommit 98674791b916fb2da0be9e9e7eca5d8ac3750f65[m
+Author: luisf4 <luismarcelino.dev@gmail.com>
+Date:   Mon Nov 6 12:55:09 2023 -0300
+
+    feat: added loading brapi api key
+
+[33mcommit d0c558b5a8e2b8da9dd99650705b290eba899875[m
+Author: luisf4 <luismarcelino.dev@gmail.com>
+Date:   Mon Nov 6 12:26:45 2023 -0300
+
+    feat: added redirect to login page wen the token is invalid
+
+[33mcommit c20ea38004c743dba7e5d7caaac3e9766fdae116[m
+Author: luisf4 <luismarcelino.dev@gmail.com>
+Date:   Wed Nov 1 14:51:13 2023 -0300
+
+    feat: added stock page logic
+
+[33mcommit 3a2b459e2eaae18d15c89f10b0a1677d273e9337[m
+Author: luisf4 <luismarcelino.dev@gmail.com>
+Date:   Tue Oct 31 16:37:58 2023 -0300
+
+    feat: added search
+
+[33mcommit a46105181ac13a6300f78d9fcb38073bce616f52[m
+Author: luisf4 <luismarcelino.dev@gmail.com>
+Date:   Tue Oct 31 15:50:35 2023 -0300
+
+    fix: changed db users table row jwt to nvarchar(max)
+
+[33mcommit 1de6397e4060ec82997cb5a3c906180bc4997108[m
+Author: luisf4 <luismarcelino.dev@gmail.com>
+Date:   Mon Oct 30 08:37:22 2023 -0300
+
+    chore: jwt fix
+
+[33mcommit 85b0190ef6b6a0c968d4ef080c56d6b5035db40c[m
+Author: luisf4 <luismarcelino.dev@gmail.com>
+Date:   Fri Oct 27 10:03:09 2023 -0300
+
+    chore: added the jwt verification on frontend
+
+[33mcommit 0b17baa635c206c260acddadf55f4f1deeb510c7[m
+Author: luisf4 <luismarcelino.dev@gmail.com>
+Date:   Fri Oct 27 08:56:37 2023 -0300
+
+    chore: added jwt verification method
+
+[33mcommit 77669242f261c50df71f38920660875daf017679[m
+Author: luisf4 <luismarcelino.dev@gmail.com>
+Date:   Wed Oct 25 14:46:31 2023 -0300
+
+    chore: added a search bar in search stocks
+
+[33mcommit a8165eba7c64b5bb12ac08d05ec89fcb5c9ec5f6[m
+Author: luisf4 <luismarcelino.dev@gmail.com>
+Date:   Wed Oct 25 13:32:00 2023 -0300
+
+    chore: auth logic done
+
+[33mcommit 9ffa26b99470acdeba0246b5c35fd351348be407[m
+Author: luisf4 <luismarcelino.dev@gmail.com>
+Date:   Tue Oct 24 17:53:34 2023 -0300
+
+    feat: added auth sql logic and sql script on the root of the api folder
+
+[33mcommit 8b22d250f58fb347fba8e9f36e789f6d2699be8f[m
+Author: luisf4 <luismarcelino.dev@gmail.com>
+Date:   Tue Oct 24 17:36:45 2023 -0300
+
+    mostrar para o dezani
+
+[33mcommit ff88f67d154aaccbacaa43ca76b26fce34aadc21[m
+Author: Luis Fernando <97737113+luisf4@users.noreply.github.com>
+Date:   Wed Oct 18 00:26:07 2023 +0000
+
+    chore: edited search page
+
+[33mcommit 55e4ed725bf342eb2de070d2d7ed79e8e94aaab9[m
+Author: luisf4 <luismarcelino.dev@gmail.com>
+Date:   Tue Oct 17 16:01:50 2023 -0300
+
+    style: added logo
+
+[33mcommit 23c54019964be1edb4354921ca373c4649384e2e[m
+Author: luisf4 <luismarcelino.dev@gmail.com>
+Date:   Mon Oct 16 18:22:09 2023 -0300
+
+    style: changed the style of login and register pages
+
+[33mcommit bc8004524e30c86e69eb069892ac2432894208fb[m
+Author: luisf4 <luismarcelino.dev@gmail.com>
+Date:   Mon Oct 16 16:51:55 2023 -0300
+
+    feat: added footer
+
+[33mcommit 02567005f1867ba30b2887fc182903d9ef262878[m
+Author: luisf4 <luismarcelino.dev@gmail.com>
+Date:   Mon Oct 16 14:37:41 2023 -0300
+
+    style: added list of items
+
+[33mcommit 5d9eaf072315b14c0cf1798b47a4161513ef9d8a[m
+Author: luisf4 <luismarcelino.dev@gmail.com>
+Date:   Mon Oct 16 13:01:53 2023 -0300
+
+    style: changed colors
+
+[33mcommit 6a555b366340d2342c501d1b7f47c6a048907330[m
+Author: luisf4 <luismarcelino.dev@gmail.com>
+Date:   Sun Oct 15 00:54:46 2023 -0300
+
+    style: change some home html
+
+[33mcommit 2c35829ad5df1666ff0a2a6019bf2cb31ebcba9f[m
+Author: Luis Fernando <97737113+luisf4@users.noreply.github.com>
+Date:   Fri Oct 13 23:16:30 2023 -0300
+
+    Update README.md
+
+[33mcommit af2a82c884664cfaf66253f27b71f47e808a864e[m
+Author: luisf4 <luismarcelino.dev@gmail.com>
+Date:   Wed Oct 11 16:24:21 2023 -0300
+
+    added a chart
+
+[33mcommit b34c86957774e85ee840df49fab0a5fcb424475d[m
+Author: luisf4 <luismarcelino.dev@gmail.com>
+Date:   Wed Oct 11 09:20:32 2023 -0300
+
+    style: changed navbar colors
+
+[33mcommit a825489aa45cb81bc69ffe4b714b0dda6277e42c[m
+Author: luisf4 <luismarcelino.dev@gmail.com>
+Date:   Mon Oct 9 12:10:38 2023 -0300
+
+    feat: added some navbar that i just stole :I
+
+[33mcommit 36f722aede30e09daf3fab823dba29d14bc7888a[m
+Author: luisf4 <luismarcelino.dev@gmail.com>
+Date:   Mon Oct 9 08:10:26 2023 -0300
+
+    feat: added login logic
+
+[33mcommit 6fde12f4a808fe0520f6bd15742dd467b7bf60b5[m
+Author: luisf4 <luismarcelino.dev@gmail.com>
+Date:   Mon Oct 9 08:00:05 2023 -0300
+
+    fix: fixed CORS errors
+
+[33mcommit 4fab34eae24a90444a43cd9a99520c6229dcb325[m
+Author: luisf4 <luismarcelino.dev@gmail.com>
+Date:   Sun Oct 8 18:28:22 2023 -0300
+
+    feat: added a form logic for register
+
+[33mcommit 6284ee74082f6555493788d563d94210f120b4e6[m
+Author: luisf4 <luismarcelino.dev@gmail.com>
+Date:   Sun Oct 8 01:06:27 2023 -0300
+
+    Feat: added login page and register page in angular
+
+[33mcommit ee95220a877b130b7be06544b30dfb5001c5563c[m
+Author: luisf4 <luismarcelino.dev@gmail.com>
+Date:   Sun Oct 8 00:00:28 2023 -0300
+
+    feat: create jwt on login
+
+[33mcommit bd8430a0706605b2ca74f170ff94eaa8667d9296[m
+Author: luisf4 <luismarcelino.dev@gmail.com>
+Date:   Sat Oct 7 23:34:25 2023 -0300
+
+    feat: added login
+
+[33mcommit ae1559b3d8bd9250bce40db5945b84b1ac8e16ad[m
+Author: luisf4 <luismarcelino.dev@gmail.com>
+Date:   Sat Oct 7 23:28:40 2023 -0300
+
+    feat:Create register with Bcrypt
+
+[33mcommit 878d11d8b2cb177c9e5e37caef848e8720a6b43a[m
+Author: luisf4 <luismarcelino.dev@gmail.com>
+Date:   Wed Oct 4 14:06:42 2023 -0300
+
+    Feat: added CredentialsLoader
+
+[33mcommit 05a183d3706c8049cd2665bcf0456bee0902df34[m
+Author: luisf4 <luismarcelino.dev@gmail.com>
+Date:   Wed Oct 4 09:05:48 2023 -0300
+
+    feat: added stock components
+
+[33mcommit 0a9393f51886ab49171d8af6e00d1cdd928c9256[m
+Author: luisf4 <luismarcelino.dev@gmail.com>
+Date:   Wed Oct 4 08:36:46 2023 -0300
+
+    added Angular :)
+
+[33mcommit 3d3834fd9858d929a4ce9a965e2c997c9ec48dcf[m
+Author: luisf4 <luismarcelino.dev@gmail.com>
+Date:   Wed Oct 4 08:35:53 2023 -0300
+
+    Feat: added getstockshart endpoint
+
+[33mcommit 6f299898aab2b08b24a718d80b71d1cf5f9cca40[m
+Author: luisf4 <luismarcelino.dev@gmail.com>
+Date:   Tue Oct 3 18:24:22 2023 -0300
+
+    push to git

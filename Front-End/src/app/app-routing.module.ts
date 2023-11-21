@@ -7,6 +7,7 @@ import { ChartsComponent } from './stocks/charts/charts.component';
 import { SearchStocksComponent } from './stocks/search-stocks/search-stocks.component';
 import { StocksPageComponent } from './stocks/stocks-page/stocks-page.component';
 import { PortfolioComponent } from './stocks/portfolio/portfolio.component';
+import { PortfolioItemComponent } from './stocks/portfolio-item/portfolio-item.component';
 
 const routes: Routes = [
   {path: "", component: HomeComponent},
@@ -16,6 +17,7 @@ const routes: Routes = [
   {path: "search", component: SearchStocksComponent},
   {path: "stock/:symbol", component: StocksPageComponent},
   {path: "portfolio", component: PortfolioComponent},
+  {path: "portfolio/:portfolio_id/:name", component: PortfolioItemComponent},
 
 ];
 
