@@ -1,40 +1,50 @@
 <div class="navbar">
-    <div class="navbar-logo">
-        <p><a href="/"><span class="white-text">Coffee</span><span class="yellow-text">Stock</span></a></p>
-    </div>
-    <div class="navbar-items">
-        <a href="/" class="navbar-item">Home</a>
-        <a href="search" class="navbar-item">Ações</a>
-        <a href="portfolio" class="navbar-item">Portfolio</a>
-        <a href="profile" class="navbar-item">Perfil</a>
-        <a href="about" class="navbar-item">Sobre</a>
-    </div>
-    <div class="navbar-buttons">
-        <ng-container *ngIf="isLoading; else loggedInState">
-          <!-- Show loading indicator while checking authentication -->
-          <span>Loading...</span>
-        </ng-container>
-        <ng-template #loggedInState>
-          <ng-container *ngIf="isLoggedIn">
-            <div class="dropdown">
-                <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><style>svg{fill:#F5C249}</style><path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"/></svg>
-                  {{userName}}
-                </a>
-              
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item">Perfil</a></li>
-                  <li><a class="dropdown-item dropdown-item-red" (click)="clearToken()" href="" >Sair</a></li>
-                </ul>
-              </div>
-            <!-- Other logged-in user actions/buttons -->
-          </ng-container>
-          <ng-container *ngIf="!isLoggedIn">
-            <a href="login" class="navbar-buttons-item">Login</a>
-            <a href="register" class="btn navbar-buttons-item">Sign up</a>
-          </ng-container>
-        </ng-template>
-      </div>
-      
-    
+  <div class="navbar-logo">
+    <p><a href="/"><span class="white-text">Coffee</span><span class="yellow-text">Stock</span></a></p>
+  </div>
+  <div class="navbar-items">
+    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="navbar-item">Home</a>
+    <a routerLink="/search" routerLinkActive="active" class="navbar-item">Ações</a>
+    <a routerLink="/portfolio" routerLinkActive="active" class="navbar-item">Portfolio</a>
+    <a routerLink="/profile" routerLinkActive="active" class="navbar-item">Perfil</a>
+    <a routerLink="/about" routerLinkActive="active" class="navbar-item">Sobre</a>
+
+  </div>
+  <div class="navbar-buttons">
+    <ng-container *ngIf="isLoading; else loggedInState">
+      <!-- Show loading indicator while checking authentication -->
+      <span>Loading...</span>
+    </ng-container>
+    <ng-template #loggedInState>
+      <ng-container *ngIf="isLoggedIn">
+        <div class="dropdown">
+          <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <svg xmlns="http://www.w3.org/2000/svg" height="1em"
+              viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+              <style>
+                svg {
+                  fill: #F5C249
+                }
+              </style>
+              <path
+                d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z" />
+            </svg>
+            {{userName}}
+          </a>
+
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item">Perfil</a></li>
+            <li><a class="dropdown-item dropdown-item-red" (click)="clearToken()" href="">Sair</a></li>
+          </ul>
+        </div>
+        <!-- Other logged-in user actions/buttons -->
+      </ng-container>
+      <ng-container *ngIf="!isLoggedIn">
+        <a href="login" class="navbar-buttons-item">Login</a>
+        <a href="register" class="btn navbar-buttons-item">Sign up</a>
+      </ng-container>
+    </ng-template>
+  </div>
+
+
 </div>

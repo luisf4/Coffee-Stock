@@ -11,12 +11,23 @@
     justify-content: space-between;
     align-items: center;
     padding: 2.4vh 15%;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    background-color: var(--background);
+    
 }
 
 .navbar-items {
     display: flex;
     justify-content: flex-start;
     width: 40%;
+}
+.navbar-items a {
+  color: var(--text-darker);
+}
+.navbar-items a:hover {
+  color: var(--main-color);
 }
 .navbar-buttons {
     display: flex;
@@ -99,4 +110,12 @@
 }
 .dropdown-toggle svg {
   padding-right: 4px;
+}
+
+.navbar-items a.active {
+  color: var(--main-color);
+}
+
+.navbar-items a.active:hover {
+  color: var(--main-color);
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 import { finalize } from 'rxjs';
 import { AuthService } from 'src/app/auth/services/auth.service';
 
@@ -19,6 +19,30 @@ export class NavbarUpComponent implements OnInit {
   // On acessing the page verify if the token is valid
   ngOnInit(): void {
     try {
+
+      this.router.events.subscribe((event) => {
+        if (event instanceof NavigationEnd) {
+          // Reset all active links
+          document.querySelectorAll('.navbar-item').forEach((link) => {
+            link.classList.remove('active');
+          });
+
+          // Get the active link and add active class
+          const activeLink = document.querySelector(`.navbar-item[href='${this.router.url}']`);
+          if (activeLink) {
+            activeLink.classList.add('active');
+          } else {
+            // If no link matches the current route, activate the Home link
+            const homeLink = document.querySelector(`.navbar-item[href='/']`);
+            if (homeLink) {
+              homeLink.classList.add('active');
+            }
+          }
+        }
+      });
+
+
+
       var token = localStorage.getItem("jwtToken");
       this.auth.getUsername(token!).subscribe(
         Response =>

@@ -1,8 +1,9 @@
 .body { 
   padding: 0 15%;
+  padding-top: 15vh;
 }
 .main {
-  padding: 8vh 0;
+  padding-bottom: 10vh;
   width: 100%;
   top: 0;
   right: 0;
