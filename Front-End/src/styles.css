@@ -5,11 +5,24 @@
     --background-ligth: #21242D;
     --main-color: #F5C249;
     --text: #fff;
-    --text-darker: #e0e0e0;
-    --text-black: #101114;
-    --lines:#313542;
+    --text-darker: #adadad;
+    --text-black: #1a1a1a;
+    --lines: #313542;
+
+    /* Tamanhos de Fonte */
+    --font-small: 14px;
+    /* Pequeno: para textos pequenos, como informações secundárias */
+    --font-normal: 16px;
+    /* Normal: para texto principal e descrições */
+    --font-medium: 18px;
+    /* Médio: para títulos menores e detalhes importantes */
+    --font-large: 24px;
+    /* Grande: para títulos principais e ênfase */
+    --font-extra-large: 36px;
+    /* Extra Grande: para destaque e ênfase especial */
 }
-.center { 
+
+.center {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -17,18 +30,22 @@
     margin: 0;
     padding: 0;
 }
+
 * {
     font-family: 'Poppins', sans-serif;
     color: white;
 }
-body { 
+
+body {
     background-color: var(--background);
 }
+
 a {
     text-decoration: none;
     color: inherit;
     font-weight: 500;
 }
+
 /* ==============
     @media rules
    ============== */
@@ -96,4 +113,3 @@ a {
 }
 
 @media only screen and (max-width: 496px) {}
-

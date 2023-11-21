@@ -57,3 +57,13 @@
 .full { 
     border-radius: 12px;
 }
+.custom-modal {
+    background-color: var(--background-light);
+    /* Apply your custom variable here */
+}
+.modal-title {
+    color: black;
+}
+.form-label{
+    color: black;
+}
