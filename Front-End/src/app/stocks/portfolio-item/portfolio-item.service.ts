@@ -36,12 +36,27 @@ export class StocksPortfolioService {
     }
     
 
-    DeleteStocksPortfolio(token: string, id: string): Observable<any> {
-        return this.http.delete<any>(`${this.url}${id}/${token}`);
+    DeleteStocksPortfolio(token: string, id: string, portfolio_id: any): Observable<any> {
+        return this.http.delete<any>(`${this.url}${id}/${portfolio_id}/${token}`);
     }
 
-    UpdateStocksPortfolio(token: string, portfolio: string, newName: string): Observable<any> {
-        const credentials = { jwtToken: token };
-        return this.http.put<any>(`${this.url}${portfolio}/${newName}`, credentials);
+    UpdateStocksPortfolio(token: string, user: string, portfolio_id: any, stock: string, qnt: any, price: any, date: any, id: any): Observable<any> {
+           // Convert 'portfolio_id', 'qnt', and 'price' to integers or floats
+           const parsedPortfolioId = parseInt(portfolio_id);
+           const parsedQuantity = parseInt(qnt, 10);
+           const parsedPrice = parseFloat(price);
+       
+           const credentials = {
+               jwtToken: token,
+               user: user,
+               portfolio_id: parsedPortfolioId,
+               stock: stock,
+               qnt: parsedQuantity,
+               price: parsedPrice,
+               date: date
+           };
+       
+           console.log(credentials);
+           return this.http.put<any>(`${this.url}${id}`, credentials);
     }
 }

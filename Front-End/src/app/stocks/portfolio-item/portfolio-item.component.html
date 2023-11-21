@@ -37,10 +37,72 @@
                             <td>{{stock.qnt}}</td>
                             <td>{{stock.date}}</td>
                             <td>
-                                <a class="bnt table-item-edit-icon" data-bs-toggle="modal" data-bs-target="#updateModal" href="" >
-                                    <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><style>svg{fill:#F5C249}</style><path d="M362.7 19.3L314.3 67.7 444.3 197.7l48.4-48.4c25-25 25-65.5 0-90.5L453.3 19.3c-25-25-65.5-25-90.5 0zm-71 71L58.6 323.5c-10.4 10.4-18 23.3-22.2 37.4L1 481.2C-1.5 489.7 .8 498.8 7 505s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L421.7 220.3 291.7 90.3z"/></svg>
+                                <a class="bnt table-item-edit-icon" data-bs-toggle="modal" data-bs-target="#updateModal"
+                                    href="">
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="1em"
+                                        viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                                        <style>
+                                            svg {
+                                                fill: #F5C249
+                                            }
+                                        </style>
+                                        <path
+                                            d="M362.7 19.3L314.3 67.7 444.3 197.7l48.4-48.4c25-25 25-65.5 0-90.5L453.3 19.3c-25-25-65.5-25-90.5 0zm-71 71L58.6 323.5c-10.4 10.4-18 23.3-22.2 37.4L1 481.2C-1.5 489.7 .8 498.8 7 505s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L421.7 220.3 291.7 90.3z" />
+                                    </svg>
                                 </a>
                             </td>
+
+
+                            <!-- Modal UPDATE-->
+                            <div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="updateModalLabel"
+                                aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5" id="updateModalLabel">Editar</h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <label for="exampleFormControlInput1" class="form-label">Preço</label>
+                                            <div class="input-group mb-3">
+                                                <span class="input-group-text">R$</span>
+                                                <input type="text" id="moneyInput" class="form-control"
+                                                    aria-label="Amount (to the nearest dollar)" [(ngModel)]="moneyValue"
+                                                    (input)="formatMoney()">
+                                            </div>
+                                            <label for="exampleFormControlInput1" class="form-label">Quantidade</label>
+                                            <div class="input-group mb-3">
+                                                <input type="number" id="quantityInput" class="form-control"
+                                                    aria-label="Quantity" [(ngModel)]="quantityValue">
+                                            </div>
+                                            <label for="exampleFormControlInput1" class="form-label">Selecione a
+                                                Data</label>
+                                            <div class="input-group mb-3">
+                                                <label for="dateInput" class="input-group-text">Data:</label>
+                                                <input type="date" id="dateInput" class="form-control"
+                                                    [(ngModel)]="selectedDate" (click)="onDateSelected()">
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-danger"
+                                            data-bs-dismiss="modal" (click)="deleteStock(stock.portfolio_stock_id)">Delete</button>
+                                            <button type="button" class="btn btn-secondary"
+                                                data-bs-dismiss="modal">Cancelar</button>
+                                            <button type="button" class="btn btn-primary"
+                                                [disabled]="!areInputsFilled()" (click)="submitData(stock.portfolio_stock_id,stock.stock)"
+                                                data-bs-dismiss="modal">Atualizar Ação</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+
+
+
                         </tr>
                     </tbody>
                 </table>
@@ -48,14 +110,3 @@
         </div>
     </div>
 </div>
-
-<!-- <div class="stock-name">
-    <img src="{{stock.logo}}" alt="">
-    <div class="stock-name-text">
-        <h1>{{stock.stock}}</h1>
-        <p>{{stock.name}}</p>
-    </div>
-</div> -->
-
-
-

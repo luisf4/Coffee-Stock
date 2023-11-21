@@ -134,7 +134,7 @@ td img {
     background-color: var(--background-light);
     /* Apply your custom variable here */
 }
-.modal-title {
+.modal-title, .form-label{
     color: black;
 }
 

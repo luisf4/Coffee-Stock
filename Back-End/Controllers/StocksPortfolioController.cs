@@ -44,21 +44,19 @@ public class StocksPortfolioController : ControllerBase
         using (var reader = new StreamReader(Request.Body))
         {
             var requestBody = await reader.ReadToEndAsync();
-            var registrationData = JsonSerializer.Deserialize<StocksPortfolio>(requestBody);
             var stocksPortfolioInfo = JsonSerializer.Deserialize<StocksPortfolio>(requestBody);
             _stocksPortfolioServices.Update(stocksPortfolioInfo!,id);
             return Ok();
         }
     }
 
-    [HttpDelete("{id}/{portfolio_id}")]
-    public async Task<IActionResult> Delete(int id, int portfolio_id)
+    [HttpDelete("{id}/{portfolio_id}/{jwt}")]
+    public async Task<IActionResult> Delete(int id, int portfolio_id, string jwt)
     {
         using (var reader = new StreamReader(Request.Body))
         {
             var requestBody = await reader.ReadToEndAsync();
-            var registrationData = JsonSerializer.Deserialize<JwtData>(requestBody);
-            var username = AuthService.GetUsername(registrationData!.jwtToken);
+            var username = AuthService.GetUsername(jwt);
             _stocksPortfolioServices.Delete(username, id, portfolio_id);
             return Ok();
         }
