@@ -43,7 +43,7 @@ export class ChartsComponent implements OnChanges  {
   constructor() {
     this.initChartData();
   }
-
+ 
   public initChartData(): void {
     this.series = [
       {

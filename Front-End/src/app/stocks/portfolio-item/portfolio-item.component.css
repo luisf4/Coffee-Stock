@@ -34,8 +34,16 @@
 
 .graphs {
     display: flex;
-    justify-content: space-between;
+    justify-content: start;
 }
+
+.graph {
+    display: flex;
+    justify-content: start;
+    width: 50vw;
+    height: 50vh;
+}
+app-chart-donut {width: 25vw;}
 
 .list-stocks {
     display: flex;

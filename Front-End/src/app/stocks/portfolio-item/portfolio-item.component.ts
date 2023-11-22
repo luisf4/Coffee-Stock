@@ -13,12 +13,14 @@ import { AuthService } from 'src/app/auth/services/auth.service';
 export class PortfolioItemComponent implements OnInit {
   portfolio_id: any;
   portfolio_name: any;
-  stocks_list: any;
   token: any;
   username: any;
+  stocks_list: any;
+  stocks_price: number[] = [];
+  stocks_names: string[] = [];
 
-  stockPrice: any = [];
-  stockSymbol: string = ''; // Define a class property to store the symbol
+
+
   selectedPortfolioId: number | null = null;
   moneyValue: number | null = null;
   quantityValue: number | null = null;
@@ -31,21 +33,22 @@ export class PortfolioItemComponent implements OnInit {
 
     this.auth.getUsername(token!).subscribe(res => this.username = res)
     this.route.paramMap.subscribe(params => {
-      this.portfolio_id = params.get("portfolio_id")!; // Store the symbol in the class property
-      this.portfolio_name = params.get("name")!; // Store the symbol in the class property
+      this.portfolio_id = params.get("portfolio_id")!;
+      this.portfolio_name = params.get("name")!;
     });
 
-    this.stocksPortfolio.getStocksPortfolios(token!, this.portfolio_id).subscribe(data => {
-      this.stocks_list = data
-      console.log(this.stocks_list)
-    }
-    )
+    // Assuming stocks_names is an array of strings
+
+    // Now within your code block:
+    this.stocksPortfolio.getStocksPortfolios(token!, this.portfolio_id).subscribe((data: any[]) => {
+      this.stocks_list = data;
+
+      this.stocks_list.forEach((stockObj: { stock: string, price: number, qnt: number }) => {
+        this.stocks_names.push(stockObj.stock);
+        this.stocks_price.push(stockObj.price * stockObj.qnt);
+      });
+    });
   }
-
-
-
-
-
 
 
   onPortfolioSelected(event: any) {

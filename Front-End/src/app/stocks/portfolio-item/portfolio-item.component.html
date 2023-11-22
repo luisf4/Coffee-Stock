@@ -7,7 +7,9 @@
 
         </div>
         <div class="graphs">
-            <h1>graph</h1>
+            <div class="graph">
+                <app-chart-donut [stocksPrice]="stocks_price" [stocks]="stocks_names"></app-chart-donut>
+            </div>
             <div class="list-stocks">
                 <table class="table table-dark table-borderless">
                     <thead>

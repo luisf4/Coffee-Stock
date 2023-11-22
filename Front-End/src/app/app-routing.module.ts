@@ -9,6 +9,7 @@ import { StocksPageComponent } from './stocks/stocks-page/stocks-page.component'
 import { PortfolioComponent } from './stocks/portfolio/portfolio.component';
 import { PortfolioItemComponent } from './stocks/portfolio-item/portfolio-item.component';
 import { AboutComponent } from './stocks/about/about.component';
+import { ChartDonutComponent } from './stocks/chart-donut/chart-donut.component';
 
 const routes: Routes = [
   {path: "", component: HomeComponent},
@@ -20,6 +21,8 @@ const routes: Routes = [
   {path: "portfolio", component: PortfolioComponent},
   {path: "portfolio/:portfolio_id/:name", component: PortfolioItemComponent},
   {path: "about", component: AboutComponent},
+  {path: "charts-donut", component: ChartDonutComponent},
+
 
 ];
 

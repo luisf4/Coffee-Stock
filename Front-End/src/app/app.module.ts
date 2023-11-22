@@ -20,6 +20,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { PortfolioComponent } from './stocks/portfolio/portfolio.component';
 import { PortfolioItemComponent } from './stocks/portfolio-item/portfolio-item.component';
 import { AboutComponent } from './stocks/about/about.component';
+import { ChartDonutComponent } from './stocks/chart-donut/chart-donut.component';
 
 
 
@@ -38,6 +39,7 @@ import { AboutComponent } from './stocks/about/about.component';
     PortfolioComponent,
     PortfolioItemComponent,
     AboutComponent,
+    ChartDonutComponent,
 
   ],
   imports: [
