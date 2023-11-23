@@ -107,7 +107,7 @@ public class StockSql : Database
 
                 reader2.Close();
 
-                db.CommandText = "SELECT * FROM chartData WHERE symbol = @sym";
+                db.CommandText = "SELECT * FROM chartDividendsData WHERE symbol = @sym";
                 db.Parameters.AddWithValue("@symbo", symbol);
 
                 SqlDataReader reader3 = db.ExecuteReader();
@@ -118,13 +118,13 @@ public class StockSql : Database
                 {
                     CashDividends chart = new CashDividends
                     {
-                        // Date = 1,
                         AssetIssued = reader3.GetString(1),
                         PaymentDate = reader3.GetString(2),
                         Rate = reader3.GetDouble(3),
-                        RelatedTo = reader3.GetString(4)
+                        RelatedTo = reader3.GetString(4),
                     };
                     listDiv.Add(chart);
+
                 }
 
                 StockData task = new StockData(
@@ -162,8 +162,8 @@ public class StockSql : Database
             {
                 db.Connection = connection;
                 // Creates a new stock 
-                db.CommandText = "INSERT INTO stocks (symbol, [name], price, logo, requestedAt, marketcap, regularMarketVolume,"+
-                "industry, sector, longBusinessSummary, fullTimeEmployees, [address], city, country) "+
+                db.CommandText = "INSERT INTO stocks (symbol, [name], price, logo, requestedAt, marketcap, regularMarketVolume," +
+                "industry, sector, longBusinessSummary, fullTimeEmployees, [address], city, country) " +
                 "VALUES (@symbol, @name, @price, @logo, @req, @marketcap, @volume, @industry, @sector, @summary, @employees, @adress, @city, @country)";
                 db.Parameters.AddWithValue("@symbol", stock.Symbol);
                 db.Parameters.AddWithValue("@name", stock.Name);
