@@ -14,7 +14,7 @@ public class StockController : ControllerBase
     [HttpGet("{symbol}")]   
     public async Task<IActionResult> GetStockInfo(string symbol)
     {
-        var result = await _stockServices.GetStockInfo(symbol.ToUpper(), "1mo");
+        var result = await _stockServices.GetStockInfo(symbol.ToUpper(), "1d");
         return Ok(result);
     }
 }

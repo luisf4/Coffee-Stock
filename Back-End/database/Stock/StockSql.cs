@@ -1,6 +1,8 @@
 
 using System.Data;
+using System.Globalization;
 using System.Reflection.Metadata;
+using Microsoft.AspNetCore.Authorization.Infrastructure;
 using Microsoft.Data.SqlClient;
 public class StockSql : Database
 {
@@ -30,7 +32,7 @@ public class StockSql : Database
                         reader.Close();
 
                         // Update the stock if its old data (1h <)
-                        if (difference > 30)
+                        if (difference > 1)
                         {
                             return "old";
                         }
@@ -181,9 +183,9 @@ public class StockSql : Database
                 db.Parameters.AddWithValue("@adress", stock.Address);
                 db.Parameters.AddWithValue("@city", stock.City);
                 db.Parameters.AddWithValue("@country", stock.Country);
-                Console.WriteLine("aaaaaaaaaaaa");
+
                 db.ExecuteNonQuery();
-                Console.WriteLine("aaaaaaaaaaaa");
+
                 db.Parameters.Clear();
 
                 // Perform operations with the ID, such as inserting into chartData
@@ -239,15 +241,31 @@ public class StockSql : Database
             using (SqlCommand db = new SqlCommand())
             {
                 db.Connection = connection;
-                // Update the existing stock
-                db.CommandText = "UPDATE stocks SET symbol = @symbol, [name] = @name, price = @price, logo = @logo, requestedAt = @req WHERE symbol = @symbol";
+                db.CommandText = "UPDATE stocks SET " +
+                    "symbol = @symbol, [name] = @name, price = @price, logo = @logo, requestedAt = @req, " +
+                    "marketcap = @marketcap, regularMarketVolume = @volume, industry = @industry, " +
+                    "sector = @sector, longBusinessSummary = @summary, fullTimeEmployees = @employees, " +
+                    "[address] = @adress, city = @city, country = @country WHERE symbol = @symbol";
+
+                // Add parameters
                 db.Parameters.AddWithValue("@symbol", stock.Symbol);
                 db.Parameters.AddWithValue("@name", stock.Name);
                 db.Parameters.AddWithValue("@price", stock.Price);
                 db.Parameters.AddWithValue("@logo", stock.Logo);
-                db.Parameters.AddWithValue("@req", stock.RequestedAt);
+                db.Parameters.AddWithValue("@req", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
+                db.Parameters.AddWithValue("@marketcap", stock.MarketCap);
+                db.Parameters.AddWithValue("@volume", stock.RegularMarketVolume);
+                db.Parameters.AddWithValue("@industry", stock.Industry);
+                db.Parameters.AddWithValue("@sector", stock.Sector);
+                db.Parameters.AddWithValue("@summary", stock.LongBusinessSummary);
+                db.Parameters.AddWithValue("@employees", stock.FullTimeEmployees);
+                db.Parameters.AddWithValue("@adress", stock.Address);
+                db.Parameters.AddWithValue("@city", stock.City);
+                db.Parameters.AddWithValue("@country", stock.Country);
 
+                // Update the existing stock
                 db.ExecuteNonQuery();
+                Console.WriteLine("Successfully updated the stock!");
 
                 db.CommandText = "SELECT TOP 1 * FROM chartData ORDER BY chart_id DESC;";
 
@@ -277,6 +295,48 @@ public class StockSql : Database
                                 }
                         }
                     }
+                    reader.Close();
+
+                }
+
+                db.CommandText = "SELECT TOP 1 * FROM chartDividendsData ORDER BY chart_id DESC;";
+
+                using (SqlDataReader reader2 = db.ExecuteReader())
+                {
+                    if (reader2.Read())
+                    {
+                        // Get the old date 
+                        string lastReq = reader2.GetString(2);
+
+                        // Convert the date
+                        DateTime lastReqParsed = DateTime.ParseExact(lastReq, "yyyy-MM-dd HH:mm:ss", CultureInfo.InvariantCulture);
+
+                        foreach (var historicalData in stock.DividendsData)
+                        {
+                            // Convert the date
+                            DateTime newReq = DateTime.ParseExact(historicalData.PaymentDate, "yyyy-MM-dd HH:mm:ss", CultureInfo.InvariantCulture);
+
+                            // If the newdate is after the old one it will add to the db as a new dividend payment 
+                            if (newReq > lastReqParsed)
+                                using (SqlCommand insertCommand = new SqlCommand())
+                                {
+                                    insertCommand.Connection = connection;
+                                    insertCommand.CommandText = "INSERT INTO chartDividendsData (symbol, paymentDate, rate, relatedTo, requestedAt) VALUES (@symbol, @paymentDate, @rate, @relatedTo, @requestedAt)";
+                                    insertCommand.Parameters.AddWithValue("@symbol", stock.Symbol);
+                                    insertCommand.Parameters.AddWithValue("@paymentDate", historicalData.PaymentDate);
+                                    insertCommand.Parameters.AddWithValue("@rate", historicalData.Rate);
+                                    insertCommand.Parameters.AddWithValue("@relatedTo", historicalData.RelatedTo);
+                                    insertCommand.Parameters.AddWithValue("@requestedAt", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
+                                    insertCommand.ExecuteNonQuery();
+                                    db.Parameters.Clear();
+                                }
+                            else
+                            {
+                                Console.WriteLine("no new data");
+                            }
+                        }
+                    }
+                    reader2.Close();
                 }
             }
             return null!;

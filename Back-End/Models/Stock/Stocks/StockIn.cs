@@ -56,7 +56,7 @@ public class HistoricalDataPrice
     public double Low { get; set; }
     public double Close { get; set; }
     public decimal Volume { get; set; }
-    public double AdjustedClose { get; set; }
+    public double? AdjustedClose { get; set; }
 }
 
 public class BalanceSheetStatements
