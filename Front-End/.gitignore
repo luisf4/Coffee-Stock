@@ -1,7 +1,8 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
 # Credentials 
-/ApiStock/credentials.txt
+../Back-End/credentials.txt
+..//Back-End/credentials.txt
 
 # Compiled output
 /dist

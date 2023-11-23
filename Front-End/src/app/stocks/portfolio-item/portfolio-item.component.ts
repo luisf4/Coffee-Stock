@@ -36,13 +36,8 @@ export class PortfolioItemComponent implements OnInit {
       this.portfolio_id = params.get("portfolio_id")!;
       this.portfolio_name = params.get("name")!;
     });
-
-    // Assuming stocks_names is an array of strings
-
-    // Now within your code block:
     this.stocksPortfolio.getStocksPortfolios(token!, this.portfolio_id).subscribe((data: any[]) => {
       this.stocks_list = data;
-
       this.stocks_list.forEach((stockObj: { stock: string, price: number, qnt: number }) => {
         this.stocks_names.push(stockObj.stock);
         this.stocks_price.push(stockObj.price * stockObj.qnt);
@@ -144,10 +139,12 @@ export class PortfolioItemComponent implements OnInit {
 
   fetchUpdatedStocksList() {
     const token = localStorage.getItem('jwtToken');
-    this.stocksPortfolio.getStocksPortfolios(token!, this.portfolio_id).subscribe(data => {
+    this.stocksPortfolio.getStocksPortfolios(token!, this.portfolio_id).subscribe((data: any[]) => {
       this.stocks_list = data;
-      console.log(this.stocks_list);
+      this.stocks_list.forEach((stockObj: { stock: string, price: number, qnt: number }) => {
+        this.stocks_names.push(stockObj.stock);
+        this.stocks_price.push(stockObj.price * stockObj.qnt);
+      });
     });
   }
-
 }

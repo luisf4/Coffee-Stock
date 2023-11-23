@@ -13,8 +13,8 @@ public class StockServices
     {
         var stockSql = new StockSql();
         var check = stockSql.CheckTimeData(symbol);
-        Console.WriteLine("Data from "+symbol+" : "+check);
-        
+        Console.WriteLine("Data from " + symbol + " : " + check);
+
         // Checks if the info is old if it is make a request and store the data 
         if (check == "ok")
         {
@@ -25,8 +25,7 @@ public class StockServices
             using HttpClient client = new();
 
             // Set the url 
-            string url = $"https://brapi.dev/api/quote/{symbol}?range={range}&interval=1d&fundamental=true&dividends=false&token={API_TOKEN_Brapi}";
-
+            string url = $"https://brapi.dev/api/quote/{symbol}?modules=summaryProfile,balanceSheetHistory,financialData&range={range}&interval=1d&fundamental=true&dividends=true&token={API_TOKEN_Brapi}";
             // Makes a request 
             var res = await client.GetAsync(url);
             var content = await res.Content.ReadAsStringAsync();
@@ -38,7 +37,24 @@ public class StockServices
             // Access information
             foreach (var result in stockInfo.Results)
             {
-                StockData stock = new StockData(result.Symbol, result.ShortName, result.RegularMarketPrice, result.Logourl, formattedDateTime, result.historicalDataPrice);
+                StockData stock = new StockData(
+                    result.Symbol,
+                    result.ShortName,
+                    result.RegularMarketPrice,
+                    result.Logourl,
+                    formattedDateTime,
+                    result.MarketCap,
+                    result.RegularMarketVolume,
+                    result.SummaryProfile.Industry,
+                    result.SummaryProfile.Sector,
+                    result.SummaryProfile.LongBusinessSummary,
+                    result.SummaryProfile.FullTimeEmployees,
+                    result.SummaryProfile.Address1,
+                    result.SummaryProfile.City,
+                    result.SummaryProfile.Country,
+                    result.HistoricalDataPrice,
+                    result.dividendsData.cashDividends
+                    );
                 stockSql.UpdateStock(stock);
                 return stock;
             }
@@ -49,7 +65,7 @@ public class StockServices
             using HttpClient client = new();
 
             // Set the url 
-            string url = $"https://brapi.dev/api/quote/{symbol}?range={range}&interval=1d&fundamental=true&dividends=false&token={API_TOKEN_Brapi}";
+            string url = $"https://brapi.dev/api/quote/{symbol}?modules=summaryProfile,balanceSheetHistory,financialData&range={range}&interval=1d&fundamental=true&dividends=true&token={API_TOKEN_Brapi}";
 
             // Makes a request 
             var res = await client.GetAsync(url);
@@ -62,7 +78,24 @@ public class StockServices
             // Access information
             foreach (var result in stockInfo.Results)
             {
-                StockData stock = new StockData(result.Symbol, result.ShortName, result.RegularMarketPrice, result.Logourl, formattedDateTime, result.historicalDataPrice);
+                StockData stock = new StockData(
+                    result.Symbol,
+                    result.ShortName,
+                    result.RegularMarketPrice,
+                    result.Logourl,
+                    formattedDateTime,
+                    result.MarketCap,
+                    result.RegularMarketVolume,
+                    result.SummaryProfile.Industry,
+                    result.SummaryProfile.Sector,
+                    result.SummaryProfile.LongBusinessSummary,
+                    result.SummaryProfile.FullTimeEmployees,
+                    result.SummaryProfile.Address1,
+                    result.SummaryProfile.City,
+                    result.SummaryProfile.Country,
+                    result.HistoricalDataPrice,
+                    result.dividendsData.cashDividends
+                    );
                 stockSql.WriteStock(stock);
                 return stock;
             }

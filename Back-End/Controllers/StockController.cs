@@ -11,10 +11,10 @@ public class StockController : ControllerBase
         _stockServices = new StockServices();
     }
 
-    [HttpGet("{symbol}")]
+    [HttpGet("{symbol}")]   
     public async Task<IActionResult> GetStockInfo(string symbol)
     {
-        var result = await _stockServices.GetStockInfo(symbol.ToUpper(), "3mo");
+        var result = await _stockServices.GetStockInfo(symbol.ToUpper(), "1mo");
         return Ok(result);
     }
 }
