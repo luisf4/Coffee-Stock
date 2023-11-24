@@ -13,7 +13,7 @@ public class Result
     public string ShortName { get; set; }
     public double RegularMarketPrice { get; set; }
     public string Logourl { get; set; }
-    public decimal MarketCap { get; set; }
+    public decimal? MarketCap { get; set; }
     public decimal RegularMarketVolume { get; set; }
     // Include other properties here based on your needs
 
@@ -50,13 +50,13 @@ public class StockDividends {
 
 public class HistoricalDataPrice
 {
-    public decimal Date { get; set; }
-    public double Open { get; set; }
-    public double High { get; set; }
-    public double Low { get; set; }
-    public double Close { get; set; }
-    public decimal Volume { get; set; }
-    public double? AdjustedClose { get; set; }
+    public decimal? Date { get; set; }
+    public double? Open { get; set; }
+    public double? High { get; set; }
+    public double? Low { get; set; }
+    public double? Close { get; set; }
+    public decimal? Volume { get; set; }
+    public double? adjustedClose { get; set; }
 }
 
 public class BalanceSheetStatements

@@ -20,7 +20,8 @@ export class StocksPageComponent implements OnInit {
   moneyValue: number | null = null;
   quantityValue: number | null = null;
   selectedDate: string | null = null;
-
+  divdendsCategories: any = [];
+  dividendsData: any = []
 
   constructor(private route: ActivatedRoute, private stockService: StockService, private portfolioService: PortfolioService, private stocksPortfolioServices: StocksPortfolioService) { }
 
@@ -35,8 +36,6 @@ export class StocksPageComponent implements OnInit {
   getStockDetails() {
     if (this.symbol) {
       this.stockService.GetStock(this.symbol).subscribe((data) => {
-        // Assuming 'data' contains a property that needs to be converted to uppercase
-        // For example, if the property is 'name', you can convert it like this:
         if (data && data.name) {
           data.name = data.name.toUpperCase(); // Convert 'name' property to uppercase
         }
@@ -47,7 +46,18 @@ export class StocksPageComponent implements OnInit {
             y: dataPoint.close
           };
         });
+        for (var dividend of this.stockDetails.dividendsData) { 
+          const rateAsPercentage = (dividend.rate * 1).toFixed(2) + '%';
+          this.dividendsData.push(rateAsPercentage);
+        
+          const paymentDate = new Date(dividend.paymentDate);
+          const formattedDate = `${paymentDate.getDate()}-${paymentDate.getMonth() + 1}-${paymentDate.getFullYear()}`;
+          this.divdendsCategories.push(formattedDate);
+        }
+        
         console.log(this.stockPrice)
+        console.log(this.divdendsCategories)
+        console.log(this.dividendsData)
       });
     } else {
       this.stockDetails = null; // Reset stockDetails if symbol is not available

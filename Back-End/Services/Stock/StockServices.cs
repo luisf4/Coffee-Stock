@@ -76,28 +76,37 @@ public class StockServices
             StockIn stockInfo = JsonConvert.DeserializeObject<StockIn>(content)!;
 
             // Access information
-            foreach (var result in stockInfo.Results)
+            if (stockInfo.Results != null && stockInfo.Results.Any())
             {
-                StockData stock = new StockData(
-                    result.Symbol,
-                    result.ShortName,
-                    result.RegularMarketPrice,
-                    result.Logourl,
-                    formattedDateTime,
-                    result.MarketCap,
-                    result.RegularMarketVolume,
-                    result.SummaryProfile.Industry,
-                    result.SummaryProfile.Sector,
-                    result.SummaryProfile.LongBusinessSummary,
-                    result.SummaryProfile.FullTimeEmployees,
-                    result.SummaryProfile.Address1,
-                    result.SummaryProfile.City,
-                    result.SummaryProfile.Country,
-                    result.HistoricalDataPrice,
-                    result.dividendsData.cashDividends
-                    );
-                stockSql.WriteStock(stock);
-                return stock;
+                foreach (var result in stockInfo.Results)
+                {
+
+                    StockData stock = new StockData(
+                        result.Symbol,
+                        result.ShortName,
+                        result.RegularMarketPrice,
+                        result.Logourl,
+                        formattedDateTime,
+                        result.MarketCap,
+                        result.RegularMarketVolume,
+                        result.SummaryProfile.Industry,
+                        result.SummaryProfile.Sector,
+                        result.SummaryProfile.LongBusinessSummary,
+                        result.SummaryProfile.FullTimeEmployees,
+                        result.SummaryProfile.Address1,
+                        result.SummaryProfile.City,
+                        result.SummaryProfile.Country,
+                        result.HistoricalDataPrice,
+                        result.dividendsData.cashDividends
+                        );
+                    stockSql.WriteStock(stock);
+                    return stock;
+                }
+            }
+
+            else
+            {
+                Console.WriteLine("fudeu");
             }
             return null!;
         }

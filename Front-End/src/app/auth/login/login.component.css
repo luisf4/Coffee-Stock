@@ -26,7 +26,8 @@
 }
 
 .login-image img{
-  height: 45vw;
+  height: 80vh;
+  overflow: hidden;
 }
 
 

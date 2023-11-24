@@ -1,32 +1,49 @@
 <app-navbar-up></app-navbar-up>
 
 <div class="stock-main">
-    <div class="stock-details">
-        <div class="stock-name">
-            <img src="{{stockDetails.logo}}" alt="">
-            <h1>{{stockDetails.symbol}}</h1>
-        </div>
-        <div class="stock-price">
-            <h1>R$ {{stockDetails.price}}</h1>
-        </div>
-    </div>
     <div class="stock-chart">
+        <div class="stock-details">
+            <div class="stock-name">
+                <div class="stock-name-now">
+                    <img src="{{stockDetails.logo}}" alt="">
+                    <div class="stock-name-text">
+                        <h1>{{stockDetails.symbol}}</h1>
+                        <p>{{stockDetails.name}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="stock-price">
+                <button class="btn btn-primary custom-btn" data-bs-toggle="modal"
+                    data-bs-target="#updateModal" (click)="getPortfolio()">Adicionar a portfolio</button>
+                <p>R$ {{stockDetails.price}}</p>
+            </div>
+        </div>
+        <h1>Grafico Historico</h1>
         <app-charts [item]="stockPrice" [symbol2]="stockSymbol" class="full"></app-charts>
     </div>
     <div class="stock-about">
-        <a class="bnt table-item-edit-icon" data-bs-toggle="modal" data-bs-target="#updateModal" href=""
-            (click)="getPortfolio()">
-            <svg xmlns="http://www.w3.org/2000/svg" height="1em"
-                viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-                <style>
-                    svg {
-                        fill: #F5C249
-                    }
-                </style>
-                <path
-                    d="M362.7 19.3L314.3 67.7 444.3 197.7l48.4-48.4c25-25 25-65.5 0-90.5L453.3 19.3c-25-25-65.5-25-90.5 0zm-71 71L58.6 323.5c-10.4 10.4-18 23.3-22.2 37.4L1 481.2C-1.5 489.7 .8 498.8 7 505s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L421.7 220.3 291.7 90.3z" />
-            </svg>
-        </a>
+        <div class="stock-about-left">
+            <div class="stock-about-title">Estatisticas</div>
+            <div class="stock-about-content">
+                <h1>MarketCap: </h1><p>R$ {{stockDetails.marketCap.toLocaleString()}}</p>
+                <h1>Volume 24h: </h1><p>R$ {{(stockDetails.regularMarketVolume / 100).toFixed(2)}} Bilhões</p>
+                <h1>Industria: </h1><p>{{stockDetails.industry}}</p>
+                <h1>Setor: </h1><p>{{stockDetails.sector}}</p>
+            </div>
+            
+        </div>
+        <div class="stock-about-right">
+            <div class="stock-about-title">Informações</div>
+                <div class="stock-about-content">
+                    <h1>Empresa: </h1><p>{{stockDetails.name}}</p>
+                    <h1>Sumário de negocio: </h1><p>{{stockDetails.longBusinessSummary}}</p>
+                </div>
+        </div>
+    
+    </div>
+    <div class="stock-dividends stock-chart">
+        <h1>Dividendos ultimos 12M</h1>
+        <app-chart-bar [categories]="divdendsCategories" [data]="dividendsData"></app-chart-bar>
     </div>
 </div>
 
@@ -73,14 +90,16 @@
                 <label for="exampleFormControlInput1" class="form-label">Selecione a Data</label>
                 <div class="input-group mb-3">
                     <label for="dateInput" class="input-group-text">Data:</label>
-                    <input type="date" id="dateInput" class="form-control" [(ngModel)]="selectedDate" (click)="onDateSelected()">
+                    <input type="date" id="dateInput" class="form-control" [(ngModel)]="selectedDate"
+                        (click)="onDateSelected()">
                 </div>
 
 
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-primary custom-btn" [disabled]="!areInputsFilled()" (click)="submitData()" data-bs-dismiss="modal">Adicionar Ação</button>
+                <button type="button" class="btn btn-primary custom-btn" [disabled]="!areInputsFilled()"
+                    (click)="submitData()" data-bs-dismiss="modal">Adicionar Ação</button>
             </div>
         </div>
     </div>

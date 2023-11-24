@@ -32,7 +32,7 @@ public class StockSql : Database
                         reader.Close();
 
                         // Update the stock if its old data (1h <)
-                        if (difference > 1)
+                        if (difference > 60)
                         {
                             return "old";
                         }
@@ -102,7 +102,7 @@ public class StockSql : Database
                         Low = reader2.GetDouble(5),
                         Close = reader2.GetDouble(6),
                         Volume = reader2.GetInt32(7),
-                        AdjustedClose = reader2.GetDouble(8)
+                        adjustedClose = reader2.GetDouble(8)
                     };
                     list.Add(chart);
                 }
@@ -191,22 +191,35 @@ public class StockSql : Database
                 // Perform operations with the ID, such as inserting into chartData
                 foreach (var historicalData in stock.HistoricalDataPrice)
                 {
-                    using (SqlCommand insertCommand = new SqlCommand())
+                    // Verifica se algum dos valores é nulo
+                    if (historicalData.Date != null && historicalData.Open != null && historicalData.High != null &&
+                        historicalData.Low != null && historicalData.Close != null && historicalData.Volume != null &&
+                        historicalData.adjustedClose != null)
                     {
-                        insertCommand.Connection = connection;
-                        insertCommand.CommandText = "INSERT INTO chartData (symbol, [date], [open], [high], [low], [close], volume, adjustedClose, requestedAt) VALUES (@symbol, @date, @open, @high, @low, @close, @volume, @adjustedClose, @requestedAt)";
-                        insertCommand.Parameters.AddWithValue("@symbol", stock.Symbol);
-                        insertCommand.Parameters.AddWithValue("@date", historicalData.Date);
-                        insertCommand.Parameters.AddWithValue("@open", historicalData.Open);
-                        insertCommand.Parameters.AddWithValue("@high", historicalData.High);
-                        insertCommand.Parameters.AddWithValue("@low", historicalData.Low);
-                        insertCommand.Parameters.AddWithValue("@close", historicalData.Close);
-                        insertCommand.Parameters.AddWithValue("@volume", historicalData.Volume);
-                        insertCommand.Parameters.AddWithValue("@adjustedClose", historicalData.AdjustedClose);
-                        insertCommand.Parameters.AddWithValue("@requestedAt", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
-                        insertCommand.ExecuteNonQuery();
+                        using (SqlCommand insertCommand = new SqlCommand())
+                        {
+                            insertCommand.Connection = connection;
+                            insertCommand.CommandText = "INSERT INTO chartData (symbol, [date], [open], [high], [low], [close], volume, adjustedClose, requestedAt) VALUES (@symbol, @date, @open, @high, @low, @close, @volume, @adjustedClose, @requestedAt)";
+
+                            insertCommand.Parameters.AddWithValue("@symbol", stock.Symbol);
+                            insertCommand.Parameters.AddWithValue("@date", historicalData.Date);
+                            insertCommand.Parameters.AddWithValue("@open", historicalData.Open);
+                            insertCommand.Parameters.AddWithValue("@high", historicalData.High);
+                            insertCommand.Parameters.AddWithValue("@low", historicalData.Low);
+                            insertCommand.Parameters.AddWithValue("@close", historicalData.Close);
+                            insertCommand.Parameters.AddWithValue("@volume", historicalData.Volume);
+                            insertCommand.Parameters.AddWithValue("@adjustedClose", historicalData.adjustedClose);
+                            insertCommand.Parameters.AddWithValue("@requestedAt", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
+
+                            insertCommand.ExecuteNonQuery();
+                        }
+                    }
+                    else
+                    {
+                    Console.WriteLine("Valores nulos encontrados, registro ignorado.");
                     }
                 }
+
 
                 foreach (var historicalData in stock.DividendsData)
                 {
@@ -289,7 +302,7 @@ public class StockSql : Database
                                     insertCommand.Parameters.AddWithValue("@low", historicalData.Low);
                                     insertCommand.Parameters.AddWithValue("@close", historicalData.Close);
                                     insertCommand.Parameters.AddWithValue("@volume", historicalData.Volume);
-                                    insertCommand.Parameters.AddWithValue("@adjustedClose", historicalData.AdjustedClose);
+                                    insertCommand.Parameters.AddWithValue("@adjustedClose", historicalData.adjustedClose);
                                     insertCommand.Parameters.AddWithValue("@requestedAt", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
                                     insertCommand.ExecuteNonQuery();
                                 }

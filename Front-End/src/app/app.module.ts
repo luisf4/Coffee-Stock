@@ -21,6 +21,7 @@ import { PortfolioComponent } from './stocks/portfolio/portfolio.component';
 import { PortfolioItemComponent } from './stocks/portfolio-item/portfolio-item.component';
 import { AboutComponent } from './stocks/about/about.component';
 import { ChartDonutComponent } from './stocks/chart-donut/chart-donut.component';
+import { ChartBarComponent } from './stocks/chart-bar/chart-bar.component';
 
 
 
@@ -40,6 +41,7 @@ import { ChartDonutComponent } from './stocks/chart-donut/chart-donut.component'
     PortfolioItemComponent,
     AboutComponent,
     ChartDonutComponent,
+    ChartBarComponent,
 
   ],
   imports: [
