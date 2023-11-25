@@ -59,36 +59,6 @@
   flex-direction: row;
 }
 
-.list-items {
-  padding: 15vh 0;
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-}
-
-.list-item { 
-  border: 2px solid #fff;
-  border-radius: 20px;
-  width: 20vw;
-  height: 30vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  justify-content: space-evenly;
-}
-.list-item p {
-  width: 15vw;
-  text-align: center;
-}
-.list-item svg { 
-  height: 5vh;
-}
-.list-item h3 {
-  font-weight: bold;
-}
-
-
 .market-cap-text h1 {
   font-weight: bold;
  }
@@ -229,4 +199,48 @@ min-width: 40px;
   justify-content: start;
   align-items: start;
   text-align: start;
+}
+
+.home-list { 
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-top: 10vh;
+  margin-bottom: 20vh;
+}
+
+.home-list-item { 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 33%;
+}
+.home-list-item-logo { 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  margin-bottom: 15px;
+  border-radius: 90px;
+  background-color: var(--background-ligth);
+}
+.home-list-item-text { 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.home-list-item-text h1 {
+  font-weight: bold;
+  font-size: var(--font-large);
+  color: var(--text);
+
+}
+.home-list-item-text h2 {
+  font-weight: 500;
+  font-size: var(--font-normal);
+  color: var(--text-darker);
 }
