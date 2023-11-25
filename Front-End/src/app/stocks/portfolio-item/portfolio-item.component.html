@@ -4,7 +4,7 @@
     <div class="content-portfolio">
         <div class="menu-portoflio">
             <h1>{{portfolio_name}}</h1>
-
+            <h1>Total: R${{stocks_total.toFixed(2)}}</h1>
         </div>
         <div class="graphs">
             <div class="graph">
@@ -36,7 +36,7 @@
                                     </div> 
                                 </div>
                             </td>
-                            <td>R${{stock.price}}</td>
+                            <td>R${{stock.price.toFixed(2)}}</td>
                             <td>{{stock.qnt}}</td>
                             <td>{{stock.date}}</td>
                             <td>

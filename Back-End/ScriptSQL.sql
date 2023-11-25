@@ -16,6 +16,18 @@ CREATE TABLE users (
     jwt NVARCHAR(MAX) NOT NULL,
 );
 GO
+CREATE TABLE favorites_user (
+	username varchar(50) primary key,
+)
+select * from favorites_user
+
+create table favorites(
+	favorite_id INT PRIMARY KEY IDENTITY,
+	symbol varchar(50),
+	username varchar(50)
+)
+
+select * from favorites
 
 CREATE TABLE stocks ( 
     stock_id INT PRIMARY KEY IDENTITY,
@@ -71,7 +83,7 @@ CREATE TABLE portfolios (
     [name] VARCHAR(100) NOT NULL,
 );
 GO
-select * from portfolios where user_name = '1'
+select * from portfolios
 
 -- PortfolioStocks table to establish relationships
 CREATE TABLE stocks_portfolio (
@@ -86,6 +98,9 @@ CREATE TABLE stocks_portfolio (
     FOREIGN KEY (portfolio_id) REFERENCES portfolios(portfolio_id),
 );
 GO
+
+select * from stocks_portfolio
+
 
 
 -- INSERTS stocks

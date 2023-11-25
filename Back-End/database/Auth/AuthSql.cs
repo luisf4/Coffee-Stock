@@ -36,6 +36,12 @@ public class AuthSql : Database
                 db.Parameters.AddWithValue("@jwt", user.Jwt);
 
                 db.ExecuteNonQuery();
+
+                db.CommandText = "INSERT INTO favorites_user VALUES (@user)";
+                db.ExecuteNonQuery();
+
+                db.Parameters.Clear();
+                
                 return "ok";
             }
         }

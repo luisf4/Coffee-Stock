@@ -24,6 +24,7 @@
 
 .menu-portoflio h1 {
     font-weight: bold;
+    font-size: var(--font-large);
 }
 
 .menu-portoflio a {

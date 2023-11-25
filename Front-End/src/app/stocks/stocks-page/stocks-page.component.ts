@@ -129,7 +129,6 @@ export class StocksPageComponent implements OnInit {
       this.addStock(); // Call the method to add stock
     } else {
       console.log('Please fill in all the inputs.');
-      // Optionally, you can show a message to the user to fill in all inputs
     }
   }
 

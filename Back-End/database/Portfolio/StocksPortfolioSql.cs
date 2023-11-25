@@ -16,7 +16,7 @@ public class StocksPortfolioSql : Database
             db.Parameters.AddWithValue("@stock", stock.stock);
             db.Parameters.AddWithValue("@name", response.Name);
             db.Parameters.AddWithValue("@qtd", stock.qnt); 
-            db.Parameters.AddWithValue("@price", response.Price); 
+            db.Parameters.AddWithValue("@price", stock.price); 
             db.Parameters.AddWithValue("@logo", response.Logo);
             db.Parameters.AddWithValue("@date", stock.date); // Assuming this should be replaced with an actual date value
             db.ExecuteNonQuery();

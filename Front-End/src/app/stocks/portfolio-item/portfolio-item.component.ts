@@ -18,6 +18,7 @@ export class PortfolioItemComponent implements OnInit {
   stocks_list: any;
   stocks_price: number[] = [];
   stocks_names: string[] = [];
+  stocks_total: number=0;
 
 
 
@@ -42,6 +43,7 @@ export class PortfolioItemComponent implements OnInit {
       this.stocks_list.forEach((stockObj: { stock: string, price: number, qnt: number }) => {
         this.stocks_names.push(stockObj.stock);
         this.stocks_price.push(stockObj.price * stockObj.qnt);
+        this.stocks_total = this.stocks_total + (stockObj.price * stockObj.qnt)
       });
     });
   }
