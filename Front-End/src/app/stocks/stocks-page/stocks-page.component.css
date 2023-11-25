@@ -149,3 +149,10 @@
     color: var(--text);
     font-weight: bold;
 }
+.list-name-item {
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    text-align: start;
+  }
+  

@@ -27,8 +27,8 @@
       <table class="table custom-table table-borderless">
         <thead>
           <tr>
-            <th>Logo</th>
-            <th>Simbolo</th>
+            <th class="list-name-item" >Nome</th>
+            <th>Market cap</th>
             <th>Setor</th>
             <th>Preço</th>
           </tr>
@@ -37,11 +37,25 @@
           <tr *ngFor="let stock of searchResults">
             <td>
               <a [routerLink]="['/stock', stock.stock]">
-                <img src="{{ stock.logo }}" alt="" srcset="" style="border-radius: 12px;">
+                
+                <div class="stock-name">
+                  <div class="stock-name-now">
+                      <img src="{{stock.logo}}" alt="">
+                      <div class="stock-name-text">
+                          <h1>{{stock.stock}}</h1>
+                          <p>{{stock.name}}</p>
+                      </div>
+                  </div>
+              </div>
               </a>
             </td>
-            <td>{{ stock.stock }} </td>
-            <td>{{ stock.sector }} </td>
+            <td *ngIf="stock.market_cap != null; else elseMarket">R$ {{ stock.market_cap | number:'1.0-0' }}</td>
+            <ng-template #elseMarket>
+              <td>
+                --
+              </td>
+            </ng-template>   
+            <td *ngIf="stock.sector != null; else elseMarket">{{ stock.sector }} </td>
             <td>
               <div class="price-change" *ngIf="stock.change > 0; else elseBlock">
                 <div class="price-change-icon">
@@ -53,7 +67,7 @@
                   </p>
                 </div>
                 <p>
-                  R$ {{ (stock.close).toFixed(2)}}
+                  R$ {{ (stock.close).toFixed(2) }}
                 </p>
               </div>
               <ng-template class="price-change" #elseBlock>
@@ -62,11 +76,11 @@
                     <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/> 
                   </svg>
                   <p>
-                    {{(stock.change).toFixed(2)}}%
+                    {{ (stock.change).toFixed(2)}}%
                   </p>
                 </div>
                 <p>
-                  R$ {{ stock.close }}
+                  R$ {{ (stock.close).toFixed(2) }}
                 </p>
               </ng-template>              
             </td>
