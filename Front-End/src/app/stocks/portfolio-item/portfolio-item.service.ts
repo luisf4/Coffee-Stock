@@ -10,6 +10,11 @@ export class StocksPortfolioService {
 
     constructor(private http: HttpClient) { }
 
+    getStockData(stock: string) { 
+        var url= `https://brapi.dev/api/quote/${stock}?&range=1d&interval=1d&&token=1budH767riXnEZys8RLKZJ`
+        return this.http.get<any>(url);
+    }
+
     getStocksPortfolios(token: string, id: any): Observable<any> {
         const credentials = { jwtToken: token };
         return this.http.post<any>(`${this.url}${id}`, credentials);

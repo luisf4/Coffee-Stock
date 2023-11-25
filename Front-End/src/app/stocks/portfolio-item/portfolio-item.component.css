@@ -38,10 +38,18 @@
 }
 
 .graph {
+    padding-top: 5px;
     display: flex;
+    flex-direction: column;
     justify-content: start;
     width: 50vw;
     height: 50vh;
+}
+.graph h1 { 
+    padding-left: 5px;
+    font-size: var(--font-normal);
+    font-weight: normal;
+    color: var(--text-darker);
 }
 app-chart-donut {width: 25vw;}
 
@@ -162,6 +170,4 @@ td img {
   .custom-btn:hover {
     background-color: var(--main-color); /* Change background color on hover */
     border-color: var(--main-color); /* Change border color */
-
-    /* color: black; */
-  }
+}

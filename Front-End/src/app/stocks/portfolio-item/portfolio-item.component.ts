@@ -11,10 +11,10 @@ import { AuthService } from 'src/app/auth/services/auth.service';
   styleUrls: ['./portfolio-item.component.css']
 })
 export class PortfolioItemComponent implements OnInit {
-  portfolio_id: any;
-  portfolio_name: any;
-  token: any;
-  username: any;
+  portfolio_id: string;
+  portfolio_name: string;
+  token: string;
+  username: string;
   stocks_list: any;
   stocks_price: number[] = [];
   stocks_names: string[] = [];
@@ -30,7 +30,6 @@ export class PortfolioItemComponent implements OnInit {
 
   ngOnInit() {
     const token = localStorage.getItem("jwtToken");
-
     this.auth.getUsername(token!).subscribe(res => this.username = res)
     this.route.paramMap.subscribe(params => {
       this.portfolio_id = params.get("portfolio_id")!;
@@ -38,6 +37,8 @@ export class PortfolioItemComponent implements OnInit {
     });
     this.stocksPortfolio.getStocksPortfolios(token!, this.portfolio_id).subscribe((data: any[]) => {
       this.stocks_list = data;
+      console.log(data)
+
       this.stocks_list.forEach((stockObj: { stock: string, price: number, qnt: number }) => {
         this.stocks_names.push(stockObj.stock);
         this.stocks_price.push(stockObj.price * stockObj.qnt);
@@ -93,7 +94,7 @@ export class PortfolioItemComponent implements OnInit {
   UpdateStocks(id: any, symbol: any) {
     // Add your logic here to add the stock
     // This method will be called when all inputs are filled
-    this.token = localStorage.getItem('jwtToken');
+    this.token = localStorage.getItem('jwtToken')!;
 
     this.stocksPortfolio.UpdateStocksPortfolio(
       this.token,

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { NavigationEnd, Router } from '@angular/router';
 import { finalize } from 'rxjs';
 import { AuthService } from 'src/app/auth/services/auth.service';
@@ -12,6 +13,7 @@ export class NavbarUpComponent implements OnInit {
   isLoggedIn = false;
   userName = '';
   isLoading = true; // Add loading indicator
+  stock = new FormControl('');
 
 
   constructor(private auth: AuthService, private router: Router) { }

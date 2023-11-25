@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, ViewChild } from "@angular/core";
-import { ChartComponent } from "ng-apexcharts";
+import { ApexLegend, ChartComponent } from "ng-apexcharts";
 
 import {
   ApexNonAxisChartSeries,
@@ -12,6 +12,7 @@ export type ChartOptions = {
   chart: ApexChart;
   responsive: ApexResponsive[];
   labels: any;
+  legend: ApexLegend
 };
 
 @Component({
@@ -47,12 +48,11 @@ export class ChartDonutComponent implements OnInit {
       ]
     };
   }
-
   ngOnInit(): void {
     // Fetch data here (assuming it's fetched asynchronously)
     this.fetchData();
   }
-
+  
   fetchData() {
     // Simulated asynchronous data fetching (replace this with your actual data fetching logic)
     setTimeout(() => {
@@ -60,8 +60,18 @@ export class ChartDonutComponent implements OnInit {
       this.chartOptions = {
         ...this.chartOptions,
         series: this.stocksPrice,
-        labels: this.stocks
+        labels: this.stocks,
+        chart: {
+          type: "donut",
+          foreColor: "white" // Change the text color of the chart elements
+        },
+        legend: {
+          labels: {
+            colors: ["white"] // Change the legend text color to white
+          }
+        }
       };
     }, 500); // Simulating a delay of 1 second (adjust as per your actual data fetching)
   }
+  
 }
