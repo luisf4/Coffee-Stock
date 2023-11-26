@@ -11,6 +11,7 @@ public class StockServices
 
     public async Task<StockData> GetStockInfo(string symbol, string range)
     {
+
         var stockSql = new StockSql();
         var check = stockSql.CheckTimeData(symbol);
         Console.WriteLine("Data from " + symbol + " : " + check);
@@ -89,15 +90,15 @@ public class StockServices
                         formattedDateTime,
                         result.MarketCap,
                         result.RegularMarketVolume,
-                        result.SummaryProfile.Industry,
-                        result.SummaryProfile.Sector,
-                        result.SummaryProfile.LongBusinessSummary,
-                        result.SummaryProfile.FullTimeEmployees,
-                        result.SummaryProfile.Address1,
-                        result.SummaryProfile.City,
-                        result.SummaryProfile.Country,
+                        result.SummaryProfile?.Industry,
+                        result.SummaryProfile?.Sector,
+                        result.SummaryProfile?.LongBusinessSummary,
+                        result.SummaryProfile?.FullTimeEmployees,
+                        result.SummaryProfile?.Address1,
+                        result.SummaryProfile?.City,
+                        result.SummaryProfile?.Country,
                         result.HistoricalDataPrice,
-                        result.dividendsData.cashDividends
+                        result.dividendsData?.cashDividends
                         );
                     stockSql.WriteStock(stock);
                     return stock;

@@ -63,6 +63,10 @@
 .table-item {
     justify-content: space-between;
     padding: 2px 0;
+    background-color: transparent;
+}
+.table-item a {
+    background-color: transparent;
 }
 
 .table-item-btn {
@@ -138,3 +142,36 @@
     cursor: pointer;
     /* Change cursor to pointer on hover */
 }
+
+
+
+.stock-name-now {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+  
+  }
+  .stock-name-now img { 
+    width: 70px;
+    border-radius: 12px;
+  }
+  .stock-name-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: start;
+    padding: 10px;
+  }
+  .stock-name-text h1 {
+    font-size: var(--font-normal);
+    color: var(--text);
+    font-weight: bold;
+    font-size: var(--font-large);
+    text-transform: uppercase;
+  }
+  .stock-name-text p {
+    font-size: var(--font-normal);
+    color: var(--text-darker);
+    padding-left: 0px;
+  }

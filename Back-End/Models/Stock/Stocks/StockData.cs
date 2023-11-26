@@ -2,9 +2,9 @@ using System.Runtime.Intrinsics.X86;
 
 public class StockData
 {
-    public string Symbol { get; set; }
-    public string Name { get; set; }
-    public double Price { get; set; }
+    public string? Symbol { get; set; }
+    public string? Name { get; set; }
+    public double? Price { get; set; }
     public string? Logo { get; set; }
     public string? RequestedAt { get; set; }
 
@@ -25,7 +25,7 @@ public class StockData
 
     
     // Constructor
-    public StockData(string symbol, string name, double price, string? logo, string? requestedAt, decimal? MarketCap, decimal? RegularMarketVolume, string? Industry, string? Sector,
+    public StockData(string? symbol, string? name, double? price, string? logo, string? requestedAt, decimal? MarketCap, decimal? RegularMarketVolume, string? Industry, string? Sector,
      string? LongBusinessSummary, decimal? FullTimeEmployees, string? Address, string? City, string? Country, List<HistoricalDataPrice>? historicalDataPrice, List<CashDividends>? DividendsData)
     {
         this.Symbol = symbol;

@@ -229,3 +229,7 @@ td img {
   align-items: start;
   text-align: start;
 }
+.list-name-item {
+  display: flex;
+  justify-content: start;
+}
