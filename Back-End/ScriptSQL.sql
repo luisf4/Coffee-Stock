@@ -102,6 +102,22 @@ GO
 select * from stocks_portfolio
 
 
+CREATE PROCEDURE AddFavorites
+    @favorite NVARCHAR(100),
+    @username NVARCHAR(50)
+AS
+BEGIN
+    INSERT INTO favorites (symbol, Username)
+    VALUES (@favorite, @username);
+END;
+
+
+CREATE VIEW AllUserFavorites AS SELECT * FROM favorites;
+
+
+SELECT *
+FROM AllUserFavorites
+WHERE username = 'luis'; -- Replace 'example_user' with the actual username
 
 -- INSERTS stocks
 --insert into stocks (symbol,[name],price,logo,requestedAt) values('petr4', 'petobras', 35.00, 'aaaa','2023-11-07');

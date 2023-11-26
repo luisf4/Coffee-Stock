@@ -7,7 +7,7 @@ public class FavoritesSql : Database
         using (SqlCommand db = new SqlCommand())
         {
             db.Connection = connection;
-            db.CommandText = "INSERT INTO favorites VALUES (@fav, @user)";
+            db.CommandText = "EXEC AddFavorites @fav, @user";
             db.Parameters.AddWithValue("@user", user);
             db.Parameters.AddWithValue("@fav", favorite);
             db.ExecuteNonQuery();
@@ -29,7 +29,7 @@ public class FavoritesSql : Database
     public List<string> ReadFavorites(string user) { 
         using (SqlCommand db = new SqlCommand()) { 
             db.Connection = connection;
-            db.CommandText = "SELECT * FROM favorites where username = @user";
+            db.CommandText = "SELECT * FROM AllUserFavorites WHERE username = @user";
             db.Parameters.AddWithValue("@user", user);
 
             SqlDataReader reader = db.ExecuteReader();
