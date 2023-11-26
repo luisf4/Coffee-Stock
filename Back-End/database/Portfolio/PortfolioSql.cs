@@ -36,6 +36,7 @@ public class PortoflioSql : Database
                 );
                 portfolios.Add(portfolio);
             }
+            reader.Close();
             return portfolios;
         }
     }

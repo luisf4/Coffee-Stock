@@ -40,6 +40,7 @@ public class FavoritesSql : Database
             {
                 favorites.Add(reader.GetString(1));
             }
+            reader.Close();
             return favorites;
         }
     }

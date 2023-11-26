@@ -74,20 +74,23 @@ public class AuthSql : Database
             // Verify the user's password using BCrypt's Verify method
             if (BCrypt.Net.BCrypt.Verify(user.Password, dbPasswordHash))
             {
+                reader.Close();
                 return "ok";
             }
             else
             {
+                reader.Close();
                 return "Incorrect password";
             }
         }
         else
         {
+            reader.Close();
             return "User not found";
         }
     }
 
-    // Do this later :)
+    // Do this later :) ** wont do 
     // public string CheckJwt(string jwt) { 
 
     //     SqlCommand db = new SqlCommand();

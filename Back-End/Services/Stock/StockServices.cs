@@ -103,7 +103,6 @@ public class StockServices
                     return stock;
                 }
             }
-
             else
             {
                 Console.WriteLine("fudeu");

@@ -55,7 +55,8 @@
 .table-title {
     justify-content: space-between;
 }
-.table-title p { 
+
+.table-title p {
     font-weight: bold;
 }
 
@@ -63,6 +64,7 @@
     justify-content: space-between;
     padding: 2px 0;
 }
+
 .table-item-btn {
     background-color: transparent;
 }
@@ -71,9 +73,11 @@
     background-color: var(--background-light);
     /* Apply your custom variable here */
 }
+
 .modal-title {
     color: black;
 }
+
 .form-label {
     display: flex;
     color: black;
@@ -81,32 +85,45 @@
     align-items: start;
     text-align: start;
 }
+
 .modal-header h1 {
     color: black;
 }
+
 .table-item-edit-icon {
     background-color: transparent;
 }
+
 .table-item-icon {
     background-color: transparent;
 }
+
 .table-item-icon a {
     padding: 0 10px;
 }
+
 .custom-btn {
-    background-color: var(--main-color); /* Change background color */
-    border-color: var(--main-color); /* Change border color */
-    color: white; /* Change text color */
-  }
-  
-  .custom-btn:hover {
-    background-color: var(--main-color); /* Change background color on hover */
-    border-color: var(--main-color); /* Change border color */
+    background-color: var(--main-color);
+    /* Change background color */
+    border-color: var(--main-color);
+    /* Change border color */
+    color: white;
+    /* Change text color */
+}
+
+.custom-btn:hover {
+    background-color: var(--main-color);
+    /* Change background color on hover */
+    border-color: var(--main-color);
+    /* Change border color */
 
     /* color: black; */
-  }
+}
+.delete-icon { 
+    background-color: transparent;
 
-.table-item-edit-icon svg {
+}
+.delete-icon svg {
     /* Define default styles for the SVG icon */
     fill: var(--main-color);
     /* Change this to your desired default color */
@@ -114,9 +131,9 @@
     /* Smooth transition on color change */
 }
 
-.table-item-edit-icon svg:hover {
+.delete-icon svg:hover {
     /* Define styles for the SVG icon on hover */
-    fill: rgb(255, 255, 255);
+    fill: rgb(206, 43, 43);
     /* Change this to the color you want on hover */
     cursor: pointer;
     /* Change cursor to pointer on hover */

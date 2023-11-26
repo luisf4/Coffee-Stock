@@ -3,6 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { StockService } from './stock.service';
 import { PortfolioService } from '../portfolio/portfolio.service';
 import { StocksPortfolioService } from '../portfolio-item/portfolio-item.service';
+import { FavoritesServices } from '../favorites/favorites.service';
+import { AuthService } from 'src/app/auth/services/auth.service';
 
 @Component({
   selector: 'app-stocks-page',
@@ -22,14 +24,25 @@ export class StocksPageComponent implements OnInit {
   selectedDate: string | null = null;
   divdendsCategories: any = [];
   dividendsData: any = []
+  userName: string;
+  favorites: any[] =[]
 
-  constructor(private route: ActivatedRoute, private stockService: StockService, private portfolioService: PortfolioService, private stocksPortfolioServices: StocksPortfolioService) { }
+
+  constructor(private auth: AuthService,private favServices:FavoritesServices, private route: ActivatedRoute, private stockService: StockService, private portfolioService: PortfolioService, private stocksPortfolioServices: StocksPortfolioService) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
       this.symbol = params.get("symbol")!; // Store the symbol in the class property
       this.stockSymbol = this.symbol;
       this.getStockDetails(); // Call the function to fetch stock details
+      const token = localStorage.getItem("jwtToken");
+      this.auth.getUsername(token!).subscribe(
+        (response) => {
+          this.userName = response;
+          console.log(response); // Moved console.log inside the callback
+          this.loadFavorites();
+        }
+      );
     });
   }
 
@@ -160,5 +173,19 @@ export class StocksPageComponent implements OnInit {
       console.log('Missing required inputs.');
       // Optionally, inform the user about missing inputs
     }
+  }
+
+
+  loadFavorites() {
+    this.favServices.getFavorites(this.userName).subscribe(
+      (res) => {
+        this.favorites = res;
+    
+      }
+    );
+  }
+  addFavorites(stock:string){
+    this.favorites.push(stock);
+    this.favServices.addFavorites(this.userName,stock).subscribe()
   }
 }

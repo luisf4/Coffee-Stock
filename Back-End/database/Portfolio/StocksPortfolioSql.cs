@@ -49,6 +49,7 @@ public class StocksPortfolioSql : Database
                 );
                 portfolios.Add(portfolio);
             }
+            reader.Close();
             return portfolios;
         }
     }

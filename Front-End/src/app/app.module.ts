@@ -22,6 +22,7 @@ import { PortfolioItemComponent } from './stocks/portfolio-item/portfolio-item.c
 import { AboutComponent } from './stocks/about/about.component';
 import { ChartDonutComponent } from './stocks/chart-donut/chart-donut.component';
 import { ChartBarComponent } from './stocks/chart-bar/chart-bar.component';
+import { FavoritesComponent } from './stocks/favorites/favorites.component';
 
 
 
@@ -42,6 +43,7 @@ import { ChartBarComponent } from './stocks/chart-bar/chart-bar.component';
     AboutComponent,
     ChartDonutComponent,
     ChartBarComponent,
+    FavoritesComponent,
 
   ],
   imports: [

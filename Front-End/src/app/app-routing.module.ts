@@ -10,6 +10,7 @@ import { PortfolioComponent } from './stocks/portfolio/portfolio.component';
 import { PortfolioItemComponent } from './stocks/portfolio-item/portfolio-item.component';
 import { AboutComponent } from './stocks/about/about.component';
 import { ChartDonutComponent } from './stocks/chart-donut/chart-donut.component';
+import { FavoritesComponent } from './stocks/favorites/favorites.component';
 
 const routes: Routes = [
   {path: "", component: HomeComponent},
@@ -22,6 +23,7 @@ const routes: Routes = [
   {path: "portfolio/:portfolio_id/:name", component: PortfolioItemComponent},
   {path: "about", component: AboutComponent},
   {path: "charts-donut", component: ChartDonutComponent},
+  {path: "favorites", component: FavoritesComponent},
 
 
 ];
