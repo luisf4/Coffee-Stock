@@ -9,7 +9,7 @@ public class StockData
     public string? RequestedAt { get; set; }
 
     public decimal? MarketCap { get; set; }
-    public decimal? RegularMarketVolume { get; set; }
+    public decimal RegularMarketVolume { get; set; }
     public string? Industry { get; set; }
     public string? Sector { get; set; }
     public string? LongBusinessSummary { get; set; }
@@ -25,7 +25,7 @@ public class StockData
 
     
     // Constructor
-    public StockData(string? symbol, string? name, double? price, string? logo, string? requestedAt, decimal? MarketCap, decimal? RegularMarketVolume, string? Industry, string? Sector,
+    public StockData(string? symbol, string? name, double? price, string? logo, string? requestedAt, decimal? MarketCap, decimal RegularMarketVolume, string? Industry, string? Sector,
      string? LongBusinessSummary, decimal? FullTimeEmployees, string? Address, string? City, string? Country, List<HistoricalDataPrice>? historicalDataPrice, List<CashDividends>? DividendsData)
     {
         this.Symbol = symbol;

@@ -71,6 +71,7 @@ export class StocksPageComponent implements OnInit {
         console.log(this.stockPrice)
         console.log(this.divdendsCategories)
         console.log(this.dividendsData)
+        console.log(this.stockDetails)
       });
     } else {
       this.stockDetails = null; // Reset stockDetails if symbol is not available

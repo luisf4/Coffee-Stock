@@ -14,7 +14,7 @@ public class Result
     public double? RegularMarketPrice { get; set; }
     public string? Logourl { get; set; }
     public decimal? MarketCap { get; set; }
-    public decimal? RegularMarketVolume { get; set; }
+    public decimal RegularMarketVolume { get; set; }
     // Include other properties here based on your needs
 
     public List<HistoricalDataPrice>? HistoricalDataPrice { get; set; }
