@@ -1,5 +1,6 @@
 # Coffee Stock - Análise de Ações ☕📈
-![image](https://github.com/luisf4/Coffee-Stock/assets/97737113/13116013-094b-4646-b30d-d78f1dae4825)
+![image](https://github.com/luisf4/CoffeeStock/assets/97737113/e6876b93-ec60-4dd4-813b-99072f48b466)
+
 
 
 
