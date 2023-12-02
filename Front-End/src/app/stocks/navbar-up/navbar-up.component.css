@@ -8,7 +8,6 @@
 
 .navbar {
   display: flex;
-  justify-content: space-between;
   align-items: center;
   padding: 2.4vh 15%;
   position: fixed;
@@ -17,11 +16,13 @@
   background-color: var(--background);
   
 }
-
+.navbar-logo{ 
+  width: 23vw;
+}
 .navbar-items {
   display: flex;
   justify-content: flex-start;
-  width: 40%;
+  width: 23vw;
 }
 .navbar-items a {
 color: var(--text-darker);
@@ -31,8 +32,10 @@ color: var(--main-color);
 }
 .navbar-buttons {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  align-items: end;
+  justify-content: end;
+  width: 23vw;
+  padding-right: 4px;
 }
 .navbar-buttons-item { 
   padding: 0 1vw;
@@ -67,13 +70,13 @@ color: var(--main-color);
 }
 .white-text {
   color: var(--white);
-  font-size: 40px;
+  font-size: 30px;
   font-weight: bolder;
 }
 
 .yellow-text {
   color: var(--main-color);
-  font-size: 40px;
+  font-size: 30px;
   font-weight: 700;
 }
 

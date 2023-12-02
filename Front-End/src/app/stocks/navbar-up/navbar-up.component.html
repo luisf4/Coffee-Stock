@@ -6,7 +6,7 @@
     <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="navbar-item">Home</a>
     <a routerLink="/search" routerLinkActive="active" class="navbar-item">Ações</a>
     <a routerLink="/portfolio" routerLinkActive="active" class="navbar-item">Portfolio</a>
-    <a routerLink="/favorites" routerLinkActive="active" class="navbar-item">Favorites</a>
+    <a routerLink="/favorites" routerLinkActive="active" class="navbar-item">Favoritos</a>
     <a routerLink="/about" routerLinkActive="active" class="navbar-item">Sobre</a>
 
   </div>
@@ -33,7 +33,6 @@
           </a>
 
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item">Perfil</a></li>
             <li><a class="dropdown-item dropdown-item-red" (click)="clearToken()" href="">Sair</a></li>
           </ul>
         </div>

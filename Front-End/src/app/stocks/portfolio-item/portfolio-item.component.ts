@@ -18,8 +18,9 @@ export class PortfolioItemComponent implements OnInit {
   stocks_list: any;
   stocks_price: number[] = [];
   stocks_names: string[] = [];
-  stocks_total: number=0;
-
+  stocks_total: number = 0;
+  portfolio_graph: string[]
+  stockPrice: any = [];
 
 
   selectedPortfolioId: number | null = null;
@@ -27,7 +28,7 @@ export class PortfolioItemComponent implements OnInit {
   quantityValue: number | null = null;
   selectedDate: string | null = null;
 
-  constructor(private cdr: ChangeDetectorRef, private route: ActivatedRoute, private stocksPortfolio: StocksPortfolioService, private portfolioService: PortfolioService, private auth: AuthService) { }
+  constructor(private stocksService: StockService, private cdr: ChangeDetectorRef, private route: ActivatedRoute, private stocksPortfolio: StocksPortfolioService, private portfolioService: PortfolioService, private auth: AuthService) { }
 
   ngOnInit() {
     const token = localStorage.getItem("jwtToken");
@@ -38,11 +39,48 @@ export class PortfolioItemComponent implements OnInit {
     });
     this.stocksPortfolio.getStocksPortfolios(token!, this.portfolio_id).subscribe((data: any[]) => {
       this.stocks_list = data;
-      console.log(data)
 
+      // Stores the stocks in variables to put in the donut 
       this.stocks_list.forEach((stockObj: { stock: string, price: number, qnt: number }) => {
-        this.stocks_names.push(stockObj.stock);
-        this.stocks_price.push(stockObj.price * stockObj.qnt);
+        // Gets the stocksdata 
+        this.stocksService.GetStock(stockObj.stock).subscribe(res => {
+          this.stocks_price.push(res.price * stockObj.qnt)
+          this.stocks_names.push(stockObj.stock)
+          
+
+          if (this.stockPrice == null || this.stockPrice.length === 0) {
+            this.stockPrice = res.historicalDataPrice.map((dataPoint: any) => {
+              return {
+                x: new Date(dataPoint.date * 1000).getTime(),
+                y: dataPoint.close * stockObj.qnt
+              };
+            });
+          } else {
+            res.historicalDataPrice.forEach((dataPoint: any) => {
+              const dateInMillis = new Date(dataPoint.date * 1000).getTime();
+              const existingIndex = this.stockPrice.findIndex((item: any) => item.x === dateInMillis);
+          
+              if (existingIndex !== -1) {
+                // Se já houver um valor para essa data, adicione ao valor existente de 'y'
+                this.stockPrice[existingIndex].y += dataPoint.close * stockObj.qnt;
+              } else {
+                // Caso contrário, adicione um novo objeto ao array com o 'y' atual
+                this.stockPrice.push({
+                  x: dateInMillis,
+                  y: dataPoint.close * stockObj.qnt
+                });
+              }
+            });
+          }
+          
+            console.log(this.stockPrice)
+
+
+
+          
+        })
+        
+        // stockObj.price % res.price * 100 = stock%
         this.stocks_total = this.stocks_total + (stockObj.price * stockObj.qnt)
       });
     });
@@ -62,7 +100,6 @@ export class PortfolioItemComponent implements OnInit {
       const cleanedValue = this.moneyValue.toString().replace(/[^0-9,.]/g, ''); // Remove non-numeric characters
       const formattedValue = parseFloat(cleanedValue).toFixed(2); // Convert to number, format to 2 decimal places as a string
       this.moneyValue = parseFloat(formattedValue); // Convert the formatted string back to a number
-      console.log(this.moneyValue);
     }
 
   }
@@ -134,7 +171,6 @@ export class PortfolioItemComponent implements OnInit {
     var token = localStorage.getItem('jwtToken');
 
     this.stocksPortfolio.DeleteStocksPortfolio(token!, id, this.portfolio_id).subscribe(res => {
-      console.log(res);
       // Fetch updated list of stocks after deletion
       this.fetchUpdatedStocksList();
     });

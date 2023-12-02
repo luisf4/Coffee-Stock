@@ -24,6 +24,8 @@ body {
 .container {
 	max-width: 1170px;
 	margin: auto;
+	display: flex;
+	justify-content: space-around;
 }
 
 .row {
@@ -113,4 +115,10 @@ ul {
 	.footer-col {
 		width: 100%;
 	}
+}
+
+.social-links a {
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
