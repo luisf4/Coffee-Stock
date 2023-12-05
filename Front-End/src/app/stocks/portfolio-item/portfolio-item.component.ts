@@ -4,6 +4,7 @@ import { StockService } from '../stocks-page/stock.service';
 import { StocksPortfolioService } from './portfolio-item.service';
 import { PortfolioService } from '../portfolio/portfolio.service';
 import { AuthService } from 'src/app/auth/services/auth.service';
+import { isNgTemplate } from '@angular/compiler';
 
 @Component({
   selector: 'app-portfolio-item',
@@ -46,7 +47,7 @@ export class PortfolioItemComponent implements OnInit {
         this.stocksService.GetStock(stockObj.stock).subscribe(res => {
           this.stocks_price.push(res.price * stockObj.qnt)
           this.stocks_names.push(stockObj.stock)
-          
+
 
           if (this.stockPrice == null || this.stockPrice.length === 0) {
             this.stockPrice = res.historicalDataPrice.map((dataPoint: any) => {
@@ -56,30 +57,22 @@ export class PortfolioItemComponent implements OnInit {
               };
             });
           } else {
-            res.historicalDataPrice.forEach((dataPoint: any) => {
-              const dateInMillis = new Date(dataPoint.date * 1000).getTime();
-              const existingIndex = this.stockPrice.findIndex((item: any) => item.x === dateInMillis);
-          
-              if (existingIndex !== -1) {
-                // Se já houver um valor para essa data, adicione ao valor existente de 'y'
-                this.stockPrice[existingIndex].y += dataPoint.close * stockObj.qnt;
-              } else {
-                // Caso contrário, adicione um novo objeto ao array com o 'y' atual
-                this.stockPrice.push({
-                  x: dateInMillis,
-                  y: dataPoint.close * stockObj.qnt
-                });
-              }
-            });
+            this.stockPrice.forEach((item: any) => {
+              item.y += stockObj.price * stockObj.qnt
+              console.log(item.y)
+              console.log(stockObj.price * stockObj.qnt)
+            })
+
+
           }
-          
-            console.log(this.stockPrice)
+
+          console.log(this.stockPrice)
 
 
 
-          
+
         })
-        
+
         // stockObj.price % res.price * 100 = stock%
         this.stocks_total = this.stocks_total + (stockObj.price * stockObj.qnt)
       });

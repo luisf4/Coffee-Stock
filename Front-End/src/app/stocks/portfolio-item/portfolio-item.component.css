@@ -52,6 +52,19 @@
     font-weight: normal;
     color: var(--text-darker);
 }
+.graph-text { 
+    padding: 0px 0px;
+}
+.graph-text p{
+    padding-left: 5px;
+    font-size: var(--font-normal);
+    font-weight: normal;
+    color: var(--text-darker);
+}
+.graph-text h1 { 
+    font-weight: bold;
+    font-size: var(--font-large);
+}
 app-chart-donut {width: 25vw;}
 
 .list-stocks {
