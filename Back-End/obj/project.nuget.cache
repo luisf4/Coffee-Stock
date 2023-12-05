@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "UB38sMC6ZyEPQVk0h+eUVOnmerrwhfHUXhHpeOczErCiNm5MrtKnQAW4NXCxa8j5dA64V77a8tmvPwRrlcOH7w==",
+  "dgSpecHash": "e+BlSFaiKlx7oovJPZvRmZNsz3DIzMX7HoGwN4eobsDWlxWlCxuWRlQI8zcmWeP6GYbzWVxTl7d/vvfpWVFYog==",
   "success": true,
-  "projectFilePath": "C:\\Users\\luis\\Desktop\\coffeestock\\Back-End\\ApiStocks.csproj",
+  "projectFilePath": "C:\\Users\\luis\\Desktop\\CoffeeStock\\Back-End\\ApiStocks.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\luis\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\luis\\.nuget\\packages\\azure.identity\\1.8.0\\azure.identity.1.8.0.nupkg.sha512",

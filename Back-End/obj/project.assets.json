@@ -2493,11 +2493,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\luis\\Desktop\\coffeestock\\Back-End\\ApiStocks.csproj",
+      "projectUniqueName": "C:\\Users\\luis\\Desktop\\CoffeeStock\\Back-End\\ApiStocks.csproj",
       "projectName": "ApiStocks",
-      "projectPath": "C:\\Users\\luis\\Desktop\\coffeestock\\Back-End\\ApiStocks.csproj",
+      "projectPath": "C:\\Users\\luis\\Desktop\\CoffeeStock\\Back-End\\ApiStocks.csproj",
       "packagesPath": "C:\\Users\\luis\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\luis\\Desktop\\coffeestock\\Back-End\\obj\\",
+      "outputPath": "C:\\Users\\luis\\Desktop\\CoffeeStock\\Back-End\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\luis\\AppData\\Roaming\\NuGet\\NuGet.Config"
