@@ -6,7 +6,7 @@
 
 Bem-vindo ao repositório do Coffee Stock, um site dedicado à análise de ações e investimentos no mercado financeiro. Aqui, você encontrará todas as informações necessárias para entender e utilizar nossa plataforma.
 
-## Sobre o Coffee Stock
+## Sobre o CoffeeStock
 
 O Coffee Stock é uma plataforma online que oferece análises detalhadas de ações, informações em tempo real e ferramentas avançadas para ajudar investidores a tomar decisões informadas no mercado de ações. Nossa missão é tornar o investimento em ações mais acessível e compreensível para todos, desde iniciantes até investidores experientes.
 
